@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".more.MoreFragment">
+
+
+    <ImageView
+        android:id="@+id/IVMore"
+        android:layout_width="match_parent"
+        android:layout_height="223dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/more_background" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/IVAvatar"
+        android:layout_width="128dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/user"
+        app:civ_border_width="3dp"
+        app:civ_border_color="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/IVMore"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="@+id/IVMore"
+        app:layout_constraintTop_toTopOf="@id/IVMore" />
+
+    <Button
+        android:id="@+id/BTNLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:text="Đăng nhập/Đăng ký"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/IVAvatar"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="@+id/IVMore"
+        app:layout_constraintTop_toTopOf="@id/IVMore" />
+
+    <Button
+        android:id="@+id/TVInfo"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/info"
+        android:drawableRight="@drawable/arrow"
+        android:gravity="left|center_vertical"
+        android:text="Hồ sơ cá nhân"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IVMore" />
+
+    <Button
+        android:id="@+id/TVFavourite"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/heart"
+        android:drawableRight="@drawable/arrow"
+        android:gravity="left|center_vertical"
+        android:text="Danh sách yêu thích"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVInfo" />
+
+    <Button
+        android:id="@+id/TVAboutUs"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/about"
+        android:drawableRight="@drawable/arrow"
+        android:gravity="left|center_vertical"
+        android:text="Về chúng tôi"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVFavourite" />
+
+    <Button
+        android:id="@+id/BTNLogout"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Đăng xuất"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
