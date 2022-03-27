@@ -98,6 +98,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Đăng xuất"
+        android:gravity="center|center_vertical"
+        android:drawableLeft="@drawable/logout"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

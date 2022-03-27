@@ -8,10 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVCategory"
-        android:layout_width="117dp"
-        android:layout_height="723dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="89dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,15 +37,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVResult"
-        android:layout_width="282dp"
-        android:layout_height="667dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="302dp"
+        android:layout_height="590dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/RVCategory"
-        app:layout_constraintTop_toBottomOf="@+id/TVSort"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

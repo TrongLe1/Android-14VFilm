@@ -14,6 +14,6 @@
         android:icon="@drawable/order"/>
     <item
         android:id="@+id/more"
-        android:title="Thêm"
+        android:title="Khác"
         android:icon="@drawable/more"/>
 </menu>
