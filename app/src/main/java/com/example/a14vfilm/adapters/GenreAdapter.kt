@@ -15,15 +15,15 @@ class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<Gen
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView), View.OnClickListener {
         val TVGenre = listItemView.findViewById<TextView>(R.id.TVGenre)
         init {
-            listItemView.setOnClickListener { onItemClick?.invoke(genreList[adapterPosition]) }
             itemView.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
+            onItemClick?.invoke(genreList[adapterPosition])
             if (getAdapterPosition() == RecyclerView.NO_POSITION) return;
-            notifyItemChanged(selectedPosition);
-            selectedPosition = getAdapterPosition();
-            notifyItemChanged(selectedPosition);
+            notifyItemChanged(selectedPosition)
+            selectedPosition = getAdapterPosition()
+            notifyItemChanged(selectedPosition)
         }
 
     }

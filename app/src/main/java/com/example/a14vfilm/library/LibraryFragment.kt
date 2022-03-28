@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.recyclerview.widget.GridLayoutManager
@@ -43,13 +44,19 @@ class LibraryFragment : Fragment() {
         val film2 = Film(2, "1", "B5306. Turning Red 2022 - Gấu Đỏ Biến Hình 2D25G (DTS-HD MA 7.1)", "", 5, 2, "Movie", 120, 0, "Mỹ", Date(2021, 12, 20), 89000.0, 8, Date(2021, 3, 27))
         val film3 = Film(3, "1", "B5299. Blacklight 2022 - Phi Vụ Đen 2D25G (DTS-HD MA 7.1)", "", 8, 1, "Movie", 120, 0, "Mỹ", Date(2021, 12, 20), 129000.0, 4, Date(2021, 3, 27))
         val film4 = Film(4, "1", "4KUHD-789. Spider-Man No Way Home 2022 (TRUE-HD7.1 - DOLBY ATMOS)", "", 13, 3, "Movie", 120, 0, "Mỹ", Date(2021, 12, 20), 290000.0, 23, Date(2021, 3, 27))
-        RVLibrary.adapter = FilmAdapter(arrayListOf(film1, film2, film3, film4))
+        var libraryAdapter: FilmAdapter /*= FilmAdapter(arrayListOf(film1, film2, film3, film4))
+        RVLibrary.adapter = libraryAdapter
+        libraryAdapter.onItemClick = {film ->
+            //Xem chi tiết phim
+        }
+        */
         RVLibrary.layoutManager = GridLayoutManager(requireActivity(), 2)
         val RVGenre = view.findViewById<RecyclerView>(R.id.RVCategory)
         val genre1 = Genre(1, "Phim kinh dị", "")
         val genre2 = Genre(2, "Phim tình cảm", "")
         val genre3 = Genre(3, "Phim tâm lý", "")
-        RVGenre.adapter = GenreAdapter(arrayListOf(genre1, genre2, genre3))
+        val genreAdapter = GenreAdapter(arrayListOf(genre1, genre2, genre3))
+        RVGenre.adapter = genreAdapter
         RVGenre.layoutManager = LinearLayoutManager(requireActivity())
         RVGenre.setBackgroundColor(Color.LTGRAY)
         val option = arrayListOf("Mới nhất", "Giá tăng dần", "Giá giảm dần")
@@ -57,6 +64,24 @@ class LibraryFragment : Fragment() {
         val sAdapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_dropdown_item, option)
         sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         SSort.adapter = sAdapter
+        var lastGenre = "Phim kinh dị"
+        genreAdapter.onItemClick = {genre ->
+            lastGenre = genre.name //Lưu tên genre vào lastGenre
+            SSort.selectedItem.toString()
+            //Query mảng phim theo thể loại và sắp xếp
+            libraryAdapter = FilmAdapter(arrayListOf(film2, film1, film4, film3))
+            RVLibrary.adapter = libraryAdapter
+        }
+        SSort.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                SSort.selectedItem.toString()
+                //Query mảng phim theo thể loại và sắp xếp
+                libraryAdapter = FilmAdapter(arrayListOf(film3, film4, film1, film2))
+                RVLibrary.adapter = libraryAdapter
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
         return view
     }
 

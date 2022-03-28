@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
@@ -42,36 +43,24 @@ class HomeFragment : Fragment() {
         val film2 = Film(2, "1", "B5306. Turning Red 2022 - Gấu Đỏ Biến Hình 2D25G (DTS-HD MA 7.1)", "", 5, 2, "Movie", 120, 0, "Mỹ", Date(2021, 12, 20), 89000.0, 8, Date(2021, 3, 27))
         val film3 = Film(3, "1", "B5299. Blacklight 2022 - Phi Vụ Đen 2D25G (DTS-HD MA 7.1)", "", 8, 1, "Movie", 120, 0, "Mỹ", Date(2021, 12, 20), 129000.0, 4, Date(2021, 3, 27))
         val film4 = Film(4, "1", "4KUHD-789. Spider-Man No Way Home 2022 (TRUE-HD7.1 - DOLBY ATMOS)", "", 13, 3, "Movie", 120, 0, "Mỹ", Date(2021, 12, 20), 290000.0, 23, Date(2021, 3, 27))
-        var adapter = FilmAdapter(arrayListOf(film1, film2, film3, film4))
-        RVHome.adapter = adapter
+        var homeAdapter = FilmAdapter(arrayListOf(film1, film2, film3, film4)) //Query mảng phim mới nhất
+        RVHome.adapter = homeAdapter
         RVHome.layoutManager = GridLayoutManager(requireActivity(), 2)
+        homeAdapter.onItemClick = {film ->
+            //Xem chi tiết phim
+        }
         val BTNNew = view.findViewById<Button>(R.id.BTNNew)
         BTNNew.setBackgroundColor(Color.BLUE)
         BTNNew.setTextColor(Color.WHITE)
         val BTNHot = view.findViewById<Button>(R.id.BTNHot)
         BTNHot.setBackgroundColor(Color.TRANSPARENT)
         BTNHot.setTextColor(Color.BLUE)
-        BTNHot.setOnClickListener {
-            BTNHot.setBackgroundColor(Color.BLUE)
-            BTNHot.setTextColor(Color.WHITE)
-            BTNNew.setBackgroundColor(Color.TRANSPARENT)
-            BTNNew.setTextColor(Color.BLUE)
-            adapter = FilmAdapter(arrayListOf(film1, film2, film3, film4))
-            RVHome.adapter = adapter
-        }
-        BTNNew.setOnClickListener {
-            BTNNew.setBackgroundColor(Color.BLUE)
-            BTNNew.setTextColor(Color.WHITE)
-            BTNHot.setBackgroundColor(Color.TRANSPARENT)
-            BTNHot.setTextColor(Color.BLUE)
-            adapter = FilmAdapter(arrayListOf(film1, film3, film2, film1))
-            RVHome.adapter = adapter
-        }
         val ACTVSearch = view.findViewById<AutoCompleteTextView>(R.id.ACTVSearch)
+        ACTVSearch.setAdapter(ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1, arrayListOf("B5314. Scream 2022 - Tiếng Thét 2022 2D25G (DTS-HD MA 7.1)"))) //Query mảng TÊN phim mới (hot)
         ACTVSearch.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                adapter.filter.filter(p0)
+                homeAdapter.filter.filter(p0)
                 BTNHot.setBackgroundColor(Color.TRANSPARENT)
                 BTNHot.setTextColor(Color.BLUE)
                 BTNNew.setBackgroundColor(Color.TRANSPARENT)
@@ -79,6 +68,24 @@ class HomeFragment : Fragment() {
             }
             override fun afterTextChanged(p0: Editable?) {}
         })
+        BTNHot.setOnClickListener {
+            ACTVSearch.text.clear()
+            BTNHot.setBackgroundColor(Color.BLUE)
+            BTNHot.setTextColor(Color.WHITE)
+            BTNNew.setBackgroundColor(Color.TRANSPARENT)
+            BTNNew.setTextColor(Color.BLUE)
+            homeAdapter = FilmAdapter(arrayListOf(film4, film3, film2, film1)) //Query mảng phim hot
+            RVHome.adapter = homeAdapter
+        }
+        BTNNew.setOnClickListener {
+            ACTVSearch.text.clear()
+            BTNNew.setBackgroundColor(Color.BLUE)
+            BTNNew.setTextColor(Color.WHITE)
+            BTNHot.setBackgroundColor(Color.TRANSPARENT)
+            BTNHot.setTextColor(Color.BLUE)
+            homeAdapter = FilmAdapter(arrayListOf(film1, film2, film3, film4)) //Query mảng phim mới nhất
+            RVHome.adapter = homeAdapter
+        }
         return view
     }
 
