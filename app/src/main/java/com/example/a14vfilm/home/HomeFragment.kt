@@ -1,5 +1,6 @@
 package com.example.a14vfilm.home
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.FilmAdapter
+import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.Film
 import java.util.*
 
@@ -47,7 +49,8 @@ class HomeFragment : Fragment() {
         RVHome.adapter = homeAdapter
         RVHome.layoutManager = GridLayoutManager(requireActivity(), 2)
         homeAdapter.onItemClick = {film ->
-            //Xem chi tiết phim
+            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            startActivity(intent)
         }
         val BTNNew = view.findViewById<Button>(R.id.BTNNew)
         BTNNew.setBackgroundColor(Color.BLUE)
