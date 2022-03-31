@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">14VFilm</string>
+
+    <string-array name="category">
+        <item>Chọn thể loại...</item>
+        <item>Item1</item>
+        <item>Item2</item>
+        <item>Item3</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>Chọn xuất xứ...</item>
+        <item>Việt Nam</item>
+        <item>Thái Lan</item>
+        <item>Mỹ</item>
+        <item>Nhật</item>
+        <item>Hàn</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>Phim lẻ</item>
+        <item>Phim bộ</item>
+    </string-array>
+
+
 </resources>
