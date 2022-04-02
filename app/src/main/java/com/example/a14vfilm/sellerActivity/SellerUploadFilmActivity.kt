@@ -1,4 +1,4 @@
-package com.example.a14vfilm.uploadFilm
+package com.example.a14vfilm.sellerActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.ImageView
 import com.example.a14vfilm.R
 
-class SellerUploadFilm : AppCompatActivity() {
+class SellerUploadFilmActivity : AppCompatActivity() {
     var filmImage: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

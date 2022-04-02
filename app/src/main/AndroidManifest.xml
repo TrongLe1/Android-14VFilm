@@ -10,7 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.14VFilm">
         <activity
-            android:name=".uploadFilm.SellerUploadFilm"
+            android:name=".sellerActivity.FilmStatisticRenterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sellerActivity.FilmStatisticRevenueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sellerActivity.FilmDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sellerActivity.SellerFilmManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sellerActivity.SellerUploadFilmActivity"
             android:exported="false" />
         <activity
             android:name=".detail.DetailActivity"

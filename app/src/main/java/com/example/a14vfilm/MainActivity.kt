@@ -8,7 +8,9 @@ import com.example.a14vfilm.home.HomeFragment
 import com.example.a14vfilm.library.LibraryFragment
 import com.example.a14vfilm.more.MoreFragment
 import com.example.a14vfilm.order.OrderFragment
-import com.example.a14vfilm.uploadFilm.SellerUploadFilm
+import com.example.a14vfilm.sellerActivity.FilmDetailActivity
+import com.example.a14vfilm.sellerActivity.SellerFilmManagementActivity
+import com.example.a14vfilm.sellerActivity.SellerUploadFilmActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
         supportActionBar!!.hide()
-//        change()
+        change()
     }
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
@@ -41,8 +43,10 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
 
-//    private fun change(){
-//        val intent: Intent = Intent(this, SellerUploadFilm::class.java)
-//        startActivity(intent)
-//    }
+    private fun change(){
+//        val intent: Intent = Intent(this, SellerUploadFilmActivity::class.java)
+        val intent: Intent = Intent(this, FilmDetailActivity::class.java)
+
+        startActivity(intent)
+    }
 }

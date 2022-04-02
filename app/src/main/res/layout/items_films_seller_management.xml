@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:text="Tên phim"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày đăng: "
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="120sp"
+        android:layout_height="120sp"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết"
+        android:layout_marginEnd="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="HardcodedText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
