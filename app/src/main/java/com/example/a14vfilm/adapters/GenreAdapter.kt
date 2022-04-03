@@ -12,12 +12,17 @@ import com.example.a14vfilm.models.Genre
 class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     var onItemClick: ((Genre) -> Unit)? = null
     var selectedPosition = 0
-    inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView), View.OnClickListener {
-        val TVGenre = listItemView.findViewById<TextView>(R.id.TVGenre)
+    inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
+        val TVGenre = listItemView.findViewById<TextView>(R.id.TVGenre)!!
         init {
-            itemView.setOnClickListener(this)
+            itemView.setOnClickListener {
+                onItemClick?.invoke(genreList[adapterPosition])
+                notifyItemChanged(selectedPosition)
+                selectedPosition = adapterPosition
+                notifyItemChanged(selectedPosition)
+            }
         }
-
+        /*
         override fun onClick(p0: View?) {
             onItemClick?.invoke(genreList[adapterPosition])
             if (getAdapterPosition() == RecyclerView.NO_POSITION) return;
@@ -25,6 +30,7 @@ class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<Gen
             selectedPosition = getAdapterPosition()
             notifyItemChanged(selectedPosition)
         }
+         */
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreAdapter.ViewHolder {
@@ -36,14 +42,10 @@ class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<Gen
 
     override fun onBindViewHolder(holder: GenreAdapter.ViewHolder, position: Int) {
         holder.TVGenre.text = genreList[position].name
-        if (selectedPosition == position) {
-            holder.itemView.setBackgroundColor(Color.BLUE)
-            holder.TVGenre.setTextColor(Color.WHITE)
-        }
-        else {
-            holder.itemView.setBackgroundColor(Color.LTGRAY)
+        if (selectedPosition == position)
+            holder.TVGenre.setTextColor(Color.RED)
+        else
             holder.TVGenre.setTextColor(Color.BLACK)
-        }
     }
 
     override fun getItemCount(): Int {

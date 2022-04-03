@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
@@ -14,10 +15,11 @@ import com.example.a14vfilm.models.Film
 class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmAdapter.ViewHolder>(), Filterable {
     var onItemClick: ((Film) -> Unit)? = null
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
-        val TVName = listItemView.findViewById<TextView>(R.id.TVName)
-        val TVQuantity = listItemView.findViewById<TextView>(R.id.TVQuantity)
-        val TVRate = listItemView.findViewById<TextView>(R.id.TVRate)
-        val TVPrice = listItemView.findViewById<TextView>(R.id.TVPrice)
+        val TVName = listItemView.findViewById<TextView>(R.id.TVName)!!
+        //val TVQuantity = listItemView.findViewById<TextView>(R.id.TVQuantity)
+        //val TVRate = listItemView.findViewById<TextView>(R.id.TVRate)!!
+        val RBRate = listItemView.findViewById<RatingBar>(R.id.RBRate)!!
+        val TVPrice = listItemView.findViewById<TextView>(R.id.TVPrice)!!
         init {
             listItemView.setOnClickListener { onItemClick?.invoke(filterListResult[adapterPosition]) }
         }
@@ -37,11 +39,11 @@ class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmA
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.TVName.text = filterListResult[position].name
-        holder.TVQuantity.text = "Số lượng: " + filterListResult[position].quantity.toString()
-        val rate = filterListResult[position].like * 1.0 / (filterListResult[position].like * 1.0 + filterListResult[position].dislike * 1.0) * 100.0
-        holder.TVRate.text = String.format("%.1f", rate) + "/100"
-        holder.TVPrice.text = filterListResult[position].price.toString() + " VNĐ/ngày"
-        holder.TVPrice.setTextColor(Color.RED)
+        //holder.TVQuantity.text = "Số lượng: " + filterListResult[position].quantity.toString()
+        //val rate = filterListResult[position].like * 1.0 / (filterListResult[position].like * 1.0 + filterListResult[position].dislike * 1.0) * 100.0
+        //holder.TVRate.text = String.format("%.1f", rate) + "/100"
+        holder.RBRate.rating = filterListResult[position].rate
+        holder.TVPrice.text = filterListResult[position].price.toString() + " VNĐ/Ngày"
     }
 
     override fun getItemCount(): Int {

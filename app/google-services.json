@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "593119782088",
+    "project_id": "vfilm-83cf4",
+    "storage_bucket": "vfilm-83cf4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593119782088:android:64ab5a6ba6dffe123e31fd",
+        "android_client_info": {
+          "package_name": "com.example.a14vfilm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593119782088-hjurthm7o7lm2490vpj2imt0lt8jnpfg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi5N0kNI6jeXp0XoYFqpBgUsuuLoiDmDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593119782088-hjurthm7o7lm2490vpj2imt0lt8jnpfg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

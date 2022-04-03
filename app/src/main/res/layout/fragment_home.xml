@@ -11,7 +11,7 @@
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/border"
+        android:background="@drawable/border_button"
         android:drawableLeft="@drawable/search"
         android:hint="Bạn cần tìm kiếm gì?"
         android:drawablePadding="5dp"
@@ -21,38 +21,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/BTNNew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/ISHome"
+        android:layout_width="360dp"
+        android:layout_height="250dp"
         android:layout_marginTop="16dp"
-        android:text="Mới nhất"
-        android:textAllCaps="false"
+        app:iss_auto_cycle="true"
+        app:iss_corner_radius="50"
+        app:iss_delay="0"
+        app:iss_period="5000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ACTVSearch" />
-
-    <Button
-        android:id="@+id/BTNHot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        android:text="Hot"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toEndOf="@+id/BTNNew"
-        app:layout_constraintTop_toBottomOf="@+id/ACTVSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/ACTVSearch"></com.denzcoskun.imageslider.ImageSlider>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVHome"
-        android:layout_width="380dp"
-        android:layout_height="515dp"
+        android:layout_width="360dp"
+        android:layout_height="250dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ACTVSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/TVHome" />
+
+    <TextView
+        android:id="@+id/TVHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Sản phẩm mới nhất"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ISHome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

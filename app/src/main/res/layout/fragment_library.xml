@@ -8,21 +8,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVCategory"
-        android:layout_width="89dp"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="360dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/TVLibrary" />
 
     <Spinner
         android:id="@+id/SSort"
-        android:layout_width="170dp"
+        android:layout_width="160dp"
         android:layout_height="32dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="26dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toEndOf="@+id/RVCategory"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/RVCategory" />
 
     <TextView
         android:id="@+id/TVSort"
@@ -31,16 +32,29 @@
         android:layout_marginTop="24dp"
         android:text="Sắp xếp theo:"
         app:layout_constraintEnd_toStartOf="@+id/SSort"
-        app:layout_constraintHorizontal_bias="0.863"
-        app:layout_constraintStart_toEndOf="@+id/RVCategory"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/RVCategory" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVResult"
-        android:layout_width="302dp"
-        android:layout_height="590dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_width="360dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVSort" />
+
+    <TextView
+        android:id="@+id/TVLibrary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:text="Thể loại"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

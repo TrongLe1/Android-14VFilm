@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="158dp"
-    android:layout_height="310dp">
+    android:layout_height="250dp">
 
     <ImageView
         android:id="@+id/IVFilm"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="12dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/more_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TVName"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
@@ -26,34 +27,28 @@
         app:layout_constraintTop_toBottomOf="@+id/IVFilm" />
 
     <TextView
-        android:id="@+id/TVQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVRate" />
-
-    <TextView
-        android:id="@+id/TVRate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVName" />
-
-    <TextView
         android:id="@+id/TVPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@android:color/holo_red_light"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVQuantity" />
+        app:layout_constraintTop_toBottomOf="@+id/RBRate" />
+
+    <RatingBar
+        android:id="@+id/RBRate"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressTint="#ffdf00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
