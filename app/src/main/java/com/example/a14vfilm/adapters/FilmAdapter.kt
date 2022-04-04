@@ -1,16 +1,18 @@
 package com.example.a14vfilm.adapters
 
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
+import java.net.URL
+import android.graphics.Bitmap
+import com.squareup.picasso.Picasso
+
 
 class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmAdapter.ViewHolder>(), Filterable {
     var onItemClick: ((Film) -> Unit)? = null
@@ -20,6 +22,7 @@ class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmA
         //val TVRate = listItemView.findViewById<TextView>(R.id.TVRate)!!
         val RBRate = listItemView.findViewById<RatingBar>(R.id.RBRate)!!
         val TVPrice = listItemView.findViewById<TextView>(R.id.TVPrice)!!
+        val IVFilm = listItemView.findViewById<ImageView>(R.id.IVFilm)!!
         init {
             listItemView.setOnClickListener { onItemClick?.invoke(filterListResult[adapterPosition]) }
         }
@@ -39,6 +42,8 @@ class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmA
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.TVName.text = filterListResult[position].name
+        if (filterListResult[position].image != "")
+            Picasso.get().load(filterListResult[position].image).resize(130, 130).into(holder.IVFilm)
         //holder.TVQuantity.text = "Số lượng: " + filterListResult[position].quantity.toString()
         //val rate = filterListResult[position].like * 1.0 / (filterListResult[position].like * 1.0 + filterListResult[position].dislike * 1.0) * 100.0
         //holder.TVRate.text = String.format("%.1f", rate) + "/100"

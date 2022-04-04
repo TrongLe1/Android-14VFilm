@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,14 @@ import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.FilmAdapter
 import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.Genre
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration
 import java.util.*
 import kotlin.collections.ArrayList
@@ -46,28 +55,51 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val filmList = ArrayList<Film>()
+        val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        val ref = FirebaseDatabase.getInstance(url).getReference("film")
         val RVHome = view.findViewById<RecyclerView>(R.id.RVHome)
-        val film1 = Film(1, "1", "Scream 2022 - Tiếng Thét 2022", "Mô tả", 3.5F, 120, "Mỹ", Date(), 100000, 1, Date())
-        val film2 = Film(2, "1", "Turning Red 2022 - Gấu Đỏ Biến Hình", "Mô tả", 4.5F, 120, "Mỹ", Date(), 99000, 2, Date())
-        val film3 = Film(3, "1", "Blacklight 2022 - Phi Vụ Đen", "Mô tả", 4F, 120, "Mỹ", Date(), 90000, 10, Date())
-        val film4 = Film(4, "1", "Spider-Man No Way Home 2022", "Mô tả", 5F, 120, "Mỹ", Date(), 89000, 4, Date())
-        var homeAdapter = FilmAdapter(arrayListOf(film1, film2, film3, film4)) //Query mảng phim mới nhất
-        RVHome.adapter = homeAdapter
+        var homeAdapter = FilmAdapter(filmList)
+
+        /*
+        val genre = ArrayList<String>()
+        genre.add("Tình cảm")
+        genre.add("Kinh dị")
+        val film1 = Film(ref.push().key!!, "1", "Scream 2022 - Tiếng Thét 2022", "Mô tả", 2.5F, 120, "Mỹ", Date(), 120000, 1, Date(), "", "", genre)
+        ref.child(film1.id).setValue(film1)
+        */
+
+        val query = ref.orderByChild("dateUpdated")
+        query.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (singleSnapshot in snapshot.children) {
+                    val id = singleSnapshot.child("id").getValue<String>()
+                    val seller = singleSnapshot.child("seller").getValue<String>()
+                    val name = singleSnapshot.child("name").getValue<String>()
+                    val description = singleSnapshot.child("description").getValue<String>()
+                    val rate = singleSnapshot.child("rate").getValue<Float>()
+                    val length = singleSnapshot.child("length").getValue<Int>()
+                    val country = singleSnapshot.child("country").getValue<String>()
+                    val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
+                    val price = singleSnapshot.child("price").getValue<Int>()
+                    val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                    val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
+                    val image = singleSnapshot.child("image").getValue<String>()
+                    val trailer = singleSnapshot.child("trailer").getValue<String>()
+                    val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
+                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!))
+                }
+                RVHome.adapter = homeAdapter
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
         RVHome.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
         homeAdapter.onItemClick = {film ->
             val intent = Intent(requireActivity(), DetailActivity::class.java)
-            intent.putExtra(film.name, "test")
+            intent.putExtra("Film", film)
             startActivity(intent)
         }
         RVHome.addItemDecoration(LayoutMarginDecoration(1, 20))
-        /*
-        val BTNNew = view.findViewById<Button>(R.id.BTNNew)
-        BTNNew.setBackgroundColor(Color.BLUE)
-        BTNNew.setTextColor(Color.WHITE)
-        val BTNHot = view.findViewById<Button>(R.id.BTNHot)
-        BTNHot.setBackgroundColor(Color.TRANSPARENT)
-        BTNHot.setTextColor(Color.BLUE)
-        */
         val TVHome = view.findViewById<TextView>(R.id.TVHome)
         val ACTVSearch = view.findViewById<AutoCompleteTextView>(R.id.ACTVSearch)
         //ACTVSearch.setAdapter(ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1, arrayListOf("B5314. Scream 2022 - Tiếng Thét 2022 2D25G (DTS-HD MA 7.1)"))) //Query mảng TÊN phim mới (hot)
@@ -77,37 +109,9 @@ class HomeFragment : Fragment() {
                 if (p0!!.toString().equals("")) TVHome.text = "Sản phẩm mới nhất"
                 else TVHome.text = "Kết quả tìm kiếm"
                 homeAdapter.filter.filter(p0)
-                /*
-                BTNHot.setBackgroundColor(Color.TRANSPARENT)
-                BTNHot.setTextColor(Color.BLUE)
-                BTNNew.setBackgroundColor(Color.TRANSPARENT)
-                BTNNew.setTextColor(Color.BLUE)
-
-                 */
             }
             override fun afterTextChanged(p0: Editable?) {}
         })
-        /*
-        BTNHot.setOnClickListener {
-            ACTVSearch.text.clear()
-            BTNHot.setBackgroundColor(Color.BLUE)
-            BTNHot.setTextColor(Color.WHITE)
-            BTNNew.setBackgroundColor(Color.TRANSPARENT)
-            BTNNew.setTextColor(Color.BLUE)
-            homeAdapter = FilmAdapter(arrayListOf(film4, film3, film2, film1)) //Query mảng phim hot
-            RVHome.adapter = homeAdapter
-        }
-        BTNNew.setOnClickListener {
-            ACTVSearch.text.clear()
-            BTNNew.setBackgroundColor(Color.BLUE)
-            BTNNew.setTextColor(Color.WHITE)
-            BTNHot.setBackgroundColor(Color.TRANSPARENT)
-            BTNHot.setTextColor(Color.BLUE)
-            homeAdapter = FilmAdapter(arrayListOf(film1, film2, film3, film4)) //Query mảng phim mới nhất
-            RVHome.adapter = homeAdapter
-        }
-
-         */
         val ISHome = view.findViewById<ImageSlider>(R.id.ISHome)
         val slideModel = ArrayList<SlideModel>()
         slideModel.add(SlideModel("https://teaser-trailer.com/wp-content/uploads/Avengers-Infinity-War-Banner.jpg", ScaleTypes.CENTER_CROP))

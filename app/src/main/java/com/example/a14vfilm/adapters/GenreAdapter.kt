@@ -4,16 +4,19 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Genre
+import com.squareup.picasso.Picasso
 
 class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     var onItemClick: ((Genre) -> Unit)? = null
     var selectedPosition = 0
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val TVGenre = listItemView.findViewById<TextView>(R.id.TVGenre)!!
+        val IVGenre = listItemView.findViewById<ImageView>(R.id.IVGenre)
         init {
             itemView.setOnClickListener {
                 onItemClick?.invoke(genreList[adapterPosition])
@@ -42,6 +45,8 @@ class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<Gen
 
     override fun onBindViewHolder(holder: GenreAdapter.ViewHolder, position: Int) {
         holder.TVGenre.text = genreList[position].name
+        if (genreList[position].image != "")
+            Picasso.get().load(genreList[position].image).resize(60, 70).into(holder.IVGenre)
         if (selectedPosition == position)
             holder.TVGenre.setTextColor(Color.RED)
         else
