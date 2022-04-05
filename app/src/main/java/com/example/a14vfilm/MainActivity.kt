@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
             true
         }
         supportActionBar!!.hide()
-        /*
-        change()
-        */
+
+//        change()
+
     }
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     private fun change(){
-//        val intent: Intent = Intent(this, SellerUploadFilmActivity::class.java)
-        val intent: Intent = Intent(this, FilmDetailActivity::class.java)
+        val intent: Intent = Intent(this, SellerUploadFilmActivity::class.java)
+//        val intent: Intent = Intent(this, FilmDetailActivity::class.java)
 
         startActivity(intent)
     }

@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a14vfilm">
 
-    <uses-permission android:name="android.permission.INTERNET">
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -13,11 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.14VFilm">
         <activity
-            android:name=".sellerActivity.FilmStatisticRenterActivity"
+            android:name=".sellerActivity.FilmStatisticActivity"
             android:exported="false" />
-        <activity
-            android:name=".sellerActivity.FilmStatisticRevenueActivity"
-            android:exported="false" />
+
         <activity
             android:name=".sellerActivity.FilmDetailActivity"
             android:exported="false" />
@@ -26,7 +23,8 @@
             android:exported="false" />
         <activity
             android:name=".sellerActivity.SellerUploadFilmActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".detail.DetailActivity"
             android:exported="false" />

@@ -93,6 +93,7 @@ class HomeFragment : Fragment() {
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+
         RVHome.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
         homeAdapter.onItemClick = {film ->
             val intent = Intent(requireActivity(), DetailActivity::class.java)
