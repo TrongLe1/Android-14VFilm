@@ -72,7 +72,7 @@ class LibraryFragment : Fragment() {
                     val name = singleSnapshot.child("name").getValue<String>()
                     genreList.add(Genre(id!!, name!!, image!!))
                 }
-                lastGenre = genreList[0].name
+                //lastGenre = genreList[0].name
                 RVGenre.adapter = genreAdapter
             }
             override fun onCancelled(error: DatabaseError) {}

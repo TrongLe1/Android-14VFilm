@@ -1,5 +1,6 @@
 package com.example.a14vfilm.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -8,6 +9,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.UserLogin
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -54,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
         lifecycle.addObserver(YTPVTrailer!!)
         val film = intent.getSerializableExtra("Film") as Film
         if (film.image != "")
-            Picasso.get().load(film.image).resize(350, 200).into(IVDetail)
+            Picasso.get().load(film.image).resize(400, 360).into(IVDetail)
         TVName!!.text = film.name
         RBRate!!.rating = film.rate
         TVRateCount!!.text = "(40)"
@@ -71,6 +73,15 @@ class DetailActivity : AppCompatActivity() {
                 youTubePlayer.cueVideo(film.trailer, 0F);
             }
         })
+
+        BTNOrder!!.setOnClickListener {
+            if(UserLogin.info != null) {
+                val intent = Intent(this, CheckoutActivity::class.java)
+                intent.putExtra("Film", film)
+                startActivity(intent)
+            }
+        }
+
         supportActionBar!!.hide()
     }
 }

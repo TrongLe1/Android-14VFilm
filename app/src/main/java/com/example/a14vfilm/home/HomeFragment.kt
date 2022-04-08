@@ -54,14 +54,6 @@ class HomeFragment : Fragment() {
         val RVHome = view.findViewById<RecyclerView>(R.id.RVHome)
         var homeAdapter = FilmAdapter(filmList)
 
-        /*
-        val genre = ArrayList<String>()
-        genre.add("Tình cảm")
-        genre.add("Kinh dị")
-        val film1 = Film(ref.push().key!!, "1", "Scream 2022 - Tiếng Thét 2022", "Mô tả", 2.5F, 120, "Mỹ", Date(), 120000, 1, Date(), "", "", genre)
-        ref.child(film1.id).setValue(film1)
-        */
-
         val query = ref.orderByChild("dateUpdated")
         query.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 
 class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     var onItemClick: ((Genre) -> Unit)? = null
-    var selectedPosition = 0
+    var selectedPosition = -1
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val TVGenre = listItemView.findViewById<TextView>(R.id.TVGenre)!!
         val IVGenre = listItemView.findViewById<ImageView>(R.id.IVGenre)

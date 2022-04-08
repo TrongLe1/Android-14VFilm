@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a14vfilm">
+<<<<<<< Updated upstream
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+=======
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+>>>>>>> Stashed changes
     <application
+        android:name=".models.UserLogin"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,9 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.14VFilm">
         <activity
+            android:name=".detail.CheckoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".sellerActivity.FilmStatisticActivity"
             android:exported="false" />
-
         <activity
             android:name=".sellerActivity.FilmDetailActivity"
             android:exported="false" />
@@ -25,7 +34,7 @@
         <activity
             android:name=".sellerActivity.SellerUploadFilmActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".detail.DetailActivity"
             android:exported="false" />

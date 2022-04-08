@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:background="@drawable/login"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,12 +74,12 @@
         android:id="@+id/BTNLoginForm"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="128dp"
         android:text="Đăng nhập"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -86,11 +87,12 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@android:color/holo_red_light"
         android:text="Đăng ký"
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/BTNLoginForm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -103,4 +105,54 @@
         app:layout_constraintHorizontal_bias="0.678"
         app:layout_constraintStart_toEndOf="@+id/RBStayedLogin"
         app:layout_constraintTop_toBottomOf="@+id/ETPassword" />
+
+    <Button
+        android:id="@+id/BTNGoogle"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/google"
+        android:text="Đăng nhập bằng Google"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/VRight"
+        android:layout_width="120dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/BTNGoogle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/TVOr"
+        app:layout_constraintTop_toBottomOf="@+id/BTNLoginForm"
+        app:layout_constraintVertical_bias="0.523" />
+
+    <View
+        android:id="@+id/VLeft"
+        android:layout_width="120dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/BTNGoogle"
+        app:layout_constraintEnd_toStartOf="@+id/TVOr"
+        app:layout_constraintHorizontal_bias="0.695"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BTNLoginForm"
+        app:layout_constraintVertical_bias="0.507" />
+
+    <TextView
+        android:id="@+id/TVOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hoặc"
+        app:layout_constraintBottom_toTopOf="@+id/BTNGoogle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BTNLoginForm" />
 </androidx.constraintlayout.widget.ConstraintLayout>
