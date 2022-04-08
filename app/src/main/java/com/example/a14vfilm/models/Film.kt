@@ -5,6 +5,7 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import java.io.Serializable
+import java.lang.reflect.Constructor
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.sin
@@ -24,4 +25,9 @@ data class Film (
     var image: String,
     var trailer: String,
     var genre: ArrayList<String>
-) : Serializable
+) : Serializable{
+//    override fun toString(): String {
+//        return "$id $name $datePublished"
+//    }
+}
+

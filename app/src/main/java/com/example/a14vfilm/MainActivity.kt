@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
         supportActionBar!!.hide()
 
-//        change()
+        change()
 
     }
     private fun setCurrentFragment(fragment: Fragment) =

@@ -30,6 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     compileSdkVersion 31
     buildToolsVersion '31.0.0'
 }
