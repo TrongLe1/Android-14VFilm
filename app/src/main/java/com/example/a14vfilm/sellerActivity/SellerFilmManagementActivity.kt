@@ -25,7 +25,7 @@ class SellerFilmManagementActivity : AppCompatActivity() {
 
     private var rcvListFilmManagement: RecyclerView? = null
 
-    @RequiresApi(Build.VERSION_CODES.O)
+        @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller_film_management)
