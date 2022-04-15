@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".adminActivity.ViewUserActivity"
+    android:background="#FFb8b8b8"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="true" >
+
+
+    <TextView
+        android:id="@+id/viewusers_tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="Danh sách người sử dụng"
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:gravity="center"
+        android:background="@drawable/border_layout_film"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewusers_rcvUsersManagement"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints,ScrollViewSize"
+        tools:layout_editor_absoluteX="-16dp"
+        android:background="@drawable/border_layout_film"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        />
+
+
+</LinearLayout>
