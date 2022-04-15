@@ -4,12 +4,17 @@ import android.app.DatePickerDialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.Transaction
+import com.example.a14vfilm.models.UserLogin
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -30,6 +35,7 @@ class CheckoutActivity : AppCompatActivity() {
     var BTNCheckout: Button? = null
     var rentDate = Date()
     var endDate = Date()
+    var price: Long? = null
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -71,9 +77,9 @@ class CheckoutActivity : AppCompatActivity() {
                 diff /= 60
                 diff /= 60
                 diff /= 24
-                val price = film.price * (diff + 1)
+                price = film.price * (diff + 1)
                 TVCTotal!!.text = price.toString() + " VNĐ"
-                if (price > 0 && TVCNameCus!!.text != "" && TVCAddress!!.text != "" && TVCPhone!!.text != "") {
+                if (price!! > 0 && TVCNameCus!!.text != "" && TVCAddress!!.text != "" && TVCPhone!!.text != "") {
                     BTNCheckout!!.isEnabled = true
                     BTNCheckout!!.isClickable = true
                 }
@@ -86,8 +92,18 @@ class CheckoutActivity : AppCompatActivity() {
             }, year, month, day)
             dpd.show()
         }
+        TVCNameCus!!.text = UserLogin.info!!.name
+        TVCPhone!!.text = UserLogin.info!!.phone
+        TVCAddress!!.text = UserLogin.info!!.address
         TVCTotal!!.text = film.price.toString() + " VNĐ"
-
+        BTNCheckout!!.setOnClickListener {
+            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+            val ref = FirebaseDatabase.getInstance(url).getReference("transaction")
+            val trans = Transaction(ref.push().key!!, UserLogin.info!!.id, film.id, rentDate, endDate, price!!, -1F, true)
+            ref.child(trans.id).setValue(trans)
+            Toast.makeText(this, "Giao dịch thành công", Toast.LENGTH_SHORT).show()
+            finish()
+        }
 
         supportActionBar!!.hide()
     }

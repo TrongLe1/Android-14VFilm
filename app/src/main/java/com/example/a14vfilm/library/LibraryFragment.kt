@@ -64,7 +64,7 @@ class LibraryFragment : Fragment() {
         val RVGenre = view.findViewById<RecyclerView>(R.id.RVCategory)
         val genreAdapter = GenreAdapter(genreList)
         val query = ref.getReference("genre").orderByChild("id")
-        query.addValueEventListener(object: ValueEventListener {
+        query.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
                     val id = singleSnapshot.child("id").getValue<String>()
@@ -116,7 +116,7 @@ class LibraryFragment : Fragment() {
         val ref = FirebaseDatabase.getInstance(url).getReference("film")
         if (sort == "Giá giảm dần" || sort == "Giá tăng dần") {
             val query = ref.orderByChild("price")
-            query.addValueEventListener(object: ValueEventListener {
+            query.addListenerForSingleValueEvent(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (singleSnapshot in snapshot.children) {
                         val id = singleSnapshot.child("id").getValue<String>()
@@ -185,7 +185,7 @@ class LibraryFragment : Fragment() {
         }
         else {
             val query = ref.orderByChild("rate")
-            query.addValueEventListener(object: ValueEventListener {
+            query.addListenerForSingleValueEvent(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (singleSnapshot in snapshot.children) {
                         val id = singleSnapshot.child("id").getValue<String>()

@@ -13,6 +13,11 @@ import com.example.a14vfilm.order.OrderFragment
 import com.example.a14vfilm.sellerActivity.SellerUploadFilmActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 
 class MainActivity : AppCompatActivity() {
     var bottomNavigationView: BottomNavigationView? = null
@@ -24,15 +29,31 @@ class MainActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth!!.currentUser
         if (currentUser != null) {
-            UserLogin.info = User(
-                currentUser!!.uid,
-                currentUser.email!!,
-                "",
-                currentUser.displayName!!,
-                "",
-                "",
-                currentUser.photoUrl.toString()
-            )
+            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+            val ref = FirebaseDatabase.getInstance(url).getReference("user")
+            val query = ref.orderByChild("id").equalTo(currentUser!!.uid)
+            query.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (singleSnapshot in snapshot.children) {
+                        val id = singleSnapshot.child("id").getValue<String>()
+                        val email = singleSnapshot.child("email").getValue<String>()
+                        val name = singleSnapshot.child("name").getValue<String>()
+                        val address = singleSnapshot.child("address").getValue<String>()
+                        val phone = singleSnapshot.child("phone").getValue<String>()
+                        val image = singleSnapshot.child("image").getValue<String>()
+                        UserLogin.info = User(
+                            id!!,
+                            email!!,
+                            "",
+                            name!!,
+                            address!!,
+                            phone!!,
+                            image!!
+                        )
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
         }
 
         val homeFragment = HomeFragment()

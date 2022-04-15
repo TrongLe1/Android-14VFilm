@@ -202,7 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/white"
-            android:drawableLeft="@drawable/red_heart"
+            android:drawableLeft="@drawable/white_heart"
             android:paddingLeft="10dp"
             android:text="Yêu thích"
             android:textColor="@android:color/holo_red_light"

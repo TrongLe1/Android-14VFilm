@@ -47,7 +47,6 @@
         android:id="@+id/TVInfo"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/info"
@@ -56,8 +55,9 @@
         android:text="Hồ sơ cá nhân"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/BTNLogout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IVMore"
         app:layout_constraintVertical_bias="0.016" />
@@ -66,7 +66,6 @@
         android:id="@+id/TVFavourite"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/heart"
@@ -75,7 +74,8 @@
         android:text="Danh sách yêu thích"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVInfo" />
 
@@ -83,7 +83,6 @@
         android:id="@+id/TVAboutUs"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/about"
@@ -92,14 +91,16 @@
         android:text="Về chúng tôi"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVFavourite" />
 
     <Button
         android:id="@+id/BTNLogout"
-        android:layout_width="320dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@android:color/transparent"
         android:drawableLeft="@drawable/logout"

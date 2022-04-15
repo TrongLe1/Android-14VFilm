@@ -21,6 +21,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 
 class LoginActivity : AppCompatActivity() {
     private var googleSignInClient: GoogleSignInClient? = null
@@ -84,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                     val currentUser = mAuth!!.currentUser
                     val ref = FirebaseDatabase.getInstance(url).getReference("user")
                     val query = ref.orderByChild("id").equalTo(currentUser!!.uid)
-                    query.addValueEventListener(object: ValueEventListener {
+                    query.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (!snapshot.exists()) {
                                 val temp = User(
@@ -98,18 +99,28 @@ class LoginActivity : AppCompatActivity() {
                                 )
                                 ref.child(currentUser.uid).setValue(temp)
                             }
+                            else {
+                                for (singleSnapshot in snapshot.children) {
+                                    val id = singleSnapshot.child("id").getValue<String>()
+                                    val email = singleSnapshot.child("email").getValue<String>()
+                                    val name = singleSnapshot.child("name").getValue<String>()
+                                    val address = singleSnapshot.child("address").getValue<String>()
+                                    val phone = singleSnapshot.child("phone").getValue<String>()
+                                    val image = singleSnapshot.child("image").getValue<String>()
+                                    UserLogin.info = User(
+                                        id!!,
+                                        email!!,
+                                        "",
+                                        name!!,
+                                        address!!,
+                                        phone!!,
+                                        image!!
+                                    )
+                                }
+                            }
                         }
                         override fun onCancelled(error: DatabaseError) {}
                     })
-                    UserLogin.info = User(
-                        currentUser!!.uid,
-                        currentUser.email!!,
-                        "",
-                        currentUser.displayName!!,
-                        "",
-                        "",
-                        currentUser.photoUrl.toString()
-                    )
                     finish()
                 } else {
                     Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show()
