@@ -45,8 +45,9 @@ class OrderFragment : Fragment() {
         val TLMediator = TabLayoutMediator(TLOrder!!, VPOrder!!,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when(position) {
-                    0 -> tab.text = "Đã thuê"
+                    0 -> tab.text = "Đang thuê"
                     1 -> tab.text = "Đã hết hạn"
+                    2 -> tab.text = "Đã hủy"
                 }
             })
         TLMediator.attach()

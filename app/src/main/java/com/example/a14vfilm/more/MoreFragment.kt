@@ -87,6 +87,11 @@ class MoreFragment : Fragment() {
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             startActivityForResult(intent, 100)
         }
+
+        TVFavourite.setOnClickListener {
+            val intent = Intent(requireActivity(), FavoriteActivity::class.java)
+            startActivity(intent)
+        }
         //Log.i("d", UserLogin.info.toString())
 
         return view

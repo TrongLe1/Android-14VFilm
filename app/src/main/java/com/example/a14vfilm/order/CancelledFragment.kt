@@ -1,27 +1,17 @@
 package com.example.a14vfilm.order
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.TransactionAdapter
-import com.example.a14vfilm.home.HomeFragment
-import com.example.a14vfilm.login.LoginActivity
 import com.example.a14vfilm.models.Transaction
 import com.example.a14vfilm.models.TransactionExtend
 import com.example.a14vfilm.models.UserLogin
-import com.example.a14vfilm.more.MoreFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -31,10 +21,18 @@ import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration
 import java.util.*
 import kotlin.collections.ArrayList
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class OrderedFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [CancelledFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class CancelledFragment : Fragment() {
+    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var viewFragment: View? = null
@@ -51,28 +49,18 @@ class OrderedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewFragment = inflater.inflate(R.layout.fragment_ordered, container, false)
-        val RVOrdered = viewFragment!!.findViewById<RecyclerView>(R.id.RVOrdered)
+        // Inflate the layout for this fragment
+        viewFragment = inflater.inflate(R.layout.fragment_cancelled, container, false)
+        val RVCancelled = viewFragment!!.findViewById<RecyclerView>(R.id.RVCancelled)
         val layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        RVOrdered.layoutManager = layoutManager
-        RVOrdered.addItemDecoration(LayoutMarginDecoration(1, 50))
+        RVCancelled.layoutManager = layoutManager
+        RVCancelled.addItemDecoration(LayoutMarginDecoration(1, 50))
         return viewFragment
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            OrderedFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
     private fun getTransactionList() {
-        val RVOrdered = viewFragment!!.findViewById<RecyclerView>(R.id.RVOrdered)
+        val RVCancelled = viewFragment!!.findViewById<RecyclerView>(R.id.RVCancelled)
         if (UserLogin.info != null) {
             val transList = ArrayList<TransactionExtend>()
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
@@ -90,7 +78,7 @@ class OrderedFragment : Fragment() {
                         val type = singleSnapshot.child("type").getValue<Boolean>()
                         val film = singleSnapshot.child("film").getValue<String>()
                         val trans = Transaction(id!!, user!!, film!!, rentDate!!, expired!!, total!!, rate!!, type!!)
-                        if (expired > Date() && type) {
+                        if (!type) {
                             val sRef = FirebaseDatabase.getInstance(url).getReference("film")
                             val sQuery = sRef.orderByChild("id").equalTo(film)
                             sQuery.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -100,7 +88,7 @@ class OrderedFragment : Fragment() {
                                         val image = singleSnapshot.child("image").getValue<String>()
                                         transList.add(TransactionExtend(trans, name!!, image!!))
                                     }
-                                    RVOrdered.adapter = TransactionAdapter(transList, "ordered")
+                                    RVCancelled.adapter = TransactionAdapter(transList, "cancelled")
                                 }
                                 override fun onCancelled(error: DatabaseError) {}
                             })
@@ -111,8 +99,19 @@ class OrderedFragment : Fragment() {
             })
         }
         else {
-            RVOrdered.adapter = TransactionAdapter(ArrayList(), "ordered")
+            RVCancelled.adapter = TransactionAdapter(ArrayList(), "cancelled")
         }
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            CancelledFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 
     override fun onResume() {

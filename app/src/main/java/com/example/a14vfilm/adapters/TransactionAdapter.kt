@@ -26,7 +26,7 @@ import com.google.firebase.database.ktx.getValue
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 
-class TransactionAdapter(private val transList: MutableList<TransactionExtend>): RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
+class TransactionAdapter(private val transList: MutableList<TransactionExtend>, private val type: String): RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
     private var context : Context? = null
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val IVTrans = listItemView.findViewById<ImageView>(R.id.IVTrans)
@@ -48,6 +48,17 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (type == "ordered") {
+            holder.BTNRate.visibility = View.GONE
+            holder.RBTrans.visibility = View.GONE
+        }
+        else if (type == "expired")
+            holder.BTNCancel.visibility = View.GONE
+        else {
+            holder.BTNRate.visibility = View.GONE
+            holder.RBTrans.visibility = View.GONE
+            holder.BTNCancel.visibility = View.GONE
+        }
         if (transList[position].image != "")
             Picasso.get().load(transList[position].image).resize(130, 130).into(holder.IVTrans)
         holder.TVId.text = "Hóa đơn: #" + transList[position].transaction.id
@@ -84,6 +95,7 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>):
                             val totalRate = total / count
                             val sRef = FirebaseDatabase.getInstance(url).getReference("film")
                             sRef.child(transList[position].transaction.film).child("rate").setValue(totalRate)
+                            sRef.child(transList[position].transaction.film).child("rateTime").setValue(count)
                         }
                         override fun onCancelled(error: DatabaseError) {}
                     })

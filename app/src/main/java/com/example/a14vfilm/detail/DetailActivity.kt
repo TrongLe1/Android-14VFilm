@@ -68,7 +68,7 @@ class DetailActivity : AppCompatActivity() {
             Picasso.get().load(film.image).resize(400, 360).into(IVDetail)
         TVName!!.text = film.name
         RBRate!!.rating = film.rate
-        TVRateCount!!.text = "(40)"
+        TVRateCount!!.text = "("+ film.rateTime + " lượt đánh giá)"
         TVType!!.text = "Thể loại: "
         for (item in film.genre)
             TVType!!.text = TVType!!.text.toString() + item + " "
@@ -129,7 +129,8 @@ class DetailActivity : AppCompatActivity() {
                     query.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             for (singleSnapshot in snapshot.children) {
-                                singleSnapshot.ref.removeValue()
+                                val id = singleSnapshot.child("film").getValue<String>()
+                                if (id == film.id) singleSnapshot.ref.removeValue()
                             }
                         }
                         override fun onCancelled(error: DatabaseError) {}

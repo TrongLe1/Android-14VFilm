@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="120dp"
+    android:background="@drawable/border_transaction_layout">
+
+    <ImageView
+        android:id="@+id/IVFavorite"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/more_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TVFavorite"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/IVFavorite"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RatingBar
+        android:id="@+id/RBFavorite"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
+        android:numStars="5"
+        android:progressTint="#ffdf00"
+        app:layout_constraintStart_toEndOf="@+id/IVFavorite"
+        app:layout_constraintTop_toBottomOf="@+id/TVFavorite" />
+
+    <TextView
+        android:id="@+id/TVFavPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textColor="@android:color/holo_red_light"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/IVFavorite"
+        app:layout_constraintTop_toBottomOf="@+id/RBFavorite" />
+
+    <ImageButton
+        android:id="@+id/IBFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toEndOf="@+id/TVFavPrice"
+        app:layout_constraintTop_toBottomOf="@+id/RBFavorite"
+        app:srcCompat="@drawable/red_heart" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,12 +7,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class MyViewPagerAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment)
 {
     override fun getItemCount(): Int {
-        return 2
+        return 3
     }
     override fun createFragment(position: Int): Fragment {
         when(position) {
             0 -> return OrderedFragment()
             1 -> return ExpiredFragment()
+            2 -> return CancelledFragment()
             else -> {
                 return Fragment()
             }

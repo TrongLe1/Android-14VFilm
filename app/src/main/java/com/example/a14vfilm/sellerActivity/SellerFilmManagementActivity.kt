@@ -55,7 +55,8 @@ class SellerFilmManagementActivity : AppCompatActivity() {
                     val image = singleSnapshot.child("image").getValue<String>()
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
-                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!))
+                    val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
                 }
 
                 rcvListFilmManagement!!.adapter = adapterListFilmManagement

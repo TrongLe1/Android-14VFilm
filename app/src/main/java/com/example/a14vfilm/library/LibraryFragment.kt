@@ -133,6 +133,7 @@ class LibraryFragment : Fragment() {
                         val image = singleSnapshot.child("image").getValue<String>()
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
                         val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
+                        val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         for (i in 0 until genreList!!.size) {
                             if (genreList[i] == genre) {
                                 if (sort == "Giá tăng dần") {
@@ -151,7 +152,8 @@ class LibraryFragment : Fragment() {
                                             dateUpdated!!,
                                             image!!,
                                             trailer!!,
-                                            genreList
+                                            genreList,
+                                            rateTime!!
                                         )
                                     )
                                 }
@@ -171,7 +173,8 @@ class LibraryFragment : Fragment() {
                                             dateUpdated!!,
                                             image!!,
                                             trailer!!,
-                                            genreList
+                                            genreList,
+                                            rateTime!!
                                         )
                                     )
                                 }
@@ -202,6 +205,7 @@ class LibraryFragment : Fragment() {
                         val image = singleSnapshot.child("image").getValue<String>()
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
                         val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
+                        val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         for (i in 0 until genreList!!.size) {
                             if (genreList[i] == genre) {
                                 filmList.add(0,
@@ -219,7 +223,8 @@ class LibraryFragment : Fragment() {
                                         dateUpdated!!,
                                         image!!,
                                         trailer!!,
-                                        genreList
+                                        genreList,
+                                        rateTime!!
                                     )
                                 )
                             }

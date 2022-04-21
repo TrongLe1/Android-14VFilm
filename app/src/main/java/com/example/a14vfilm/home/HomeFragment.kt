@@ -72,7 +72,8 @@ class HomeFragment : Fragment() {
                     val image = singleSnapshot.child("image").getValue<String>()
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
-                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!))
+                    val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
                 }
                 RVHome.adapter = homeAdapter
             }
@@ -101,8 +102,8 @@ class HomeFragment : Fragment() {
         val ISHome = view.findViewById<ImageSlider>(R.id.ISHome)
         val slideModel = ArrayList<SlideModel>()
         slideModel.add(SlideModel("https://teaser-trailer.com/wp-content/uploads/Avengers-Infinity-War-Banner.jpg", ScaleTypes.CENTER_CROP))
-        slideModel.add(SlideModel("https://collider.com/wp-content/uploads/inception_movie_poster_banner_03.jpg", ScaleTypes.CENTER_CROP))
-        slideModel.add(SlideModel("http://images6.fanpop.com/image/photos/40000000/The-Finest-Hours-Banner-movie-trailers-40025062-1200-638.jpg", ScaleTypes.CENTER_CROP))
+        slideModel.add(SlideModel("https://alishahussain27.files.wordpress.com/2014/11/the-hobbit-the-desolation-of-smaug-2013-movie-banner-poster.jpg", ScaleTypes.CENTER_CROP))
+        slideModel.add(SlideModel("https://w7.pngwing.com/pngs/280/176/png-transparent-the-imitation-game-banner-display-advertising-film-poster-posteritati-movie-poster-gallery-display-advertising-poster-banner.png", ScaleTypes.CENTER_CROP))
         ISHome.setImageList(slideModel)
         return view
     }
