@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +9,7 @@
     android:background="#FFb8b8b8"
     android:orientation="vertical"
     tools:viewBindingIgnore="true" >
-
+    
 
     <TextView
         android:id="@+id/viewusers_tvTitle"
@@ -33,17 +34,35 @@
         android:layout_marginBottom="5dp"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewusers_rcvUsersManagement"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingConstraints,ScrollViewSize"
-        tools:layout_editor_absoluteX="-16dp"
-        android:background="@drawable/border_layout_film"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/viewusers_rcvUsersManagement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border_layout_film"
+            tools:ignore="MissingConstraints,ScrollViewSize"
+            tools:layout_editor_absoluteX="-16dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/viewusers_fltbtnAddNewUser"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="69dp"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+    </RelativeLayout>
 
 
 </LinearLayout>

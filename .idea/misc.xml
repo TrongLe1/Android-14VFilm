@@ -52,6 +52,7 @@
         <entry key="..\:/Users/quoct/source/AndroidStudio/Android-14VFilm/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/border.xml" value="0.2845" />
         <entry key="app/src/main/res/drawable/border_layout_film.xml" value="0.2845" />
+        <entry key="app/src/main/res/layout/activity_add_new_user_admin.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_film_detail.xml" value="0.35625" />
@@ -62,10 +63,13 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_seller_film_management.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_seller_upload_film.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_view_user_detail.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/activity_view_users.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_film.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_film_management.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_view_user.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_expired.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="1.0" />
       </map>
     </option>

@@ -42,6 +42,15 @@
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".adminActivity.ViewUserDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adminActivity.AddNewUserAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adminActivity.ViewUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

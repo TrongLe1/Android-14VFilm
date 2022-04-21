@@ -1,5 +1,6 @@
 package com.example.a14vfilm.adminActivity
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.ViewUserAdapter
 import com.example.a14vfilm.models.User
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,6 +26,7 @@ import java.util.*
 class ViewUserActivity: AppCompatActivity() {
 
     private var rcvViewUser: RecyclerView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,7 @@ class ViewUserActivity: AppCompatActivity() {
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                userList.clear()
                 for (singleSnapshot in snapshot.children) {
                     val id = singleSnapshot.child("id").getValue<String>()
                     val email = singleSnapshot.child("email").getValue<String>()
@@ -49,7 +53,8 @@ class ViewUserActivity: AppCompatActivity() {
                     val address = singleSnapshot.child("address").getValue<String>()
                     val phone = singleSnapshot.child("phone").getValue<String>()
                     val status = singleSnapshot.child("status").getValue<String>()
-                    userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!, status!!))
+                    //userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!, status!!))
+                    userList.add(0, User(id!!, name!!, email!! , password!!, address!!, phone!!, status!!))
                 }
 
                 rcvViewUser!!.adapter = adapterViewUser
@@ -57,10 +62,18 @@ class ViewUserActivity: AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {}
         })
         rcvViewUser!!.adapter = adapterViewUser
+
+        findViewById<FloatingActionButton>(R.id.viewusers_fltbtnAddNewUser).setOnClickListener{
+            val intent = Intent(this, AddNewUserAdminActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun initComponent(){
         rcvViewUser = findViewById(R.id.viewusers_rcvUsersManagement)
         rcvViewUser!!.layoutManager = LinearLayoutManager(this)
+
     }
+
 }
