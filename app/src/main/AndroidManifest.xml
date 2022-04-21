@@ -44,6 +44,12 @@
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".adminActivity.ViewFilmDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adminActivity.ViewFilmsActivityAdmin"
+            android:exported="false" />
+        <activity
             android:name=".adminActivity.ViewUserDetailActivity"
             android:exported="false" />
         <activity

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".detail.DetailActivity">
+
+        <ImageView
+            android:id="@+id/viewfilmdetail_IVDetail"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/more_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDName"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Tên Phim"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_IVDetail" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDType"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Thể loại: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDInfo" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Độ dài: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDType" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Quốc gia: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDLength" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDDPublished"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Ngày sản xuất: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDCountry" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Giá phim: "
+            android:textColor="@android:color/holo_red_light"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDRate" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Số lượng: "
+            app:layout_constraintStart_toEndOf="@+id/viewfilmdetail_TVDPrice"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_RBDRate" />
+
+        <TextView
+            android:id="@+id/TVDTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/line"
+            android:drawableRight="@drawable/line"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Mô tả"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDDPublished" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDDescription"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDTitle" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVDRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Đánh giá: "
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDName" />
+
+        <RatingBar
+            android:id="@+id/viewfilmdetail_RBDRate"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="18dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressTint="#ffdf00"
+            app:layout_constraintStart_toEndOf="@+id/viewfilmdetail_TVDRate"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDName" />
+
+        <TextView
+            android:id="@+id/TVDInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/line"
+            android:drawableRight="@drawable/line"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Thông tin phim"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDPrice" />
+
+        <TextView
+            android:id="@+id/viewfilmdetail_TVRateCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Số người đánh giá"
+            app:layout_constraintStart_toEndOf="@+id/viewfilmdetail_RBDRate"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDName" />
+
+        <Button
+            android:id="@+id/viewfilmdetail_deleteFilm"
+            android:layout_width="306dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="9dp"
+            android:text="Xóa phim"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDDescription" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+

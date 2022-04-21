@@ -38,7 +38,7 @@ class AddNewUserAdminActivity : AppCompatActivity() {
 
             val url = "https://demohw-9a24d-default-rtdb.firebaseio.com/"
             val ref = FirebaseDatabase.getInstance(url).getReference("user")
-            val user = User(ref.push().key!!,userName, userEmail, userPassword, userAddress, userPhone, "On")
+            val user = User(ref.push().key!!,userName, userEmail, userPassword, userAddress, userPhone, "")
             ref.child(user.id).setValue(user)
             Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ViewUserActivity::class.java)

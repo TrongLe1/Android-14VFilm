@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add new User" />
+            android:text="Thêm người dùng" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
