@@ -3,10 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/button_upload_film.xml" value="0.124" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/info_seller_management.xml" value="0.124" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/statistic_all.xml" value="0.1745" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/statistic_joiner.xml" value="0.1745" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/statistic_revenue.xml" value="0.1745" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/border.xml" value="0.124" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/border_button.xml" value="0.124" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/border_layout_film.xml" value="0.2105" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/border_transaction_layout.xml" value="0.124" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_detail.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_film_detail.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_film_statistic.xml" value="0.2" />
@@ -15,18 +22,40 @@
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_login.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_seller_film_management.xml" value="0.264" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_seller_home.xml" value="0.1619718309859155" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_seller_upload_film.xml" value="0.15921483097055616" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_signup.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_upload_film.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_view_film_detail.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_detail.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_favorite.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_film.xml" value="0.4" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_film_management.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_genre.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_trans.xml" value="0.176" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_view_film_admin.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_view_user.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/dialog_rating.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_cancelled.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_library.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_order.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_ordered.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_owner_film.xml" value="0.38388625592417064" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_seller_home.xml" value="0.152" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_seller_management.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_seller_more.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_seller_statistic.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_statistic_joiner.xml" value="0.13722826086956522" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_statistic_revenue.xml" value="0.13722826086956522" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_statistic_summary.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_summary_tab_item.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_films_seller_management.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_seller_film_management.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/menu-v26/seller_home_menu.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/menu/bottom_nav_menu.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/menu/seller_home_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.124" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Android-14VFilm/app/src/main/res/drawable/border.xml" value="0.2703125" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Android-14VFilm/app/src/main/res/drawable/border_button.xml" value="0.2703125" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Android-14VFilm/app/src/main/res/drawable/border_detail_button.xml" value="1.221875" />

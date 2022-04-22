@@ -10,6 +10,7 @@ import com.example.a14vfilm.models.User
 import com.example.a14vfilm.models.UserLogin
 import com.example.a14vfilm.more.MoreFragment
 import com.example.a14vfilm.order.OrderFragment
+import com.example.a14vfilm.sellerActivity.SellerHomeActivity
 import com.example.a14vfilm.sellerActivity.SellerUploadFilmActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -82,9 +83,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     private fun change(){
-        val intent: Intent = Intent(this, SellerUploadFilmActivity::class.java)
+        val intent: Intent = Intent(this, SellerHomeActivity::class.java)
         //val intent: Intent = Intent(this, FilmDetailActivity::class.java)
 
         startActivity(intent)
     }
+
 }

@@ -27,7 +27,7 @@ class FilmSellerManagementAdapter (private val filmList: List<Film>): RecyclerVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmSellerManagementAdapter.ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.adapter_film_management,parent,false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.items_seller_film_management,parent,false))
     }
 
     override fun getItemCount(): Int {
@@ -39,8 +39,9 @@ class FilmSellerManagementAdapter (private val filmList: List<Film>): RecyclerVi
     }
 
     inner class ViewHolder(listItemView: View): RecyclerView.ViewHolder(listItemView){
-        val tvName = listItemView.findViewById<TextView>(R.id.tvFilmName)!!
-        val tvPublished = listItemView.findViewById<TextView>(R.id.tvDatePublished)!!
+
+        val tvName = listItemView.findViewById<TextView>(R.id.ivSellerFilmNameItem)!!
+        val tvPublished = listItemView.findViewById<TextView>(R.id.ivSellerFilmDatePublishedItem)!!
 
         fun bindView(film: Film) {
             tvName.text = film.name

@@ -73,29 +73,29 @@ class ViewUserAdapter (private val userList: List<User>): RecyclerView.Adapter<V
 
             //set text for account status
 
-            if (user.status == "On"){
-                tbUserStatus.isChecked = true
-            }
-            else{
-                tbUserStatus.isChecked = false
-            }
-            //change status on database using the status button
-            tbUserStatus.setOnClickListener{
-             //   Connect to firebase
-            val url = "https://demohw-9a24d-default-rtdb.firebaseio.com/"
-            val ref = FirebaseDatabase.getInstance(url).getReference("user")
-            var statusChange: String?
-
-            if (user.status == "On"){
-                statusChange = "Off"
-            }
-            else{
-                statusChange = "On"
-            }
-            ref.child(user.id)
-                .child("status")
-                .setValue(statusChange)
-            }
+//            if (user.status == "On"){
+//                tbUserStatus.isChecked = true
+//            }
+//            else{
+//                tbUserStatus.isChecked = false
+//            }
+//            //change status on database using the status button
+//            tbUserStatus.setOnClickListener{
+//             //   Connect to firebase
+//            val url = "https://demohw-9a24d-default-rtdb.firebaseio.com/"
+//            val ref = FirebaseDatabase.getInstance(url).getReference("user")
+//            var statusChange: String?
+//
+//            if (user.status == "On"){
+//                statusChange = "Off"
+//            }
+//            else{
+//                statusChange = "On"
+//            }
+//            ref.child(user.id)
+//                .child("status")
+//                .setValue(statusChange)
+//            }
 
         }
 
