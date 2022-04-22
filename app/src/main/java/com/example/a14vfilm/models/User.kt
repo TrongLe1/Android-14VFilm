@@ -10,7 +10,7 @@ data class User(
     var address: String,
     var phone: String,
     var image: String,
-    //var status: String
+    var status: Boolean
 )
 
 /*

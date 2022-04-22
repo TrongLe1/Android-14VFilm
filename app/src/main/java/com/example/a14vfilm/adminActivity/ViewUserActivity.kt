@@ -38,7 +38,7 @@ class ViewUserActivity: AppCompatActivity() {
         //create a list of user for adapter
         val userList = ArrayList<User>()
         //url for firebase database (change later)
-        val url = "https://demohw-9a24d-default-rtdb.firebaseio.com/"
+        val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
         val ref = FirebaseDatabase.getInstance(url).getReference("user")
         val adapterViewUser = ViewUserAdapter(userList)
 
@@ -52,9 +52,9 @@ class ViewUserActivity: AppCompatActivity() {
                     val name = singleSnapshot.child("name").getValue<String>()
                     val address = singleSnapshot.child("address").getValue<String>()
                     val phone = singleSnapshot.child("phone").getValue<String>()
-                    val status = singleSnapshot.child("status").getValue<String>()
+                    val status = singleSnapshot.child("status").getValue<Boolean>()
                     //userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!, status!!))
-                    userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!,""))
+                    userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!,"", status!!))
                 }
 
                 rcvViewUser!!.adapter = adapterViewUser

@@ -45,7 +45,7 @@ class ViewUserDetailActivity : AppCompatActivity() {
         tvUserPhone!!.text = userPhone
 
         findViewById<Button>(R.id.viewuserdetail_deleteUser).setOnClickListener{
-            val url = "https://demohw-9a24d-default-rtdb.firebaseio.com/"
+            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
             val ref = FirebaseDatabase.getInstance(url).getReference()
             val query = ref.child("user").child(userID)
             query.removeValue()

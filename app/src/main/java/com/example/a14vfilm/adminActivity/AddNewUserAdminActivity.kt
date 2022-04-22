@@ -34,11 +34,11 @@ class AddNewUserAdminActivity : AppCompatActivity() {
             var userEmail = etUserEmail!!.text.toString()
             var userPassword = etUserPassword!!.text.toString()
             var userAddress = etUserAddress!!.text.toString()
-            var userPhone = etUserAddress!!.text.toString()
+            var userPhone = etUserPhone!!.text.toString()
 
-            val url = "https://demohw-9a24d-default-rtdb.firebaseio.com/"
+            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
             val ref = FirebaseDatabase.getInstance(url).getReference("user")
-            val user = User(ref.push().key!!,userName, userEmail, userPassword, userAddress, userPhone, "")
+            val user = User(ref.push().key!!, userEmail, userPassword,userName, userAddress, userPhone, "",true)
             ref.child(user.id).setValue(user)
             Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ViewUserActivity::class.java)
