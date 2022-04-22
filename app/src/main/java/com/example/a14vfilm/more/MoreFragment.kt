@@ -18,6 +18,7 @@ import com.example.a14vfilm.home.HomeFragment
 import com.example.a14vfilm.login.LoginActivity
 import com.example.a14vfilm.models.User
 import com.example.a14vfilm.models.UserLogin
+import com.example.a14vfilm.order.OrderFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
@@ -78,6 +79,10 @@ class MoreFragment : Fragment() {
             val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
             bottomNavigationView.setSelectedItemId(R.id.home)
             requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.FLMain, OrderFragment())
+                commit()
+            }
+            requireActivity().supportFragmentManager.beginTransaction().apply {
                 replace(R.id.FLMain, HomeFragment())
                 commit()
             }
@@ -113,6 +118,10 @@ class MoreFragment : Fragment() {
         if (requestCode == 100) {
             val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
             bottomNavigationView.setSelectedItemId(R.id.more)
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.FLMain, OrderFragment())
+                commit()
+            }
             requireActivity().supportFragmentManager.beginTransaction().apply {
                 replace(R.id.FLMain, MoreFragment())
                 commit()

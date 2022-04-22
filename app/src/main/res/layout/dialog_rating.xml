@@ -9,24 +9,42 @@
         android:id="@+id/BTNDiaRate"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="76dp"
         android:text="Gửi đánh giá"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RBDiaRate" />
 
     <RatingBar
         android:id="@+id/RBDiaRate"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
+        android:isIndicator="false"
         android:numStars="5"
         android:progressBackgroundTint="@color/light_gray"
         android:progressTint="#ffdf00"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ETDiaRate"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:background="@drawable/border"
+        android:gravity="top"
+        android:hint="Đánh giá về phim"
+        android:inputType="text|textMultiLine"
+
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/BTNDiaRate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RBDiaRate"
+        app:layout_constraintVertical_bias="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

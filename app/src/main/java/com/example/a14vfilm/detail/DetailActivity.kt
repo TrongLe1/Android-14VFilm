@@ -1,5 +1,6 @@
 package com.example.a14vfilm.detail
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,6 +40,7 @@ class DetailActivity : AppCompatActivity() {
     var TVDescription: TextView? = null
     var TVRateCount: TextView? = null
     var YTPVTrailer: YouTubePlayerView? = null
+    var quantity: Int? = null
 
     private val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val ref = FirebaseDatabase.getInstance(url).getReference("favorite")
@@ -64,6 +66,7 @@ class DetailActivity : AppCompatActivity() {
         BTNOrder = findViewById(R.id.BTNBuy)
         lifecycle.addObserver(YTPVTrailer!!)
         val film = intent.getSerializableExtra("Film") as Film
+        quantity = film.quantity
         if (film.image != "")
             Picasso.get().load(film.image).resize(400, 360).into(IVDetail)
         TVName!!.text = film.name
@@ -76,7 +79,16 @@ class DetailActivity : AppCompatActivity() {
         TVCountry!!.text = "Nước sản xuất: " + film.country
         TVDatePublished!!.text = "Ngày công chiếu: " + SimpleDateFormat("dd/MM/yyy").format(film.datePublished)
         TVPrice!!.text = "Giá thuê: " + film.price.toString() + " VNĐ/Ngày"
-        TVQuantity!!.text = "| Số lượng: " + film.quantity.toString() + " cái"
+        //TVQuantity!!.text = "| Số lượng: " + film.quantity.toString() + " cái"
+
+        if (film.quantity > 0)
+            TVQuantity!!.text = "| Tình trạng: Còn hàng"
+        else {
+            TVQuantity!!.text = "| Tình trạng: Hết hàng"
+            BTNOrder!!.isClickable = false
+            BTNOrder!!.isEnabled = false
+        }
+
         TVDescription!!.text = film.description
         YTPVTrailer!!.addYouTubePlayerListener(object: AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
@@ -108,7 +120,7 @@ class DetailActivity : AppCompatActivity() {
             if(UserLogin.info != null) {
                 val intent = Intent(this, CheckoutActivity::class.java)
                 intent.putExtra("Film", film)
-                startActivity(intent)
+                startActivityForResult(intent, 1000)
             }
             else {
                 val intent = Intent(this, LoginActivity::class.java)
@@ -148,4 +160,16 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar!!.hide()
     }
+
+    /*
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1000) {
+            if (resultCode == Activity.RESULT_OK) {
+                quantity = quantity!! - 1
+                TVQuantity!!.text = "| Số lượng: " + quantity.toString() + " cái"
+            }
+        }
+    }
+    */
 }

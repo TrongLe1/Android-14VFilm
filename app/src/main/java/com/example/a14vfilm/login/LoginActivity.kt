@@ -95,7 +95,8 @@ class LoginActivity : AppCompatActivity() {
                                     currentUser.displayName!!,
                                     "",
                                     "",
-                                    currentUser.photoUrl.toString()
+                                    currentUser.photoUrl.toString(),
+                                    true
                                 )
                                 ref.child(currentUser.uid).setValue(temp)
                             }
@@ -107,15 +108,19 @@ class LoginActivity : AppCompatActivity() {
                                     val address = singleSnapshot.child("address").getValue<String>()
                                     val phone = singleSnapshot.child("phone").getValue<String>()
                                     val image = singleSnapshot.child("image").getValue<String>()
-                                    UserLogin.info = User(
-                                        id!!,
-                                        email!!,
-                                        "",
-                                        name!!,
-                                        address!!,
-                                        phone!!,
-                                        image!!
-                                    )
+                                    val status = singleSnapshot.child("status").getValue<Boolean>()
+                                    if (status!!)
+                                        UserLogin.info = User(
+                                            id!!,
+                                            email!!,
+                                            "",
+                                            name!!,
+                                            address!!,
+                                            phone!!,
+                                            image!!,
+                                            status
+                                        )
+                                    else mAuth!!.signOut()
                                 }
                             }
                         }

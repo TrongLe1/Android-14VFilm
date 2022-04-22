@@ -1,5 +1,6 @@
 package com.example.a14vfilm.detail
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -101,7 +102,14 @@ class CheckoutActivity : AppCompatActivity() {
             val ref = FirebaseDatabase.getInstance(url).getReference("transaction")
             val trans = Transaction(ref.push().key!!, UserLogin.info!!.id, film.id, rentDate, endDate, price!!, -1F, true)
             ref.child(trans.id).setValue(trans)
+
+            /*
+            val sRef = FirebaseDatabase.getInstance(url).getReference("film")
+            sRef.child(film.id).child("quantity").setValue(film.quantity - 1)
+
+            */
             Toast.makeText(this, "Giao dịch thành công", Toast.LENGTH_SHORT).show()
+            setResult(Activity.RESULT_OK)
             finish()
         }
 

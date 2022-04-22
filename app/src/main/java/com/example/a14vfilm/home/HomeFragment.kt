@@ -101,10 +101,17 @@ class HomeFragment : Fragment() {
         })
         val ISHome = view.findViewById<ImageSlider>(R.id.ISHome)
         val slideModel = ArrayList<SlideModel>()
-        slideModel.add(SlideModel("https://teaser-trailer.com/wp-content/uploads/Avengers-Infinity-War-Banner.jpg", ScaleTypes.CENTER_CROP))
-        slideModel.add(SlideModel("https://alishahussain27.files.wordpress.com/2014/11/the-hobbit-the-desolation-of-smaug-2013-movie-banner-poster.jpg", ScaleTypes.CENTER_CROP))
-        slideModel.add(SlideModel("https://w7.pngwing.com/pngs/280/176/png-transparent-the-imitation-game-banner-display-advertising-film-poster-posteritati-movie-poster-gallery-display-advertising-poster-banner.png", ScaleTypes.CENTER_CROP))
-        ISHome.setImageList(slideModel)
+        val sRef = FirebaseDatabase.getInstance(url).getReference("ads")
+        sRef.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (singleSnapshot in snapshot.children) {
+                    val image = singleSnapshot.getValue<String>()
+                    slideModel.add(SlideModel(image, ScaleTypes.CENTER_CROP))
+                }
+                ISHome.setImageList(slideModel)
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
         return view
     }
 

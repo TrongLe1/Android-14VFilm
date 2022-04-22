@@ -16,7 +16,7 @@ class GenreAdapter(private val genreList: List<Genre>): RecyclerView.Adapter<Gen
     var selectedPosition = -1
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val TVGenre = listItemView.findViewById<TextView>(R.id.TVGenre)!!
-        val IVGenre = listItemView.findViewById<ImageView>(R.id.IVGenre)
+        val IVGenre = listItemView.findViewById<ImageView>(R.id.IVGenre)!!
         init {
             itemView.setOnClickListener {
                 onItemClick?.invoke(genreList[adapterPosition])

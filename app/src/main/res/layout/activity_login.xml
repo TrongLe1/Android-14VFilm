@@ -59,17 +59,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ETEmail" />
 
-    <RadioButton
-        android:id="@+id/RBStayedLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Lưu đăng nhập"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETPassword" />
-
     <Button
         android:id="@+id/BTNLoginForm"
         android:layout_width="320dp"
@@ -94,17 +83,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/TVForgot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Quên mật khẩu?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.678"
-        app:layout_constraintStart_toEndOf="@+id/RBStayedLogin"
-        app:layout_constraintTop_toBottomOf="@+id/ETPassword" />
 
     <Button
         android:id="@+id/BTNGoogle"

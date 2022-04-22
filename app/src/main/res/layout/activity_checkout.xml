@@ -172,7 +172,7 @@
             android:layout_marginTop="16dp"
             android:text="Số điện thoại"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TVCAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/TVCADetail" />
 
         <TextView
             android:id="@+id/TVCPDetail"
@@ -189,7 +189,7 @@
             android:id="@+id/VLine"
             android:layout_width="300dp"
             android:layout_height="1dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="50dp"
             android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -79,7 +79,7 @@ class LibraryFragment : Fragment() {
         })
 
         RVGenre.layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.HORIZONTAL, false)
-        val option = arrayListOf("Giá tăng dần", "Giá giảm dần", "Hay nhất")
+        val option = arrayListOf("A-Z", "Giá tăng dần", "Giá giảm dần", "Đánh giá cao nhất")
         val SSort = view.findViewById<Spinner>(R.id.SSort)
         val sAdapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_dropdown_item, option)
         sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -178,6 +178,55 @@ class LibraryFragment : Fragment() {
                                         )
                                     )
                                 }
+                            }
+                        }
+                    }
+                    RVLibrary.adapter = libraryAdapter
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
+        else if (sort == "A-Z") {
+            val query = ref.orderByChild("name")
+            query.addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (singleSnapshot in snapshot.children) {
+                        val id = singleSnapshot.child("id").getValue<String>()
+                        val seller = singleSnapshot.child("seller").getValue<String>()
+                        val name = singleSnapshot.child("name").getValue<String>()
+                        val description = singleSnapshot.child("description").getValue<String>()
+                        val rate = singleSnapshot.child("rate").getValue<Float>()
+                        val length = singleSnapshot.child("length").getValue<Int>()
+                        val country = singleSnapshot.child("country").getValue<String>()
+                        val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
+                        val price = singleSnapshot.child("price").getValue<Int>()
+                        val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                        val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
+                        val image = singleSnapshot.child("image").getValue<String>()
+                        val trailer = singleSnapshot.child("trailer").getValue<String>()
+                        val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
+                        val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                        for (i in 0 until genreList!!.size) {
+                            if (genreList[i] == genre) {
+                                filmList.add(
+                                    Film(
+                                        id!!,
+                                        seller!!,
+                                        name!!,
+                                        description!!,
+                                        rate!!,
+                                        length!!,
+                                        country!!,
+                                        datePublished!!,
+                                        price!!,
+                                        quantity!!,
+                                        dateUpdated!!,
+                                        image!!,
+                                        trailer!!,
+                                        genreList,
+                                        rateTime!!
+                                    )
+                                )
                             }
                         }
                     }

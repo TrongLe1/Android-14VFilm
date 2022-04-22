@@ -47,7 +47,7 @@ class OrderFragment : Fragment() {
                 when(position) {
                     0 -> tab.text = "Đang thuê"
                     1 -> tab.text = "Đã hết hạn"
-                    2 -> tab.text = "Đã hủy"
+                    //2 -> tab.text = "Đã hủy"
                 }
             })
         TLMediator.attach()

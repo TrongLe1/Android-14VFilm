@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                         val address = singleSnapshot.child("address").getValue<String>()
                         val phone = singleSnapshot.child("phone").getValue<String>()
                         val image = singleSnapshot.child("image").getValue<String>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
                         UserLogin.info = User(
                             id!!,
                             email!!,
@@ -49,7 +50,8 @@ class MainActivity : AppCompatActivity() {
                             name!!,
                             address!!,
                             phone!!,
-                            image!!
+                            image!!,
+                            status!!
                         )
                     }
                 }
@@ -74,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         }
         supportActionBar!!.hide()
 
-        change()
+        //change()
     }
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {

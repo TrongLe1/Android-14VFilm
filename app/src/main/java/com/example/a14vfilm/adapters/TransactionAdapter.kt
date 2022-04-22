@@ -29,15 +29,15 @@ import java.text.SimpleDateFormat
 class TransactionAdapter(private val transList: MutableList<TransactionExtend>, private val type: String): RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
     private var context : Context? = null
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
-        val IVTrans = listItemView.findViewById<ImageView>(R.id.IVTrans)
-        val TVId = listItemView.findViewById<TextView>(R.id.TVTransId)
-        val TVName = listItemView.findViewById<TextView>(R.id.TVNameTrans)
-        val TVRentDate = listItemView.findViewById<TextView>(R.id.TVRentDate)
-        val TVExpiredDate = listItemView.findViewById<TextView>(R.id.TVExpiredDate)
-        val TVPrice = listItemView.findViewById<TextView>(R.id.TVPriceTrans)
-        val BTNCancel = listItemView.findViewById<Button>(R.id.BTNCancel)
-        val BTNRate = listItemView.findViewById<Button>(R.id.BTNRate)
-        val RBTrans = listItemView.findViewById<RatingBar>(R.id.RBRateTrans)
+        val IVTrans = listItemView.findViewById<ImageView>(R.id.IVTrans)!!
+        val TVId = listItemView.findViewById<TextView>(R.id.TVTransId)!!
+        val TVName = listItemView.findViewById<TextView>(R.id.TVNameTrans)!!
+        val TVRentDate = listItemView.findViewById<TextView>(R.id.TVRentDate)!!
+        val TVExpiredDate = listItemView.findViewById<TextView>(R.id.TVExpiredDate)!!
+        val TVPrice = listItemView.findViewById<TextView>(R.id.TVPriceTrans)!!
+        val BTNCancel = listItemView.findViewById<Button>(R.id.BTNCancel)!!
+        val BTNRate = listItemView.findViewById<Button>(R.id.BTNRate)!!
+        val RBTrans = listItemView.findViewById<RatingBar>(R.id.RBRateTrans)!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -49,16 +49,26 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (type == "ordered") {
+            /*
             holder.BTNRate.visibility = View.GONE
             holder.RBTrans.visibility = View.GONE
+
+            */
+            holder.BTNCancel.visibility = View.GONE
+
         }
+        /*
         else if (type == "expired")
             holder.BTNCancel.visibility = View.GONE
+
+        */
         else {
             holder.BTNRate.visibility = View.GONE
             holder.RBTrans.visibility = View.GONE
             holder.BTNCancel.visibility = View.GONE
         }
+
+
         if (transList[position].image != "")
             Picasso.get().load(transList[position].image).resize(130, 130).into(holder.IVTrans)
         holder.TVId.text = "Hóa đơn: #" + transList[position].transaction.id
@@ -117,6 +127,21 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
             val ref = FirebaseDatabase.getInstance(url).getReference("transaction")
             ref.child(transList[position].transaction.id).child("type").setValue(false)
+
+            /*
+            val sRef = FirebaseDatabase.getInstance(url).getReference("film")
+            val query = sRef.orderByChild("id").equalTo(transList[position].transaction.film)
+            query.addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (singleSnapshot in snapshot.children) {
+                        val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                        singleSnapshot.ref.child("quantity").setValue(quantity!! + 1)
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+
+            */
             transList.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, transList.size)

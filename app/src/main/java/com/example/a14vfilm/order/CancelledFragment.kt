@@ -1,5 +1,6 @@
 package com.example.a14vfilm.order
 
+/*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -119,3 +120,5 @@ class CancelledFragment : Fragment() {
         getTransactionList()
     }
 }
+
+*/
