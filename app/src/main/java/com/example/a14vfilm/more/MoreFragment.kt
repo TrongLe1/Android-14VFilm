@@ -69,7 +69,8 @@ class MoreFragment : Fragment() {
             BTNLogin.text = "Xin chào, " + UserLogin.info!!.name
             BTNLogin.isClickable = false
             BTNLogin.isEnabled = false
-            Picasso.get().load(UserLogin.info!!.image).resize(150, 150).into(IVAvatar)
+            if (UserLogin.info!!.image != "")
+                Picasso.get().load(UserLogin.info!!.image).resize(150, 150).into(IVAvatar)
 
         }
 

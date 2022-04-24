@@ -4,15 +4,14 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Transaction
@@ -48,27 +47,19 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        /*
         if (type == "ordered") {
-            /*
             holder.BTNRate.visibility = View.GONE
             holder.RBTrans.visibility = View.GONE
-
-            */
-            holder.BTNCancel.visibility = View.GONE
-
         }
-        /*
         else if (type == "expired")
             holder.BTNCancel.visibility = View.GONE
 
+
         */
-        else {
-            holder.BTNRate.visibility = View.GONE
-            holder.RBTrans.visibility = View.GONE
+
+        if (type == "expired")
             holder.BTNCancel.visibility = View.GONE
-        }
-
-
         if (transList[position].image != "")
             Picasso.get().load(transList[position].image).resize(130, 130).into(holder.IVTrans)
         holder.TVId.text = "Hóa đơn: #" + transList[position].transaction.id
@@ -85,11 +76,13 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
                 dialog.setContentView(R.layout.dialog_rating)
                 val RBDiaRate = dialog.findViewById<RatingBar>(R.id.RBDiaRate)
                 val BTNDiaRate = dialog.findViewById<Button>(R.id.BTNDiaRate)
+                val ETDiaRate = dialog.findViewById<TextView>(R.id.ETDiaRate)
                 BTNDiaRate.setOnClickListener {
                     dialog.dismiss()
                     val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
                     val ref = FirebaseDatabase.getInstance(url).getReference("transaction")
                     ref.child(transList[position].transaction.id).child("rate").setValue(RBDiaRate.rating)
+                    ref.child(transList[position].transaction.id).child("comment").setValue(ETDiaRate.text.toString())
                     val query = ref.orderByChild("film").equalTo(transList[position].transaction.film)
                     query.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
@@ -114,6 +107,30 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
                     holder.BTNRate.isEnabled = false
                     holder.BTNRate.visibility = View.GONE
                 }
+                ETDiaRate.addTextChangedListener(object: TextWatcher {
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {}
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        if (s!!.length > 50) {
+                            BTNDiaRate.isClickable = false
+                            BTNDiaRate.isEnabled = false
+                        }
+                        else {
+                            BTNDiaRate.isClickable = true
+                            BTNDiaRate.isEnabled = true
+                        }
+                    }
+                    override fun afterTextChanged(s: Editable?) {}
+                })
                 dialog.show()
             }
         }

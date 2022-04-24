@@ -41,6 +41,7 @@ class DetailActivity : AppCompatActivity() {
     var TVRateCount: TextView? = null
     var YTPVTrailer: YouTubePlayerView? = null
     var quantity: Int? = null
+    var IBComment: ImageButton? = null
 
     private val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val ref = FirebaseDatabase.getInstance(url).getReference("favorite")
@@ -64,6 +65,7 @@ class DetailActivity : AppCompatActivity() {
         YTPVTrailer = findViewById(R.id.YTPVTrailer)
         BTNFav = findViewById(R.id.BTNFavourite)
         BTNOrder = findViewById(R.id.BTNBuy)
+        IBComment = findViewById(R.id.IBComment)
         lifecycle.addObserver(YTPVTrailer!!)
         val film = intent.getSerializableExtra("Film") as Film
         quantity = film.quantity
@@ -158,6 +160,11 @@ class DetailActivity : AppCompatActivity() {
             }
         }
 
+        IBComment!!.setOnClickListener {
+            val intent = Intent(this, CommentActivity::class.java)
+            intent.putExtra("ID", film.id)
+            startActivity(intent)
+        }
         supportActionBar!!.hide()
     }
 

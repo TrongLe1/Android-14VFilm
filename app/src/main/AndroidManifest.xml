@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.14VFilm">
         <activity
+            android:name=".detail.CommentActivity"
+            android:exported="false" />
+        <activity
             android:name=".sellerActivity.SellerHomeActivity"
             android:exported="false" />
         <activity

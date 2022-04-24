@@ -89,7 +89,8 @@ class OrderedFragment : Fragment() {
                         val expired = singleSnapshot.child("expired").getValue<Date>()
                         val type = singleSnapshot.child("type").getValue<Boolean>()
                         val film = singleSnapshot.child("film").getValue<String>()
-                        val trans = Transaction(id!!, user!!, film!!, rentDate!!, expired!!, total!!, rate!!, type!!)
+                        val comment = singleSnapshot.child("comment").getValue<String>()
+                        val trans = Transaction(id!!, user!!, film!!, rentDate!!, expired!!, total!!, rate!!, type!!, comment!!)
                         if (expired > Date() && type) {
                             val sRef = FirebaseDatabase.getInstance(url).getReference("film")
                             val sQuery = sRef.orderByChild("id").equalTo(film)

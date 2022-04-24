@@ -100,7 +100,7 @@ class CheckoutActivity : AppCompatActivity() {
         BTNCheckout!!.setOnClickListener {
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
             val ref = FirebaseDatabase.getInstance(url).getReference("transaction")
-            val trans = Transaction(ref.push().key!!, UserLogin.info!!.id, film.id, rentDate, endDate, price!!, -1F, true)
+            val trans = Transaction(ref.push().key!!, UserLogin.info!!.id, film.id, rentDate, endDate, price!!, -1F, true, "")
             ref.child(trans.id).setValue(trans)
 
             /*

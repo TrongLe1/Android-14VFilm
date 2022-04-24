@@ -37,7 +37,7 @@
         android:layout_height="60dp"
         android:background="@drawable/border"
         android:gravity="top"
-        android:hint="Đánh giá về phim"
+        android:hint="Đánh giá về phim (ít hơn 50 kí tự)"
         android:inputType="text|textMultiLine"
 
         android:textSize="14sp"

@@ -10,5 +10,6 @@ data class Transaction (
     var expired: Date,
     var total: Long,
     var rate: Float,
-    var type: Boolean
+    var type: Boolean,
+    var comment: String
 )

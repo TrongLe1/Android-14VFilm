@@ -135,7 +135,6 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="18dp"
             android:isIndicator="true"
             android:numStars="5"
@@ -180,7 +179,7 @@
             android:id="@+id/TVRateCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="16dp"
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/RBDRate"
@@ -221,6 +220,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/YTPVTrailer" />
+
+        <ImageButton
+            android:id="@+id/IBComment"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/eye"
+            app:layout_constraintStart_toEndOf="@+id/TVRateCount"
+            app:layout_constraintTop_toBottomOf="@+id/TVDName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
