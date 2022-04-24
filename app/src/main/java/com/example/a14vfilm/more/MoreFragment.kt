@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.a14vfilm.MainActivity
 import com.example.a14vfilm.R
 import com.example.a14vfilm.home.HomeFragment
 import com.example.a14vfilm.login.LoginActivity
@@ -76,6 +77,7 @@ class MoreFragment : Fragment() {
             val mAuth = FirebaseAuth.getInstance()
             mAuth.signOut()
             UserLogin.info = null
+            /*
             val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
             bottomNavigationView.setSelectedItemId(R.id.home)
             requireActivity().supportFragmentManager.beginTransaction().apply {
@@ -86,6 +88,11 @@ class MoreFragment : Fragment() {
                 replace(R.id.FLMain, HomeFragment())
                 commit()
             }
+
+            */
+            requireActivity().finish()
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
         }
 
         BTNLogin.setOnClickListener {

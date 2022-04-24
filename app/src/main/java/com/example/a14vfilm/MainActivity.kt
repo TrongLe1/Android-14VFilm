@@ -1,11 +1,14 @@
 package com.example.a14vfilm
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.a14vfilm.home.HomeFragment
 import com.example.a14vfilm.library.LibraryFragment
+import com.example.a14vfilm.login.LoginActivity
 import com.example.a14vfilm.models.User
 import com.example.a14vfilm.models.UserLogin
 import com.example.a14vfilm.more.MoreFragment
@@ -57,8 +60,33 @@ class MainActivity : AppCompatActivity() {
                 }
                 override fun onCancelled(error: DatabaseError) {}
             })
+            userUI()
+        }
+        else {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivityForResult(intent, 102)
+        }
+        supportActionBar!!.hide()
+        //change()
+    }
+    private fun setCurrentFragment(fragment: Fragment) =
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.FLMain,fragment)
+            commit()
         }
 
+    private fun change(){
+        val intent: Intent = Intent(this, SellerHomeActivity::class.java)
+        //val intent: Intent = Intent(this, FilmDetailActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        userUI()
+    }
+
+    private fun userUI(){
         val homeFragment = HomeFragment()
         val libraryFragment = LibraryFragment()
         val orderFragment = OrderFragment()
@@ -74,21 +102,5 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        supportActionBar!!.hide()
-
-        //change()
     }
-    private fun setCurrentFragment(fragment: Fragment) =
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.FLMain,fragment)
-            commit()
-        }
-
-    private fun change(){
-        val intent: Intent = Intent(this, SellerHomeActivity::class.java)
-        //val intent: Intent = Intent(this, FilmDetailActivity::class.java)
-
-        startActivity(intent)
-    }
-
 }
