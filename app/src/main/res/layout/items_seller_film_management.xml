@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="170dp"
     android:background="@color/item_film"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_margin="5dp"
+    android:padding="3dp">
 
     <LinearLayout
         android:layout_width="160dp"
@@ -18,49 +20,6 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/film" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="5dp"
-        >
-
-        <TextView
-            android:id="@+id/ivSellerFilmNameItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Phim truyền hình"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText"
-
-            />
-
-        <TextView
-            android:id="@+id/ivSellerFilmDescriptionItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Phim truyền hình"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/ivSellerFilmDatePublishedItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ngày đăng: 28/04/2022"
-            android:textSize="16sp"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chi tiết"
-
-            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

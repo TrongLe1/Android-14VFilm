@@ -40,4 +40,13 @@
         app:showAsAction="never"
         tools:ignore="HardcodedText" />
 
+<!--    <item-->
+<!--        android:id="@+id/menu_item_seller_more"-->
+<!--        android:title="Khác"-->
+<!--        android:icon="@drawable/more"-->
+<!--        android:iconTint="@drawable/more"-->
+<!--        app:showAsAction="never"-->
+<!--        tools:ignore="HardcodedText" />-->
+
+
 </menu>

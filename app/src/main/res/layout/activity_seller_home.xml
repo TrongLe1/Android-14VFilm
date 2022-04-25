@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
 
 
     <View
@@ -25,7 +24,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnvSellerHomeActivity"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="65dp"
         app:itemTextColor="@color/black"
         app:itemIconTint="@color/black"
         app:itemTextAppearanceActive="@color/black"

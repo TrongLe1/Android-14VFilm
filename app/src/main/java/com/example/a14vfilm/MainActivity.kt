@@ -67,8 +67,9 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 102)
         }
         supportActionBar!!.hide()
-        //change()
+        change()
     }
+
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.FLMain,fragment)

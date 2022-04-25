@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="240dp"
+    android:orientation="vertical"
+    android:background="@drawable/border"
+    android:layout_marginRight="8dp"
+    tools:ignore="RtlHardcoded">
+
+    <ImageView
+        android:id="@+id/ivFilm"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/more_background"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="30dp"
+        android:text="Tên phim"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tvDatePublished"
+        android:layout_width="160dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="bottom"
+        android:text="Ngày đăng: 28/04/2022"
+        android:textStyle="bold"
+        android:textSize="12dp"
+        tools:ignore="HardcodedText" />
+
+</androidx.cardview.widget.CardView>

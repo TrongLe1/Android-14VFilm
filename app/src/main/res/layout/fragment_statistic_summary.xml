@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sellerActivity.StatisticSummaryFragment"
     android:fillViewport="true"
-    android:overScrollMode="never">
+    android:overScrollMode="never"
+    tools:context=".sellerActivity.StatisticSummaryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,145 +15,206 @@
         tools:ignore="ScrollViewSize">
 
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        <!-- TODO: Update blank fragment layout -->
 
         <LinearLayout
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:background="@drawable/statistic_film"
-            android:layout_marginRight="15dp"
-            android:orientation="vertical"
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="Số lượng phim"
-                android:textSize="24dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="131"
-                android:textSize="40dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:background="@drawable/statistic_joiner"
-            android:orientation="vertical"
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="Số lượng người đăng ký"
-                android:textSize="24dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="13031"
-                android:textSize="40dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                />
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/statistic_revenue"
-        >
-
-        <TextView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Tổng doanh thu"
+            android:layout_height="220dp"
             android:gravity="center"
-            android:textAlignment="center"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
 
-        <TextView
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/statistic_film"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Số lượng phim"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnStatisticFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/btnStatisticFilm"
+                    android:gravity="center"
+                    android:text="131"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:background="@drawable/statistic_joiner"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Số lượng người đăng ký"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,SpUsage" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="13031"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/btnStatisticJoiner"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/statistic_revenue"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Tổng doanh thu"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRevenue"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="161.000.000 VNĐ"
-                android:textSize="40dp"
                 android:gravity="center"
+                android:shadowColor="@null"
+                android:text="161.000.000 VNĐ"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                />
+                android:textColor="@color/black"
+                android:textSize="35dp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-
-        <TextView
-            android:id="@+id/tvStatisticJoiner"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/seller_menu">
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tvStatisticJoiner"
+                    android:layout_width="327dp"
+                    android:layout_height="31dp"
+                    android:backgroundTint="#FAC99E"
+                    android:gravity="left"
+                    android:text="Người tham gia từng phim"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:paddingStart="10sp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ibStatisticJoiner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+                <ImageButton
+                    android:id="@+id/ibStatisticJoiner"
+                    android:layout_width="81dp"
+                    android:layout_height="38dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/tvStatisticJoiner"
+                    android:background="@color/seller_menu"
+                    android:src="@drawable/ic_action_name"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/seller_menu">
+
+                <TextView
+                    android:id="@+id/tvStatisticRevenue"
+                    android:layout_width="327dp"
+                    android:layout_height="31dp"
+                    android:backgroundTint="#FAC99E"
+                    android:gravity="left"
+                    android:text="Doanh thu từng phim"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:paddingStart="10sp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ibStatisticRevenue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
+
+                <ImageButton
+                    android:id="@+id/ibStatisticRevenue"
+                    android:layout_width="81dp"
+                    android:layout_height="38dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/tvStatisticRevenue"
+                    android:background="@color/seller_menu"
+                    android:src="@drawable/ic_action_name"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

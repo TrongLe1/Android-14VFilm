@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".sellerActivity.SellerManagementFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/info_seller_management"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        >
+        android:background="@drawable/info_seller_management"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvSellerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Huynh Tuan Kha"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:text="Nguyen Ngoc Phuoc Nguyen Chau"
             android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -32,8 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SDT: 0343434303"
-            android:textSize="18sp"
             android:textColor="@color/black"
+            android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
@@ -47,19 +52,118 @@
                 style="@android:style/Theme.Black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
                 android:text="Thêm phim"
                 android:textStyle="bold"
-                tools:ignore="HardcodedText"
-                />
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvSellerFilmManagement"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:orientation="vertical">
 
-</LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="@color/seller_menu">
+
+            <TextView
+                android:id="@+id/tvCurrentList"
+                android:layout_width="327dp"
+                android:layout_height="31dp"
+                android:backgroundTint="#FAC99E"
+                android:gravity="left"
+                android:text="Danh sách đang đăng"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:paddingStart="10sp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ibCurrent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
+
+            <ImageButton
+                android:id="@+id/ibCurrent"
+                android:layout_width="81dp"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/tvCurrentList"
+                android:background="@color/seller_menu"
+                android:src="@drawable/ic_action_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvSellerCurrent"
+            android:layout_width="match_parent"
+            android:layout_height="245sp"
+            android:layout_margin="8dp"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="@color/seller_menu">
+
+            <TextView
+                android:id="@+id/tvExpiredList"
+                android:layout_width="327dp"
+                android:layout_height="31dp"
+                android:backgroundTint="#FAC99E"
+                android:paddingStart="10sp"
+                android:gravity="left"
+                android:text="Danh sách đã hết hạn"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ibExpired"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
+
+            <ImageButton
+                android:id="@+id/ibExpired"
+                android:layout_width="81dp"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/tvExpiredList"
+                android:background="@color/seller_menu"
+                android:src="@drawable/ic_action_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvSellerExpired"
+            android:layout_width="match_parent"
+            android:layout_height="245sp"
+            android:layout_margin="8dp"/>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
