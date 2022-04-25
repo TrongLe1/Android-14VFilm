@@ -96,14 +96,22 @@ class MoreFragment : Fragment() {
             startActivity(intent)
         }
 
+        /*
         BTNLogin.setOnClickListener {
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             startActivityForResult(intent, 100)
         }
 
+        */
+
         TVFavourite.setOnClickListener {
             val intent = Intent(requireActivity(), FavoriteActivity::class.java)
             startActivity(intent)
+        }
+
+        TVInfo.setOnClickListener {
+            val intent = Intent(requireActivity(), InfoActivity::class.java)
+            startActivityForResult(intent, 101)
         }
         //Log.i("d", UserLogin.info.toString())
 
@@ -123,9 +131,10 @@ class MoreFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        /*
         if (requestCode == 100) {
             val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
-            bottomNavigationView.setSelectedItemId(R.id.more)
+            bottomNavigationView.selectedItemId = R.id.more
             requireActivity().supportFragmentManager.beginTransaction().apply {
                 replace(R.id.FLMain, OrderFragment())
                 commit()
@@ -134,6 +143,12 @@ class MoreFragment : Fragment() {
                 replace(R.id.FLMain, MoreFragment())
                 commit()
             }
+        }
+
+        */
+        if (requestCode == 101) {
+            val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
+            bottomNavigationView.selectedItemId = R.id.home
         }
     }
 

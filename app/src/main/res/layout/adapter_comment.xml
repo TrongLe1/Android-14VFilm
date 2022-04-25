@@ -8,9 +8,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/IVDCAvatar"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="28dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:scaleType="centerCrop"
         android:src="@drawable/user"
@@ -46,7 +46,7 @@
 
     <View
         android:id="@+id/VBelow"
-        android:layout_width="260dp"
+        android:layout_width="245dp"
         android:layout_height="1dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
