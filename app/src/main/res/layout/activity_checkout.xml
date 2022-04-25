@@ -70,10 +70,10 @@
         android:layout_width="360dp"
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/border_transaction_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/border_transaction_layout"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <TextView
@@ -217,17 +217,50 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/VLine" />
+
+        <TextView
+            android:id="@+id/TVCPayDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:drawableRight="@drawable/arrow"
+            android:drawablePadding="5dp"
+            android:text="Chọn hình thức thanh toán"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVCPDetail" />
+
+        <TextView
+            android:id="@+id/TVCPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Thanh toán"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVCPhone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/BTNCheckout"
         android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="35dp"
         android:text="Thanh toán"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <com.paypal.checkout.paymentbutton.PayPalButton
+        android:id="@+id/BTNPaypal"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
