@@ -1,21 +1,19 @@
 package com.example.a14vfilm
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.a14vfilm.home.HomeFragment
 import com.example.a14vfilm.library.LibraryFragment
 import com.example.a14vfilm.login.LoginActivity
 import com.example.a14vfilm.models.User
 import com.example.a14vfilm.models.UserLogin
-import com.example.a14vfilm.more.InfoActivity
 import com.example.a14vfilm.more.MoreFragment
 import com.example.a14vfilm.order.OrderFragment
 import com.example.a14vfilm.sellerActivity.SellerHomeActivity
-import com.example.a14vfilm.sellerActivity.SellerUploadFilmActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -23,6 +21,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import com.google.gson.Gson
+
+
+
+
 
 class MainActivity : AppCompatActivity() {
     var bottomNavigationView: BottomNavigationView? = null
@@ -30,6 +33,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //val mPrefs = getPreferences(MODE_PRIVATE)
+        val sharedPreference =  getSharedPreferences("UserLogin", Context.MODE_PRIVATE)
+        val json = sharedPreference.getString("user", "")
+        val gson = Gson()
+        val user = gson.fromJson(json, User::class.java)
 
         mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth!!.currentUser
@@ -63,12 +72,16 @@ class MainActivity : AppCompatActivity() {
             })
             userUI()
         }
+        else if (json != "") {
+            UserLogin.info = user
+            userUI()
+        }
         else {
             val intent = Intent(this, LoginActivity::class.java)
             startActivityForResult(intent, 102)
         }
         supportActionBar!!.hide()
-        change()
+        //change()
 
     }
 

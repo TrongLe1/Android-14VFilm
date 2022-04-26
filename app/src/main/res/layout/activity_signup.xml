@@ -69,11 +69,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ETPasswordSignup" />
 
+    <EditText
+        android:id="@+id/ETNameSignup"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawableLeft="@drawable/info"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="Tên người dùng"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETRepassword" />
+
     <Button
         android:id="@+id/BTNSignupDone"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:backgroundTint="@android:color/holo_red_light"
         android:text="Đăng ký"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"

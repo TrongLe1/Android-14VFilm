@@ -1,28 +1,23 @@
 package com.example.a14vfilm.more
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
-import android.graphics.Color
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.a14vfilm.MainActivity
 import com.example.a14vfilm.R
-import com.example.a14vfilm.home.HomeFragment
-import com.example.a14vfilm.login.LoginActivity
-import com.example.a14vfilm.models.User
 import com.example.a14vfilm.models.UserLogin
-import com.example.a14vfilm.order.OrderFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -78,6 +73,12 @@ class MoreFragment : Fragment() {
             val mAuth = FirebaseAuth.getInstance()
             mAuth.signOut()
             UserLogin.info = null
+
+            val sharedPreference =  requireActivity().getSharedPreferences("UserLogin", MODE_PRIVATE)
+            val editor = sharedPreference.edit()
+            editor.remove("user")
+            editor.commit()
+
             /*
             val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
             bottomNavigationView.setSelectedItemId(R.id.home)
