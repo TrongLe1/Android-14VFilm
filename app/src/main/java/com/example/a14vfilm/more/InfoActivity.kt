@@ -89,7 +89,7 @@ class InfoActivity : AppCompatActivity() {
                     taskSnapshot.storage.downloadUrl.addOnSuccessListener {
                         val imageUrl = it.toString()
                         ref.child(UserLogin.info!!.id).child("image").setValue(imageUrl)
-                        Picasso.get().load(imageUri).resize(150, 150).into(IVAvatar)
+                        Picasso.get().load(imageUri).resize(150, 150).into  (IVAvatar)
                         BTNSubmit!!.isClickable = true
                         Toast.makeText(this, "Cập nhật ảnh đại diện thành công", Toast.LENGTH_SHORT).show()
                     }

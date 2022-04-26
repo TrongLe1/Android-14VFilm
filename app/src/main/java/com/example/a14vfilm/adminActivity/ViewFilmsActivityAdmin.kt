@@ -1,16 +1,12 @@
 package com.example.a14vfilm.adminActivity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.ViewFilmsAdapter
-import com.example.a14vfilm.adapters.ViewUserAdapter
 import com.example.a14vfilm.models.Film
-import com.example.a14vfilm.models.User
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

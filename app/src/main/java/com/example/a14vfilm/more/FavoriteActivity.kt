@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.FavoriteAdapter
-import com.example.a14vfilm.adapters.FilmAdapter
 import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
