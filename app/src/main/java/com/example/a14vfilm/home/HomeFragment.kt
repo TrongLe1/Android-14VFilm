@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -48,12 +49,74 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val filmList = ArrayList<Film>()
         val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
         val ref = FirebaseDatabase.getInstance(url).getReference("film")
-        val RVHome = view.findViewById<RecyclerView>(R.id.RVHome)
-        var homeAdapter = FilmAdapter(filmList)
 
+        val newFilm = ArrayList<Film>()
+        val RVNew = view.findViewById<RecyclerView>(R.id.RVNew)
+        RVNew.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
+        RVNew.addItemDecoration(LayoutMarginDecoration(1, 20))
+        val query = ref.orderByChild("dateUpdated").limitToLast(5)
+        query.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (singleSnapshot in snapshot.children) {
+                    val id = singleSnapshot.child("id").getValue<String>()
+                    val seller = singleSnapshot.child("seller").getValue<String>()
+                    val name = singleSnapshot.child("name").getValue<String>()
+                    val description = singleSnapshot.child("description").getValue<String>()
+                    val rate = singleSnapshot.child("rate").getValue<Float>()
+                    val length = singleSnapshot.child("length").getValue<Int>()
+                    val country = singleSnapshot.child("country").getValue<String>()
+                    val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
+                    val price = singleSnapshot.child("price").getValue<Int>()
+                    val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                    val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
+                    val image = singleSnapshot.child("image").getValue<String>()
+                    val trailer = singleSnapshot.child("trailer").getValue<String>()
+                    val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
+                    val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                    newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
+                }
+                RVNew.adapter = FilmAdapter(newFilm)
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        val hotFilm = ArrayList<Film>()
+        val RVHot = view.findViewById<RecyclerView>(R.id.RVHot)
+        RVHot.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
+        RVHot.addItemDecoration(LayoutMarginDecoration(1, 20))
+        val sQuery = ref.orderByChild("rate").limitToLast(5)
+        sQuery.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (singleSnapshot in snapshot.children) {
+                    val id = singleSnapshot.child("id").getValue<String>()
+                    val seller = singleSnapshot.child("seller").getValue<String>()
+                    val name = singleSnapshot.child("name").getValue<String>()
+                    val description = singleSnapshot.child("description").getValue<String>()
+                    val rate = singleSnapshot.child("rate").getValue<Float>()
+                    val length = singleSnapshot.child("length").getValue<Int>()
+                    val country = singleSnapshot.child("country").getValue<String>()
+                    val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
+                    val price = singleSnapshot.child("price").getValue<Int>()
+                    val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                    val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
+                    val image = singleSnapshot.child("image").getValue<String>()
+                    val trailer = singleSnapshot.child("trailer").getValue<String>()
+                    val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
+                    val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                    hotFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
+                }
+                RVHot.adapter = FilmAdapter(hotFilm)
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+
+        /*
+        val RVHome = view.findViewById<RecyclerView>(R.id.RVHome)
+        val filmList = ArrayList<Film>()
+        var homeAdapter = FilmAdapter(filmList)
         val query = ref.orderByChild("dateUpdated")
         query.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -87,6 +150,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
         RVHome.addItemDecoration(LayoutMarginDecoration(1, 20))
+
         val TVHome = view.findViewById<TextView>(R.id.TVHome)
         val ACTVSearch = view.findViewById<AutoCompleteTextView>(R.id.ACTVSearch)
         //ACTVSearch.setAdapter(ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1, arrayListOf("B5314. Scream 2022 - Tiếng Thét 2022 2D25G (DTS-HD MA 7.1)"))) //Query mảng TÊN phim mới (hot)
@@ -99,6 +163,16 @@ class HomeFragment : Fragment() {
             }
             override fun afterTextChanged(p0: Editable?) {}
         })
+
+
+        */
+
+        val ACTVSearch = view.findViewById<AutoCompleteTextView>(R.id.ACTVSearch)
+        ACTVSearch.setOnClickListener {
+            val intent = Intent(requireActivity(), SearchActivity::class.java)
+            startActivity(intent)
+        }
+
         val ISHome = view.findViewById<ImageSlider>(R.id.ISHome)
         val slideModel = ArrayList<SlideModel>()
         val sRef = FirebaseDatabase.getInstance(url).getReference("ads")

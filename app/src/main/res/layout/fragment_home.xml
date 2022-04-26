@@ -1,61 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".home.HomeFragment">
-
-    <AutoCompleteTextView
-        android:id="@+id/ACTVSearch"
-        android:layout_width="360dp"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/border_button"
-        android:drawableLeft="@drawable/search"
-        android:hint="Bạn cần tìm kiếm gì?"
-        android:drawablePadding="5dp"
-        android:completionThreshold="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".home.HomeFragment">
+        <AutoCompleteTextView
+            android:id="@+id/ACTVSearch"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border_button"
+            android:completionThreshold="3"
+            android:drawableLeft="@drawable/search"
+            android:drawablePadding="5dp"
+            android:editable="false"
+            android:hint="Bạn cần tìm kiếm gì?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/ISHome"
-        android:layout_width="360dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="16dp"
-        app:iss_auto_cycle="true"
-        app:iss_corner_radius="50"
-        app:iss_delay="0"
-        app:iss_period="5000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ACTVSearch"></com.denzcoskun.imageslider.ImageSlider>
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/ISHome"
+            android:layout_width="360dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            app:iss_auto_cycle="true"
+            app:iss_corner_radius="50"
+            app:iss_delay="0"
+            app:iss_period="5000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ACTVSearch">
+        </com.denzcoskun.imageslider.ImageSlider>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVHome"
-        android:layout_width="360dp"
-        android:layout_height="250dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVHome" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RVNew"
+            android:layout_width="360dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVNew" />
 
-    <TextView
-        android:id="@+id/TVHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Sản phẩm mới nhất"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ISHome" />
+        <TextView
+            android:id="@+id/TVNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Top 5 phim mới nhất"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ISHome" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/TVHot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top 5 phim hay nhất"
+            android:textSize="20sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RVNew" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RVHot"
+            android:layout_width="360dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVHot" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

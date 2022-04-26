@@ -79,7 +79,7 @@ class LibraryFragment : Fragment() {
         })
 
         RVGenre.layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.HORIZONTAL, false)
-        val option = arrayListOf("A-Z", "Giá tăng dần", "Giá giảm dần", "Đánh giá cao nhất")
+        val option = arrayListOf("A-Z", "Giá tăng dần", "Giá giảm dần", "Đánh giá cao")
         val SSort = view.findViewById<Spinner>(R.id.SSort)
         val sAdapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_dropdown_item, option)
         sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

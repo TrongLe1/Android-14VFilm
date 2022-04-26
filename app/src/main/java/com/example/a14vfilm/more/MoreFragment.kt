@@ -111,7 +111,8 @@ class MoreFragment : Fragment() {
 
         TVInfo.setOnClickListener {
             val intent = Intent(requireActivity(), InfoActivity::class.java)
-            startActivityForResult(intent, 101)
+            //startActivityForResult(intent, 101)
+            startActivity(intent)
         }
         //Log.i("d", UserLogin.info.toString())
 
@@ -145,11 +146,12 @@ class MoreFragment : Fragment() {
             }
         }
 
-        */
+
         if (requestCode == 101) {
             val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
             bottomNavigationView.selectedItemId = R.id.home
         }
+        */
     }
 
 }

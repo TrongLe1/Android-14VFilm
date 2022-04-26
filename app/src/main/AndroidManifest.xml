@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a14vfilm">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".models.UserLogin"
         android:allowBackup="true"
@@ -13,6 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.14VFilm">
+        <activity
+            android:name=".home.SearchActivity"
+            android:exported="false" />
         <activity
             android:name=".more.InfoActivity"
             android:exported="false" />
@@ -23,7 +28,6 @@
             android:name=".sellerActivity.SellerFilmListActivity"
             android:exported="false"
             android:parentActivityName=".sellerActivity.SellerHomeActivity" />
-
         <activity
             android:name=".sellerActivity.SellerHomeActivity"
             android:exported="false" />
@@ -66,8 +70,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
