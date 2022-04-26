@@ -11,6 +11,7 @@ import com.example.a14vfilm.library.LibraryFragment
 import com.example.a14vfilm.login.LoginActivity
 import com.example.a14vfilm.models.User
 import com.example.a14vfilm.models.UserLogin
+import com.example.a14vfilm.more.InfoActivity
 import com.example.a14vfilm.more.MoreFragment
 import com.example.a14vfilm.order.OrderFragment
 import com.example.a14vfilm.sellerActivity.SellerHomeActivity
@@ -67,7 +68,8 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 102)
         }
         supportActionBar!!.hide()
-        //change()
+        change()
+
     }
 
     private fun setCurrentFragment(fragment: Fragment) =
