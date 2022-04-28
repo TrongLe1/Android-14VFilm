@@ -4,112 +4,179 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/info_bg"
     tools:context=".adminActivity.AddNewUserAdminActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="6dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/IVDIAvatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="365dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/info_layout"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IVDIAvatar"
+        app:layout_constraintVertical_bias="0.304">
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/addnewuseradminactivity_TVDITitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Thông tin người dùng"
-            android:textSize="30sp"
+            android:layout_marginTop="16dp"
+            android:text="THÔNG TIN CÁ NHÂN"
+            android:textSize="20sp"
             android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Họ và tên:" />
-
-        <EditText
-            android:id="@+id/addnewuseradminactivity_etUserName"
-            android:layout_width="match_parent"
+            android:id="@+id/TVDIEmail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Địa chỉ Email:" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_TVDITitle" />
 
         <EditText
             android:id="@+id/addnewuseradminactivity_etUserEmail"
-            android:layout_width="match_parent"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIEmail" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Mật khẩu:" />
+            android:id="@+id/TVDIName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Họ tên"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_etUserEmail" />
 
         <EditText
-            android:id="@+id/addnewuseradminactivity_etUserPassword"
-            android:layout_width="match_parent"
+            android:id="@+id/addnewuseradminactivity_etUserName"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
-            android:minHeight="48dp" />
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIName" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Địa chỉ:" />
-
-        <EditText
-            android:id="@+id/addnewuseradminactivity_etUserAddress"
-            android:layout_width="match_parent"
+            android:id="@+id/TVDIPhone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:ems="10"
-            android:minHeight="48dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Số điện thoại:" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Số điện thoại"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_etUserName" />
 
         <EditText
             android:id="@+id/addnewuseradminactivity_etUserPhone"
-            android:layout_width="match_parent"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="phone"
-            android:minHeight="48dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIPhone" />
 
+        <TextView
+            android:id="@+id/TVDIAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Địa chỉ"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_etUserPhone" />
 
-    </LinearLayout>
+        <EditText
+            android:id="@+id/addnewuseradminactivity_etUserAddress"
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIAddress" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="411dp"
-        android:layout_height="210dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+        <TextView
+            android:id="@+id/TVDIPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Mật khẩu"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_etUserAddress" />
+
+        <EditText
+            android:id="@+id/addnewuseradminactivity_etUserPassword"
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIPassword" />
 
         <Button
             android:id="@+id/addnewuseradminactivity_addUser"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Thêm người dùng" />
-    </LinearLayout>
+            android:layout_marginTop="92dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Thêm người dùng"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_etUserAddress" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

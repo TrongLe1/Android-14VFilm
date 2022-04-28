@@ -57,8 +57,8 @@
             android:layout_height="76dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="56dp"
-            android:layout_marginBottom="69dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="32dp"
             android:clickable="true"
             app:srcCompat="@android:drawable/ic_input_add" />
 

@@ -4,108 +4,172 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/info_bg"
     tools:context=".adminActivity.ViewUserDetailActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="6dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/IVDIAvatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="350dp"
+        android:layout_height="468dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/info_layout"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IVDIAvatar"
+        app:layout_constraintVertical_bias="0.304">
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/addnewuseradminactivity_TVDITitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Thông tin người dùng"
-            android:textSize="30sp"
+            android:layout_marginTop="16dp"
+            android:text="THÔNG TIN CÁ NHÂN"
+            android:textSize="20sp"
             android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Họ và tên:" />
-
-        <TextView
-            android:id="@+id/viewuserdetail_tvUserName"
-            android:layout_width="match_parent"
+            android:id="@+id/TVDIEmail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:minHeight="48dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Địa chỉ Email:" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_TVDITitle" />
 
         <TextView
             android:id="@+id/viewuserdetail_tvUserEmail"
-            android:layout_width="match_parent"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
-            android:minHeight="48dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIEmail" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Mật khẩu:" />
-
-        <TextView
-            android:id="@+id/viewuserdetail_tvUserPassword"
-            android:layout_width="match_parent"
+            android:id="@+id/TVDIName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:minHeight="48dp" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Họ tên"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserEmail" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Địa chỉ:" />
-
-        <TextView
-            android:id="@+id/viewuserdetail_tvUserAddress"
-            android:layout_width="match_parent"
+            android:id="@+id/viewuserdetail_tvUserName"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
-            android:minHeight="48dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIName" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Số điện thoại:" />
+            android:id="@+id/TVDIPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Số điện thoại"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserName" />
 
         <TextView
             android:id="@+id/viewuserdetail_tvUserPhone"
-            android:layout_width="match_parent"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
-            android:minHeight="48dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIPhone" />
 
+        <TextView
+            android:id="@+id/TVDIAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Địa chỉ"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserPhone" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/viewuserdetail_tvUserAddress"
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIAddress" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="411dp"
-        android:layout_height="210dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+        <TextView
+            android:id="@+id/TVDIPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Mật khẩu"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserAddress" />
+
+        <TextView
+            android:id="@+id/viewuserdetail_tvUserPassword"
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIPassword" />
 
         <Button
             android:id="@+id/viewuserdetail_deleteUser"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Xóa người dùng này" />
-    </LinearLayout>
+            android:layout_marginTop="92dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Xóa người dùng"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserAddress" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
