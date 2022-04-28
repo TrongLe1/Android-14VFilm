@@ -9,22 +9,20 @@
     android:background="#FFb8b8b8"
     android:orientation="vertical"
     tools:viewBindingIgnore="true" >
-    
 
-    <TextView
-        android:id="@+id/viewusers_tvTitle"
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/viewusers_svUserSearch"
         android:layout_width="match_parent"
-        android:layout_height="80sp"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:text="Danh sách người sử dụng"
-        tools:ignore="HardcodedText,MissingConstraints"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:background="@drawable/border_layout_film"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        />
+        android:layoutDirection="rtl"
+        app:queryBackground="@null" />
 
     <View
         android:layout_width="match_parent"

@@ -26,6 +26,8 @@ import java.util.*
 class ViewUserActivity: AppCompatActivity() {
 
     private var rcvViewUser: RecyclerView? = null
+    private var userSearch: androidx.appcompat.widget.SearchView? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,10 +70,24 @@ class ViewUserActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        userSearch!!.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapterViewUser.filter.filter(newText)
+                return false
+            }
+
+        })
+
     }
 
     private fun initComponent(){
         rcvViewUser = findViewById(R.id.viewusers_rcvUsersManagement)
+        userSearch = findViewById(R.id.viewusers_svUserSearch)
+
         rcvViewUser!!.layoutManager = LinearLayoutManager(this)
 
     }

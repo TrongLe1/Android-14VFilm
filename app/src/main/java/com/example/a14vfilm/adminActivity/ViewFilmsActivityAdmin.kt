@@ -2,6 +2,7 @@ package com.example.a14vfilm.adminActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
@@ -16,6 +17,7 @@ import java.util.*
 
 class ViewFilmsActivityAdmin : AppCompatActivity() {
     private var rcvViewFilm: RecyclerView? = null
+    private var filmSearch: androidx.appcompat.widget.SearchView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,10 +62,22 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
         })
         rcvViewFilm!!.adapter = adapterViewFilm
 
+        filmSearch!!.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapterViewFilm.filter.filter(newText)
+                return false
+            }
+
+        })
     }
 
     private fun initComponent(){
         rcvViewFilm = findViewById(R.id.viewfilm_rcvFilmsManagement)
+        filmSearch = findViewById(R.id.viewfilm_svFilmSearch)
         rcvViewFilm!!.layoutManager = LinearLayoutManager(this)
 
     }

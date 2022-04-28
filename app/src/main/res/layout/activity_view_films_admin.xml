@@ -10,21 +10,32 @@
     android:orientation="vertical"
     tools:viewBindingIgnore="true" >
 
-
-    <TextView
-        android:id="@+id/viewfilm_tvTitle"
+<!--    <TextView-->
+<!--        android:id="@+id/viewfilm_tvTitle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80sp"-->
+<!--        android:textSize="27dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:text="Danh sách phim được đăng"-->
+<!--        tools:ignore="HardcodedText,MissingConstraints"-->
+<!--        android:gravity="center"-->
+<!--        android:background="@drawable/border_layout_film"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:layout_marginRight="5dp"-->
+<!--        />-->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/viewfilm_svFilmSearch"
         android:layout_width="match_parent"
-        android:layout_height="80sp"
-        android:textSize="27dp"
-        android:textStyle="bold"
-        android:text="Danh sách phim được đăng"
-        tools:ignore="HardcodedText,MissingConstraints"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:background="@drawable/border_layout_film"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        />
+        android:layoutDirection="rtl"
+        app:queryBackground="@null" />
 
     <View
         android:layout_width="match_parent"

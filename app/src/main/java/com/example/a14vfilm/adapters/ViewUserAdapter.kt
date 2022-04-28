@@ -13,6 +13,7 @@ import com.example.a14vfilm.models.User
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adminActivity.ViewUserActivity
 import com.example.a14vfilm.adminActivity.ViewUserDetailActivity
+import com.example.a14vfilm.models.Film
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -57,7 +58,32 @@ class ViewUserAdapter (private val userList: List<User>): RecyclerView.Adapter<V
     }
 
     override fun getFilter(): Filter {
-        TODO("Not yet implemented")
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    filterListResult = userList
+                } else {
+                    val resultList = ArrayList<User>()
+                    for (row in userList) {
+                        if (row.name.lowercase(Locale.ROOT).contains(charSearch.lowercase(Locale.ROOT))) {
+                            resultList.add(row)
+                        }
+                    }
+                    filterListResult = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = filterListResult
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filterListResult = results?.values as ArrayList<User>
+                notifyDataSetChanged()
+            }
+
+        }
     }
 
     inner class ViewHolder(listItemView: View): RecyclerView.ViewHolder(listItemView){

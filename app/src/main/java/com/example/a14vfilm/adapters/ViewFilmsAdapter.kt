@@ -66,7 +66,32 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
     }
 
     override fun getFilter(): Filter {
-        TODO("Not yet implemented")
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    filterListResult = filmList
+                } else {
+                    val resultList = ArrayList<Film>()
+                    for (row in filmList) {
+                        if (row.name.lowercase(Locale.ROOT).contains(charSearch.lowercase(Locale.ROOT))) {
+                            resultList.add(row)
+                        }
+                    }
+                    filterListResult = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = filterListResult
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filterListResult = results?.values as ArrayList<Film>
+                notifyDataSetChanged()
+            }
+
+        }
     }
 
     inner class ViewHolder(listItemView: View): RecyclerView.ViewHolder(listItemView){
