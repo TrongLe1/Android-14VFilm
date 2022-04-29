@@ -45,12 +45,6 @@
             android:background="@drawable/border_layout_film"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tên phim:"
-                tools:ignore="HardcodedText" />
-
             <EditText
                 android:id="@+id/etFilmName"
                 android:layout_width="match_parent"
@@ -70,13 +64,6 @@
             android:background="@drawable/border_layout_film"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textview2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mô tả phim:"
-                tools:ignore="HardcodedText" />
-
             <EditText
                 android:id="@+id/etFilmDescription"
                 android:layout_width="match_parent"
@@ -88,31 +75,23 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llCheckboxList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:background="@drawable/border_layout_film"
             android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/spnCategory"
+            <TextView
+                android:id="@+id/tvGenre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/category" />
-        </LinearLayout>
+                android:drawableEnd="@drawable/ic_action_arrow"
+                android:text="Chọn thể loại phim"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
-            android:orientation="vertical">
-
-            <Spinner
-                android:id="@+id/spnCountry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/country" />
         </LinearLayout>
 
         <LinearLayout
@@ -123,11 +102,23 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvRentPrice"
+                android:id="@+id/tvCountry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Giá thuê:"
-                tools:ignore="HardcodedText" />
+                android:drawableEnd="@drawable/ic_action_arrow"
+                android:text="Chọn quốc gia"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/border_layout_film"
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/etFilmRentPrice"
@@ -136,43 +127,41 @@
                 android:layout_marginBottom="10sp"
                 android:hint="Nhập giá thuê"
                 tools:ignore="HardcodedText" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10sp"-->
+<!--            android:background="@drawable/border_layout_film"-->
+<!--            android:orientation="vertical">-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Giá mua:"
-                tools:ignore="HardcodedText" />
+<!--            <EditText-->
+<!--                android:id="@+id/etFilmQuantity"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="10sp"-->
+<!--                android:hint="Nhập số lượng cho thuê"-->
+<!--                tools:ignore="HardcodedText" />-->
 
-            <EditText
-                android:id="@+id/etFilmPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
-                android:hint="Nhập giá mua"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10sp"-->
+<!--            android:background="@drawable/border_layout_film"-->
+<!--            android:orientation="vertical">-->
 
-            <Spinner
-                android:id="@+id/spnFilmLong"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/type" />
-        </LinearLayout>
+<!--            <Spinner-->
+<!--                android:id="@+id/spnFilmLong"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:entries="@array/type"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -186,8 +175,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
-                android:hint="Nhập độ dài"
+                android:textSize="20dp"
+                android:hint="Nhập độ dài phim"
                 tools:ignore="HardcodedText" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -201,6 +192,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chọn ảnh đại diện của phim:"
+                android:textColor="@color/black"
+                android:textSize="20dp"
                 tools:ignore="HardcodedText" />
 
             <ImageView
@@ -225,6 +218,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chọn video trailer phim:"
+                android:textColor="@color/black"
+                android:textSize="20dp"
                 tools:ignore="HardcodedText" />
 
             <VideoView
@@ -252,6 +247,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chọn full video phim:"
+                android:textSize="20dp"
+                android:textColor="@color/black"
                 tools:ignore="HardcodedText" />
 
             <VideoView
@@ -260,26 +257,13 @@
                 android:layout_height="300dp" />
 
             <Button
-                android:id="@+id/btnSelectVideo"
+                android:id="@+id/btnSelectFullVideo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Tải Video Trailer lên"
+                android:text="Tải Full Video"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
-
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginBottom="10sp"-->
-        <!--            android:background="@drawable/border_layout_film"-->
-        <!--            android:orientation="vertical">-->
-        <!---->
-        <!--            <LinearLayout-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="match_parent"-->
-        <!--                android:gravity="center"-->
-        <!--                android:orientation="horizontal">-->
 
         <Button
             android:id="@+id/btnFilmUpload"
@@ -289,9 +273,6 @@
             android:backgroundTint="@color/purple_700"
             android:text="Đăng sản phẩm"
             tools:ignore="HardcodedText" />
-
-        <!--            </LinearLayout>-->
-        <!--        </LinearLayout>-->
 
     </LinearLayout>
 

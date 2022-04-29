@@ -36,18 +36,18 @@ class SellerHomeActivity : AppCompatActivity() {
     // set up Navigation Item of BottomNavigationView
     @SuppressLint("ResourceAsColor")
     private fun initBottomNavigationView(){
-        setCurrentFragment(HomeFragment())
+//        setCurrentFragment(HomeFragment())
 //        bnvSellerHomeActivity!!.setBackgroundColor(R.color.seller_menu)
         bnvSellerHomeActivity!!.setOnNavigationItemSelectedListener{
 
             // Get item ID of Menu item to set Fragment to FrameLayout
             when(it.itemId){
-
-                R.id.menu_item_seller_home -> {
-                    setCurrentFragment(HomeFragment())
-//                    setCurrentFragment(SellerHomeFragment())
-                    supportActionBar!!.title = "Trang chủ"
-                }
+//
+//                R.id.menu_item_seller_home -> {
+//                    setCurrentFragment(HomeFragment())
+////                    setCurrentFragment(SellerHomeFragment())
+//                    supportActionBar!!.title = "Trang chủ"
+//                }
 
                 R.id.menu_item_seller_management -> {
                     setCurrentFragment(SellerManagementFragment())

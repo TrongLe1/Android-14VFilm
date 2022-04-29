@@ -22,6 +22,7 @@ import java.util.*
 import java.util.logging.SimpleFormatter
 
 class InfoActivity : AppCompatActivity() {
+
     var ETEmail: EditText? = null
     var ETName: EditText? = null
     var ETAddress: EditText? = null

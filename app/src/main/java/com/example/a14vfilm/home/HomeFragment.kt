@@ -2,15 +2,11 @@ package com.example.a14vfilm.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.ImageSlider
@@ -18,7 +14,6 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.FilmAdapter
-import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.Film
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
