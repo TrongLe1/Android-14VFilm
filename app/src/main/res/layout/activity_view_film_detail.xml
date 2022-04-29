@@ -165,19 +165,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Số người đánh giá"
+            android:text="Số người đánh giá: "
             app:layout_constraintStart_toEndOf="@+id/viewfilmdetail_RBDRate"
             app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDName" />
 
-        <Button
-            android:id="@+id/viewfilmdetail_deleteFilm"
-            android:layout_width="306dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="9dp"
-            android:text="Xóa phim"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDDescription" />
+<!--        <Button-->
+<!--            android:id="@+id/viewfilmdetail_deleteFilm"-->
+<!--            android:layout_width="306dp"-->
+<!--            android:layout_height="58dp"-->
+<!--            android:layout_marginTop="9dp"-->
+<!--            android:text="Xóa phim"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDDescription" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

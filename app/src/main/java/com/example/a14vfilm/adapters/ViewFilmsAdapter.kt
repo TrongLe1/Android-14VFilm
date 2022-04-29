@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 import java.util.*
 import kotlin.coroutines.coroutineContext
 
@@ -52,6 +53,7 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
             intent.putExtra("filmImage", film.image)
             intent.putExtra("filmTrailer", film.trailer)
             intent.putExtra("filmGenre", film.genre.joinToString())
+            intent.putExtra("filmRateCount", film.rateTime)
             it.context.startActivity(intent)
         }
 
@@ -95,16 +97,20 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
     }
 
     inner class ViewHolder(listItemView: View): RecyclerView.ViewHolder(listItemView){
-        val tvFilmName = listItemView.findViewById<TextView>(R.id.viewfilmadmin_tvFilmName)!!
-        val rbFilmRate = listItemView.findViewById<RatingBar>(R.id.viewfilmadmin_rbFilmRate)!!
-        val tvFilmDescription = listItemView.findViewById<TextView>(R.id.viewfilmadmin_tvFilmDescription)!!
-        val tbFilmStatus = listItemView.findViewById<ToggleButton>(R.id.viewfilmadmin_btnStatus)!!
+        val tvFilmName = listItemView.findViewById<TextView>(R.id.viewfilmadmin_tvFilmName)
+        val rbFilmRate = listItemView.findViewById<RatingBar>(R.id.viewfilmadmin_rbFilmRate)
+        val tvFilmDescription = listItemView.findViewById<TextView>(R.id.viewfilmadmin_tvFilmDescription)
+        val tbFilmStatus = listItemView.findViewById<ToggleButton>(R.id.viewfilmadmin_btnStatus)
+        val ivFilmImage = listItemView.findViewById<ImageView>(R.id.viewfilmadmin_imageView)
 
         fun bindView(film: Film) {
             tvFilmName.text = film.name
             rbFilmRate.rating = film.rate
             tvFilmDescription.text = film.description
 
+            //set image for film
+            if (film.image != "")
+                Picasso.get().load(film.image).resize(150, 150).into(ivFilmImage)
             //set text for account status
 
 //            if (film.status == "On"){
