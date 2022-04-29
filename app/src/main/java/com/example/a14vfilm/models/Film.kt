@@ -20,7 +20,7 @@ data class Film (
     var country: String,
     var datePublished: Date,
     var price: Int,
-    var quantity: Int,
+    //var quantity: Int,
     var dateUpdated: Date,
     var image: String,
     var trailer: String,

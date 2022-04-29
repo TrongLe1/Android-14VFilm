@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
 
         val newFilm = ArrayList<Film>()
         val RVNew = view.findViewById<RecyclerView>(R.id.RVNew)
+        val newAdapter = FilmAdapter(newFilm)
         RVNew.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
         RVNew.addItemDecoration(LayoutMarginDecoration(1, 20))
         val query = ref.orderByChild("dateUpdated").limitToLast(5)
@@ -69,21 +70,27 @@ class HomeFragment : Fragment() {
                     val country = singleSnapshot.child("country").getValue<String>()
                     val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
                     val price = singleSnapshot.child("price").getValue<Int>()
-                    val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                    //val quantity = singleSnapshot.child("quantity").getValue<Int>()
                     val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
                     val image = singleSnapshot.child("image").getValue<String>()
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                    newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
+                    newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
                 }
-                RVNew.adapter = FilmAdapter(newFilm)
+                RVNew.adapter = newAdapter
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+        newAdapter.onItemClick = {film ->
+            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            intent.putExtra("Film", film)
+            startActivity(intent)
+        }
 
         val hotFilm = ArrayList<Film>()
         val RVHot = view.findViewById<RecyclerView>(R.id.RVHot)
+        val hotAdapter = FilmAdapter(hotFilm)
         RVHot.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
         RVHot.addItemDecoration(LayoutMarginDecoration(1, 20))
         val sQuery = ref.orderByChild("rate").limitToLast(5)
@@ -99,19 +106,23 @@ class HomeFragment : Fragment() {
                     val country = singleSnapshot.child("country").getValue<String>()
                     val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
                     val price = singleSnapshot.child("price").getValue<Int>()
-                    val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                    //val quantity = singleSnapshot.child("quantity").getValue<Int>()
                     val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
                     val image = singleSnapshot.child("image").getValue<String>()
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                    hotFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, quantity!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
+                    hotFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
                 }
-                RVHot.adapter = FilmAdapter(hotFilm)
+                RVHot.adapter = hotAdapter
             }
             override fun onCancelled(error: DatabaseError) {}
         })
-
+        hotAdapter.onItemClick = {film ->
+            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            intent.putExtra("Film", film)
+            startActivity(intent)
+        }
 
         /*
         val RVHome = view.findViewById<RecyclerView>(R.id.RVHome)

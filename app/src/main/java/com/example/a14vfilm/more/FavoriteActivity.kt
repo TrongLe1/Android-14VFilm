@@ -57,7 +57,7 @@ class FavoriteActivity : AppCompatActivity() {
                                 val datePublished =
                                     singleSnapshot.child("datePublished").getValue<Date>()
                                 val price = singleSnapshot.child("price").getValue<Int>()
-                                val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                                //val quantity = singleSnapshot.child("quantity").getValue<Int>()
                                 val dateUpdated =
                                     singleSnapshot.child("dateUpdated").getValue<Date>()
                                 val image = singleSnapshot.child("image").getValue<String>()
@@ -78,7 +78,6 @@ class FavoriteActivity : AppCompatActivity() {
                                             country!!,
                                             datePublished!!,
                                             price!!,
-                                            quantity!!,
                                             dateUpdated!!,
                                             image!!,
                                             trailer!!,

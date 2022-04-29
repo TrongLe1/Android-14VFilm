@@ -1,9 +1,7 @@
 package com.example.a14vfilm.more
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +41,7 @@ class MoreFragment : Fragment() {
         val BTNLogout = view.findViewById<Button>(R.id.BTNLogout)
         val TVInfo = view.findViewById<TextView>(R.id.TVInfo)
         val TVFavourite = view.findViewById<TextView>(R.id.TVFavourite)
-        val TVAboutUs = view.findViewById<TextView>(R.id.TVAboutUs)
+        val TVChangePass = view.findViewById<TextView>(R.id.TVChangePass)
         val IVAvatar = view.findViewById<ImageView>(R.id.IVAvatar)
 
         if (UserLogin.info == null) {
@@ -53,14 +51,19 @@ class MoreFragment : Fragment() {
             TVFavourite.isEnabled = false
             TVFavourite.isClickable = false
             TVFavourite.visibility = View.GONE
-            TVAboutUs.isEnabled = false
-            TVAboutUs.isClickable = false
-            TVAboutUs.visibility = View.GONE
+            TVChangePass.isEnabled = false
+            TVChangePass.isClickable = false
+            TVChangePass.visibility = View.GONE
             BTNLogout.isEnabled = false
             BTNLogout.isClickable = false
             BTNLogout.visibility = View.GONE
         }
         else {
+            if (UserLogin.info!!.password == "") {
+                TVChangePass.isEnabled = false
+                TVChangePass.isClickable = false
+                TVChangePass.visibility = View.GONE
+            }
             BTNLogin.text = "Xin chào, " + UserLogin.info!!.name
             BTNLogin.isClickable = false
             BTNLogin.isEnabled = false
@@ -116,6 +119,10 @@ class MoreFragment : Fragment() {
             startActivity(intent)
         }
         //Log.i("d", UserLogin.info.toString())
+        TVChangePass.setOnClickListener {
+            val intent = Intent(requireActivity(), ChangePasswordActivity::class.java)
+            startActivity(intent)
+        }
 
         return view
     }

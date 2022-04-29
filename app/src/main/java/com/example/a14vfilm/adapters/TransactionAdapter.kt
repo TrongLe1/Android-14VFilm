@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 
 class TransactionAdapter(private val transList: MutableList<TransactionExtend>, private val type: String): RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
@@ -66,7 +67,8 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
         holder.TVName.text = transList[position].name
         holder.TVRentDate.text = "Ngày thuê: " + SimpleDateFormat("dd/MM/yyy").format(transList[position].transaction.rentDate)
         holder.TVExpiredDate.text = "Ngày hết hạn: " + SimpleDateFormat("dd/MM/yyy").format(transList[position].transaction.expired)
-        holder.TVPrice.text = "Thành tiền: " + transList[position].transaction.total.toString() + " VNĐ"
+        val formatter = DecimalFormat("#,###")
+        holder.TVPrice.text = "Thành tiền: " + formatter.format(transList[position].transaction.total) + " VNĐ"
         if (transList[position].transaction.rate == -1F) {
             holder.BTNRate.setOnClickListener {
                 val dialog = Dialog(context!!)

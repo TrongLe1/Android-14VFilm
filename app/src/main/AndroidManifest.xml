@@ -22,6 +22,9 @@
             android:name=".adminActivity.ViewGenreActivity"
             android:exported="false" />
         <activity
+            android:name=".more.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".home.SearchActivity"
             android:exported="false" />
         <activity

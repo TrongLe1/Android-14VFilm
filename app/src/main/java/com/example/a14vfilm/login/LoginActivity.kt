@@ -90,7 +90,7 @@ class LoginActivity : AppCompatActivity() {
                                         UserLogin.info = User(
                                             id!!,
                                             email!!,
-                                            "",
+                                            "password",
                                             name!!,
                                             address!!,
                                             phone!!,

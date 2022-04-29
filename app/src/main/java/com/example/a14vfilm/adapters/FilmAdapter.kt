@@ -1,7 +1,5 @@
 package com.example.a14vfilm.adapters
 
-import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +7,8 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
-import java.net.URL
-import android.graphics.Bitmap
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 
 
 class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmAdapter.ViewHolder>(), Filterable {
@@ -48,7 +45,8 @@ class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmA
         //val rate = filterListResult[position].like * 1.0 / (filterListResult[position].like * 1.0 + filterListResult[position].dislike * 1.0) * 100.0
         //holder.TVRate.text = String.format("%.1f", rate) + "/100"
         holder.RBRate.rating = filterListResult[position].rate
-        holder.TVPrice.text = filterListResult[position].price.toString() + " VNĐ/Ngày"
+        val formatter = DecimalFormat("#,###")
+        holder.TVPrice.text = formatter.format(filterListResult[position].price) + " VNĐ/Ngày"
     }
 
     override fun getItemCount(): Int {

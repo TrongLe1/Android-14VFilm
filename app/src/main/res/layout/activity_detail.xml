@@ -89,13 +89,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/TVDPrice"
             app:layout_constraintTop_toBottomOf="@+id/RBDRate" />
 
         <TextView
             android:id="@+id/TVDTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:drawableLeft="@drawable/line"
@@ -104,6 +103,9 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="Mô tả"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +146,7 @@
 
         <TextView
             android:id="@+id/TVDTrailer"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:drawableLeft="@drawable/line"
@@ -153,6 +155,9 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="Trailer"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -161,7 +166,7 @@
 
         <TextView
             android:id="@+id/TVDInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:drawableLeft="@drawable/line"
@@ -170,6 +175,9 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="Thông tin phim"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -196,14 +204,14 @@
             app:layout_constraintTop_toBottomOf="@+id/TVDTrailer" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/BTNFavourite"
+            android:id="@+id/BTNComment"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/white"
-            android:drawableLeft="@drawable/white_heart"
+            android:drawableLeft="@drawable/comment"
             android:paddingLeft="10dp"
-            android:text="Yêu thích"
+            android:text="Nhận xét"
             android:textColor="@android:color/holo_red_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -211,7 +219,7 @@
 
         <Button
             android:id="@+id/BTNBuy"
-            android:layout_width="200dp"
+            android:layout_width="193dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/dark_blue"
@@ -222,14 +230,14 @@
             app:layout_constraintTop_toBottomOf="@+id/YTPVTrailer" />
 
         <ImageButton
-            android:id="@+id/IBComment"
+            android:id="@+id/IBFavorite"
             android:layout_width="20dp"
             android:layout_height="19dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:scaleType="centerCrop"
-            android:src="@drawable/comment"
+            android:src="@drawable/white_heart"
             app:layout_constraintStart_toEndOf="@+id/TVRateCount"
             app:layout_constraintTop_toBottomOf="@+id/TVDName" />
 

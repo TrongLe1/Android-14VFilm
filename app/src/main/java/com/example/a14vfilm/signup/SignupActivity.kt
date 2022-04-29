@@ -40,6 +40,7 @@ class SignupActivity : AppCompatActivity() {
             when {
                 TextUtils.isEmpty(ETEmail!!.text.toString()) -> Toast.makeText(this, "Email không thể bỏ trống", Toast.LENGTH_SHORT).show()
                 TextUtils.isEmpty(ETPassword!!.text.toString()) -> Toast.makeText(this, "Mật khẩu không thể bỏ trống", Toast.LENGTH_SHORT).show()
+                !ETPassword!!.text.toString().contains("[0-9]".toRegex()) || ETPassword!!.text.toString().length < 8 -> Toast.makeText(this, "Mật khẩu không đạt yêu cầu", Toast.LENGTH_SHORT).show()
                 TextUtils.isEmpty(ETPassword2!!.text.toString()) -> Toast.makeText(this, "Vui lòng nhập lại mật khẩu", Toast.LENGTH_SHORT).show()
                 TextUtils.isEmpty(ETName!!.text.toString()) -> Toast.makeText(this, "Vui lòng nhập tên người dùng", Toast.LENGTH_SHORT).show()
                 !isEmailValid(ETEmail!!.text.toString()) -> Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show()

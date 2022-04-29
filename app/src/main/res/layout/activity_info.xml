@@ -61,13 +61,15 @@
 
         <EditText
             android:id="@+id/ETDIEmail"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:enabled="false"
             android:inputType="textEmailAddress"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVDIEmail" />
 
@@ -85,13 +87,14 @@
 
         <EditText
             android:id="@+id/ETDIName"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVDIName" />
 
@@ -109,12 +112,14 @@
 
         <EditText
             android:id="@+id/ETDIPhone"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="phone"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVDIPhone" />
 
@@ -132,13 +137,14 @@
 
         <EditText
             android:id="@+id/ETDIAddress"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVDIAddress" />
 
@@ -146,13 +152,12 @@
             android:id="@+id/BTNSubmit"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="Lưu thông tin"
             android:textAllCaps="false"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ETDIAddress" />
     </androidx.constraintlayout.widget.ConstraintLayout>

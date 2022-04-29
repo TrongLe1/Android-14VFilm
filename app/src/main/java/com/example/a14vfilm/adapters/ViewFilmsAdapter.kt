@@ -48,7 +48,7 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
             intent.putExtra("filmCountry", film.country)
             intent.putExtra("filmDatePublished", film.datePublished)
             intent.putExtra("filmPrice", film.price)
-            intent.putExtra("filmQuantity", film.quantity)
+            //intent.putExtra("filmQuantity", film.quantity)
             intent.putExtra("filmDateUpdated", film.dateUpdated)
             intent.putExtra("filmImage", film.image)
             intent.putExtra("filmTrailer", film.trailer)

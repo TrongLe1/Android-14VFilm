@@ -1,10 +1,8 @@
 package com.example.a14vfilm.detail
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import com.example.a14vfilm.R
 import com.example.a14vfilm.login.LoginActivity
@@ -20,11 +18,11 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.*
 
 class DetailActivity : AppCompatActivity() {
-    var BTNFav: Button? = null
+    var BTNComment: Button? = null
     var BTNOrder: Button? = null
 
     var IVDetail: ImageView? = null
@@ -41,7 +39,7 @@ class DetailActivity : AppCompatActivity() {
     var TVRateCount: TextView? = null
     var YTPVTrailer: YouTubePlayerView? = null
     var quantity: Int? = null
-    var IBComment: ImageButton? = null
+    var IBFavorite: ImageButton? = null
 
     private val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val ref = FirebaseDatabase.getInstance(url).getReference("favorite")
@@ -63,12 +61,12 @@ class DetailActivity : AppCompatActivity() {
         TVDescription = findViewById(R.id.TVDDescription)
         TVRateCount = findViewById(R.id.TVRateCount)
         YTPVTrailer = findViewById(R.id.YTPVTrailer)
-        BTNFav = findViewById(R.id.BTNFavourite)
+        BTNComment = findViewById(R.id.BTNComment)
         BTNOrder = findViewById(R.id.BTNBuy)
-        IBComment = findViewById(R.id.IBComment)
+        IBFavorite = findViewById(R.id.IBFavorite)
         lifecycle.addObserver(YTPVTrailer!!)
         val film = intent.getSerializableExtra("Film") as Film
-        quantity = film.quantity
+        //quantity = film.quantity
         if (film.image != "")
             Picasso.get().load(film.image).resize(400, 360).into(IVDetail)
         TVName!!.text = film.name
@@ -80,9 +78,11 @@ class DetailActivity : AppCompatActivity() {
         TVLength!!.text = "Thời lượng: " + film.length.toString() + " phút"
         TVCountry!!.text = "Nước sản xuất: " + film.country
         TVDatePublished!!.text = "Ngày công chiếu: " + SimpleDateFormat("dd/MM/yyy").format(film.datePublished)
-        TVPrice!!.text = "Giá thuê: " + film.price.toString() + " VNĐ/Ngày"
+        val formatter = DecimalFormat("#,###")
+        TVPrice!!.text = "Giá thuê: " + formatter.format(film.price) + " VNĐ/Ngày"
         //TVQuantity!!.text = "| Số lượng: " + film.quantity.toString() + " cái"
 
+        /*
         if (film.quantity > 0)
             TVQuantity!!.text = "| Tình trạng: Còn hàng"
         else {
@@ -90,6 +90,8 @@ class DetailActivity : AppCompatActivity() {
             BTNOrder!!.isClickable = false
             BTNOrder!!.isEnabled = false
         }
+
+        */
 
         TVDescription!!.text = film.description
         YTPVTrailer!!.addYouTubePlayerListener(object: AbstractYouTubePlayerListener() {
@@ -100,17 +102,13 @@ class DetailActivity : AppCompatActivity() {
         })
         if (UserLogin.info != null) {
             val query = ref.orderByChild("user").equalTo(UserLogin.info!!.id)
-            query.addValueEventListener(object : ValueEventListener {
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (singleSnapshot in snapshot.children) {
                         val id = singleSnapshot.child("film").getValue<String>()
                         if (film.id == id) {
                             checkFav = true
-                            BTNFav!!.setCompoundDrawablesWithIntrinsicBounds(
-                                BTNFav!!.context.resources.getDrawable(
-                                    R.drawable.red_heart
-                                ), null, null, null
-                            )
+                            IBFavorite!!.setImageDrawable(resources.getDrawable(R.drawable.red_heart))
                         }
                     }
                 }
@@ -129,13 +127,14 @@ class DetailActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        BTNFav!!.setOnClickListener {
+        IBFavorite!!.setOnClickListener {
             if(UserLogin.info != null) {
                 if (!checkFav) {
                     val fav = Favorite(ref.push().key!!, UserLogin.info!!.id, film.id)
                     ref.child(fav.id).setValue(fav)
                     Toast.makeText(this, "Đã thêm vào yêu thích", Toast.LENGTH_SHORT).show()
-                    BTNFav!!.setCompoundDrawablesWithIntrinsicBounds(BTNFav!!.context.resources.getDrawable(R.drawable.red_heart), null, null, null)
+                    //BTNFav!!.setCompoundDrawablesWithIntrinsicBounds(BTNFav!!.context.resources.getDrawable(R.drawable.red_heart), null, null, null)
+                    IBFavorite!!.setImageDrawable(resources.getDrawable(R.drawable.red_heart))
                     checkFav = true
                 }
                 else {
@@ -150,7 +149,8 @@ class DetailActivity : AppCompatActivity() {
                         override fun onCancelled(error: DatabaseError) {}
                     })
                     Toast.makeText(this, "Đã xóa khỏi yêu thích", Toast.LENGTH_SHORT).show()
-                    BTNFav!!.setCompoundDrawablesWithIntrinsicBounds(BTNFav!!.context.resources.getDrawable(R.drawable.white_heart), null, null, null)
+                    //BTNFav!!.setCompoundDrawablesWithIntrinsicBounds(BTNFav!!.context.resources.getDrawable(R.drawable.white_heart), null, null, null)
+                    IBFavorite!!.setImageDrawable(resources.getDrawable(R.drawable.white_heart))
                     checkFav = false
                 }
             }
@@ -160,7 +160,7 @@ class DetailActivity : AppCompatActivity() {
             }
         }
 
-        IBComment!!.setOnClickListener {
+        BTNComment!!.setOnClickListener {
             val intent = Intent(this, CommentActivity::class.java)
             intent.putExtra("ID", film.id)
             startActivity(intent)

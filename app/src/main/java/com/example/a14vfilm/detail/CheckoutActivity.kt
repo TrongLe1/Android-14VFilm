@@ -33,6 +33,7 @@ import com.paypal.checkout.order.Order
 import com.paypal.checkout.order.PurchaseUnit
 import com.paypal.checkout.paymentbutton.PayPalButton
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.ZoneId
@@ -99,7 +100,9 @@ class CheckoutActivity : AppCompatActivity() {
         if (film.image != "")
             Picasso.get().load(film.image).resize(200, 200).into(IVCheckout)
         TVCName!!.text = film.name
-        TVCPrice!!.text = film.price.toString() + " VNĐ"
+        val formatter = DecimalFormat("#,###")
+
+        TVCPrice!!.text = formatter.format(film.price) + " VNĐ"
         TVCRentDate!!.text = SimpleDateFormat("dd/MM/yyy").format(rentDate)
         //BTNCheckout!!.isEnabled = false
         //BTNCheckout!!.isClickable = false
@@ -118,8 +121,8 @@ class CheckoutActivity : AppCompatActivity() {
                 diff /= 60
                 diff /= 24
                 price = film.price * (diff + 1)
-                TVCTotal!!.text = price.toString() + " VNĐ"
-                if (price!! > 0 && TVCNameCus!!.text != "" && TVCAddress!!.text != "" && TVCPhone!!.text != "") {
+                TVCTotal!!.text = formatter.format(price) + " VNĐ"
+                if (price!! > 0 /*&& TVCNameCus!!.text != "" && TVCAddress!!.text != "" && TVCPhone!!.text != ""*/) {
                     //BTNCheckout!!.isEnabled = true
                     //BTNCheckout!!.isClickable = true
                     if (TVCPayment!!.text != "Chọn hình thức thanh toán")
@@ -136,7 +139,7 @@ class CheckoutActivity : AppCompatActivity() {
         TVCNameCus!!.text = UserLogin.info!!.name
         TVCPhone!!.text = UserLogin.info!!.phone
         TVCAddress!!.text = UserLogin.info!!.address
-        TVCTotal!!.text = film.price.toString() + " VNĐ"
+        TVCTotal!!.text = formatter.format(film.price) + " VNĐ"
         BTNCheckout!!.setOnClickListener {
             /*
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"

@@ -80,15 +80,15 @@
         app:layout_constraintTop_toBottomOf="@+id/TVInfo" />
 
     <Button
-        android:id="@+id/TVAboutUs"
+        android:id="@+id/TVChangePass"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/about"
+        android:drawableLeft="@drawable/password"
         android:drawableRight="@drawable/arrow"
         android:gravity="left|center_vertical"
-        android:text="Về chúng tôi"
+        android:text="Đổi mật khẩu"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="14sp"

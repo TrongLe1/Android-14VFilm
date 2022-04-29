@@ -128,7 +128,7 @@ class LibraryFragment : Fragment() {
                         val country = singleSnapshot.child("country").getValue<String>()
                         val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
                         val price = singleSnapshot.child("price").getValue<Int>()
-                        val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                        //val quantity = singleSnapshot.child("quantity").getValue<Int>()
                         val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
                         val image = singleSnapshot.child("image").getValue<String>()
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
@@ -148,7 +148,6 @@ class LibraryFragment : Fragment() {
                                             country!!,
                                             datePublished!!,
                                             price!!,
-                                            quantity!!,
                                             dateUpdated!!,
                                             image!!,
                                             trailer!!,
@@ -169,7 +168,6 @@ class LibraryFragment : Fragment() {
                                             country!!,
                                             datePublished!!,
                                             price!!,
-                                            quantity!!,
                                             dateUpdated!!,
                                             image!!,
                                             trailer!!,
@@ -200,7 +198,7 @@ class LibraryFragment : Fragment() {
                         val country = singleSnapshot.child("country").getValue<String>()
                         val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
                         val price = singleSnapshot.child("price").getValue<Int>()
-                        val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                        //val quantity = singleSnapshot.child("quantity").getValue<Int>()
                         val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
                         val image = singleSnapshot.child("image").getValue<String>()
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
@@ -219,7 +217,6 @@ class LibraryFragment : Fragment() {
                                         country!!,
                                         datePublished!!,
                                         price!!,
-                                        quantity!!,
                                         dateUpdated!!,
                                         image!!,
                                         trailer!!,
@@ -249,7 +246,7 @@ class LibraryFragment : Fragment() {
                         val country = singleSnapshot.child("country").getValue<String>()
                         val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
                         val price = singleSnapshot.child("price").getValue<Int>()
-                        val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                        //val quantity = singleSnapshot.child("quantity").getValue<Int>()
                         val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
                         val image = singleSnapshot.child("image").getValue<String>()
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
@@ -268,7 +265,6 @@ class LibraryFragment : Fragment() {
                                         country!!,
                                         datePublished!!,
                                         price!!,
-                                        quantity!!,
                                         dateUpdated!!,
                                         image!!,
                                         trailer!!,

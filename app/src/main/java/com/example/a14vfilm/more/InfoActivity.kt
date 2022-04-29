@@ -62,6 +62,7 @@ class InfoActivity : AppCompatActivity() {
                 ref.child(UserLogin.info!!.id).child("name").setValue(ETName!!.text.toString())
                 ref.child(UserLogin.info!!.id).child("address").setValue(ETAddress!!.text.toString())
                 ref.child(UserLogin.info!!.id).child("phone").setValue(ETPhone!!.text.toString())
+                Toast.makeText(this, "Cập nhập thông tin thành công", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
@@ -94,8 +95,8 @@ class InfoActivity : AppCompatActivity() {
                         Toast.makeText(this, "Cập nhật ảnh đại diện thành công", Toast.LENGTH_SHORT).show()
                     }
                 }.addOnProgressListener {
-                    Toast.makeText(this, "Đang cập nhật ảnh đại diện", Toast.LENGTH_SHORT).show()
-                    BTNSubmit!!.isClickable = false
+                    //Toast.makeText(this, "Đang cập nhật ảnh đại diện", Toast.LENGTH_SHORT).show()
+                    //BTNSubmit!!.isClickable = false
                 }
             }
         }

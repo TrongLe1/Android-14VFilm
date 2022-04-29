@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 
 class FavoriteAdapter (private val filmList: MutableList<FavoriteExtend>): RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
     var onItemClick: ((Film) -> Unit)? = null
@@ -49,7 +50,8 @@ class FavoriteAdapter (private val filmList: MutableList<FavoriteExtend>): Recyc
             Picasso.get().load(filmList[position].film.image).resize(130, 130).into(holder.IVFavorite)
         holder.TVFavorite.text = filmList[position].film.name
         holder.RBFavorite.rating = filmList[position].film.rate
-        holder.TVFavPrice.text = filmList[position].film.price.toString() + " VNĐ/Ngày"
+        val formatter = DecimalFormat("#,###")
+        holder.TVFavPrice.text = formatter.format(filmList[position].film.price) + " VNĐ/Ngày"
         holder.IBFavorite.setOnClickListener {
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
             val ref = FirebaseDatabase.getInstance(url).getReference("favorite")
