@@ -1,14 +1,22 @@
 package com.example.a14vfilm.adminActivity
 
+import android.app.Activity
 import android.content.Intent
+import android.media.Image
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.User
+import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
+import java.util.*
 
 class AddNewUserAdminActivity : AppCompatActivity() {
 
@@ -17,6 +25,11 @@ class AddNewUserAdminActivity : AppCompatActivity() {
     private var etUserPassword: EditText? = null
     private var etUserAddress: EditText? = null
     private var etUserPhone: EditText? = null
+    private var ivAvatar: ImageView? = null
+    var imageUri: Uri? = null
+    var userImage: String? = null
+    val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    val ref = FirebaseDatabase.getInstance(url).getReference("user")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +40,7 @@ class AddNewUserAdminActivity : AppCompatActivity() {
         etUserPassword = findViewById(R.id.addnewuseradminactivity_etUserPassword)
         etUserAddress = findViewById(R.id.addnewuseradminactivity_etUserAddress)
         etUserPhone = findViewById(R.id.addnewuseradminactivity_etUserPhone)
+        ivAvatar = findViewById(R.id.addnewuseradminactivity_IVDIAvatar)
 
 
         findViewById<Button>(R.id.addnewuseradminactivity_addUser).setOnClickListener{
@@ -36,14 +50,43 @@ class AddNewUserAdminActivity : AppCompatActivity() {
             var userAddress = etUserAddress!!.text.toString()
             var userPhone = etUserPhone!!.text.toString()
 
-            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-            val ref = FirebaseDatabase.getInstance(url).getReference("user")
-            val user = User(ref.push().key!!, userEmail, userPassword,userName, userAddress, userPhone, "",true)
+
+            val user = User(ref.push().key!!, userEmail, userPassword,userName, userAddress, userPhone, userImage!!,true)
             ref.child(user.id).setValue(user)
             Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ViewUserActivity::class.java)
             startActivity(intent)
         }
 
+        ivAvatar!!.setOnClickListener {
+            selectImage()
+        }
+
+    }
+
+    private fun selectImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, 100)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
+            imageUri = data?.data!!
+            if (imageUri != null) {
+                val fileName = UUID.randomUUID().toString() + ".jpg"
+                val storageRef = FirebaseStorage.getInstance("gs://vfilm-83cf4.appspot.com").reference.child("avatars/$fileName")
+                storageRef.putFile(imageUri!!).addOnSuccessListener { taskSnapshot ->
+                    taskSnapshot.storage.downloadUrl.addOnSuccessListener {
+                        userImage = it.toString()
+
+                        Picasso.get().load(imageUri).resize(150, 150).into (ivAvatar)
+                    }
+                }.addOnProgressListener {
+                }
+            }
+        }
     }
 }

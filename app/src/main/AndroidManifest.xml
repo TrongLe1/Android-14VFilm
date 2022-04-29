@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.14VFilm">
         <activity
+            android:name=".adminActivity.ViewGenreDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adminActivity.ViewGenreActivity"
+            android:exported="false" />
+        <activity
             android:name=".home.SearchActivity"
             android:exported="false" />
         <activity
