@@ -1,5 +1,6 @@
 package com.example.a14vfilm.adminActivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.ViewGenreAdapter
 import com.example.a14vfilm.models.Genre
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -49,6 +51,13 @@ class ViewGenreActivity : AppCompatActivity() {
         })
         rcvViewGenre!!.adapter = adapterViewGenre
 
+        //Add new genre floating button
+        findViewById<FloatingActionButton>(R.id.viewgenre_fltbtnAddNewGenre).setOnClickListener{
+            val intent = Intent(this, AddNewGenreAdminActivity::class.java)
+            startActivity(intent)
+        }
+
+        //search bar
         genreSearch!!.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false

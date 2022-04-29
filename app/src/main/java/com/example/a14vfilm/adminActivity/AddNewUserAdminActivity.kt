@@ -27,7 +27,7 @@ class AddNewUserAdminActivity : AppCompatActivity() {
     private var etUserPhone: EditText? = null
     private var ivAvatar: ImageView? = null
     var imageUri: Uri? = null
-    var userImage: String? = null
+    var userImage: String = ""
     val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
     val ref = FirebaseDatabase.getInstance(url).getReference("user")
 
@@ -54,8 +54,9 @@ class AddNewUserAdminActivity : AppCompatActivity() {
             val user = User(ref.push().key!!, userEmail, userPassword,userName, userAddress, userPhone, userImage!!,true)
             ref.child(user.id).setValue(user)
             Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, ViewUserActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, ViewUserActivity::class.java)
+//            startActivity(intent)
+            finish()
         }
 
         ivAvatar!!.setOnClickListener {

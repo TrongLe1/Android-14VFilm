@@ -32,20 +32,34 @@
         />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewgenre_rcvGenreManagement"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/border_layout_film"
-        tools:ignore="MissingConstraints,ScrollViewSize"
-        tools:layout_editor_absoluteX="-16dp">
+        android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/viewgenre_rcvGenreManagement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border_layout_film"
+            tools:ignore="MissingConstraints,ScrollViewSize"
+            tools:layout_editor_absoluteX="-16dp">
 
+        </androidx.recyclerview.widget.RecyclerView>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/viewgenre_fltbtnAddNewGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </RelativeLayout>
 
 
 </LinearLayout>

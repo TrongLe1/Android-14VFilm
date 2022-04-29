@@ -42,7 +42,7 @@ class ViewFilmDetailActivity : AppCompatActivity() {
         val filmName = intent.getStringExtra("filmName").toString()
         val filmRating = intent.getFloatExtra("filmRate", 4f)
         val filmPrice = intent.getIntExtra("filmPrice", 0).toString()
-        val filmQuantity = intent.getIntExtra("filmQuantity", 0).toString()
+        //val filmQuantity = intent.getIntExtra("filmQuantity", 0).toString()
         val filmType = intent.getStringExtra("filmGenre").toString()
         val filmLength = intent.getIntExtra("filmLength", 0).toString()
         val filmCountry = intent.getStringExtra("filmCountry").toString()
@@ -55,7 +55,7 @@ class ViewFilmDetailActivity : AppCompatActivity() {
         tvFilmName!!.text = filmName
         tvFilmRating!!.rating = filmRating
         tvFilmPrice!!.append(filmPrice + " đồng")
-        tvFilmQuantity!!.append(filmQuantity)
+        //tvFilmQuantity!!.append(filmQuantity)
         tvFilmType!!.append(filmType)
         tvFilmLength!!.append(filmLength + " phút")
         tvFilmCountry!!.append(filmCountry)
@@ -97,7 +97,7 @@ class ViewFilmDetailActivity : AppCompatActivity() {
           tvFilmName = findViewById(R.id.viewfilmdetail_TVDName)
           tvFilmRating = findViewById(R.id.viewfilmdetail_RBDRate)
           tvFilmPrice = findViewById(R.id.viewfilmdetail_TVDPrice)
-          tvFilmQuantity = findViewById(R.id.viewfilmdetail_TVDQuantity)
+          //tvFilmQuantity = findViewById(R.id.viewfilmdetail_TVDQuantity)
           tvFilmType = findViewById(R.id.viewfilmdetail_TVDType)
           tvFilmLength = findViewById(R.id.viewfilmdetail_TVDLength)
           tvFilmCountry = findViewById(R.id.viewfilmdetail_TVDCountry)

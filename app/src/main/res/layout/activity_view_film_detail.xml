@@ -83,15 +83,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_TVDRate" />
 
-        <TextView
-            android:id="@+id/viewfilmdetail_TVDQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Số lượng: "
-            app:layout_constraintStart_toEndOf="@+id/viewfilmdetail_TVDPrice"
-            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_RBDRate" />
+<!--        <TextView-->
+<!--            android:id="@+id/viewfilmdetail_TVDQuantity"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Số lượng: "-->
+<!--            app:layout_constraintStart_toEndOf="@+id/viewfilmdetail_TVDPrice"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/viewfilmdetail_RBDRate" />-->
 
         <TextView
             android:id="@+id/TVDTitle"

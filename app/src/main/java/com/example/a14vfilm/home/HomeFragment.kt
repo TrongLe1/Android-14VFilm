@@ -14,6 +14,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.FilmAdapter
+import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.Film
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
