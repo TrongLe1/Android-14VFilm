@@ -11,9 +11,11 @@ import com.example.a14vfilm.library.LibraryFragment
 import com.example.a14vfilm.login.LoginActivity
 import com.example.a14vfilm.models.User
 import com.example.a14vfilm.models.UserLogin
+import com.example.a14vfilm.more.InfoActivity
 import com.example.a14vfilm.more.MoreFragment
 import com.example.a14vfilm.order.OrderFragment
 import com.example.a14vfilm.sellerActivity.SellerHomeActivity
+import com.example.a14vfilm.sellerActivity.SellerUploadFilmActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -34,54 +36,54 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //val mPrefs = getPreferences(MODE_PRIVATE)
-        val sharedPreference =  getSharedPreferences("UserLogin", Context.MODE_PRIVATE)
-        val json = sharedPreference.getString("user", "")
-        val gson = Gson()
-        val user = gson.fromJson(json, User::class.java)
-
-        mAuth = FirebaseAuth.getInstance()
-        val currentUser = mAuth!!.currentUser
-        if (currentUser != null) {
-            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-            val ref = FirebaseDatabase.getInstance(url).getReference("user")
-            val query = ref.orderByChild("id").equalTo(currentUser!!.uid)
-            query.addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (singleSnapshot in snapshot.children) {
-                        val id = singleSnapshot.child("id").getValue<String>()
-                        val email = singleSnapshot.child("email").getValue<String>()
-                        val name = singleSnapshot.child("name").getValue<String>()
-                        val address = singleSnapshot.child("address").getValue<String>()
-                        val phone = singleSnapshot.child("phone").getValue<String>()
-                        val image = singleSnapshot.child("image").getValue<String>()
-                        val status = singleSnapshot.child("status").getValue<Boolean>()
-                        UserLogin.info = User(
-                            id!!,
-                            email!!,
-                            "",
-                            name!!,
-                            address!!,
-                            phone!!,
-                            image!!,
-                            status!!
-                        )
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {}
-            })
-            userUI()
-        }
-        else if (json != "") {
-            UserLogin.info = user
-            userUI()
-        }
-        else {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivityForResult(intent, 102)
-        }
-        supportActionBar!!.hide()
-        //change()
+//        //val mPrefs = getPreferences(MODE_PRIVATE)
+//        val sharedPreference =  getSharedPreferences("UserLogin", MODE_PRIVATE)
+//        val json = sharedPreference.getString("user", "")
+//        val gson = Gson()
+//        val user = gson.fromJson(json, User::class.java)
+//
+//        mAuth = FirebaseAuth.getInstance()
+//        val currentUser = mAuth!!.currentUser
+//        if (currentUser != null) {
+//            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+//            val ref = FirebaseDatabase.getInstance(url).getReference("user")
+//            val query = ref.orderByChild("id").equalTo(currentUser!!.uid)
+//            query.addValueEventListener(object: ValueEventListener {
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    for (singleSnapshot in snapshot.children) {
+//                        val id = singleSnapshot.child("id").getValue<String>()
+//                        val email = singleSnapshot.child("email").getValue<String>()
+//                        val name = singleSnapshot.child("name").getValue<String>()
+//                        val address = singleSnapshot.child("address").getValue<String>()
+//                        val phone = singleSnapshot.child("phone").getValue<String>()
+//                        val image = singleSnapshot.child("image").getValue<String>()
+//                        val status = singleSnapshot.child("status").getValue<Boolean>()
+//                        UserLogin.info = User(
+//                            id!!,
+//                            email!!,
+//                            "",
+//                            name!!,
+//                            address!!,
+//                            phone!!,
+//                            image!!,
+//                            status!!
+//                        )
+//                    }
+//                }
+//                override fun onCancelled(error: DatabaseError) {}
+//            })
+//            userUI()
+//        }
+//        else if (json != "") {
+//            UserLogin.info = user
+//            userUI()
+//        }
+//        else {
+//            val intent = Intent(this, LoginActivity::class.java)
+//            startActivityForResult(intent, 102)
+//        }
+//        supportActionBar!!.hide()
+        change()
 
     }
 

@@ -20,9 +20,11 @@ class FilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmA
         val RBRate = listItemView.findViewById<RatingBar>(R.id.RBRate)!!
         val TVPrice = listItemView.findViewById<TextView>(R.id.TVPrice)!!
         val IVFilm = listItemView.findViewById<ImageView>(R.id.IVFilm)!!
+
         init {
             listItemView.setOnClickListener { onItemClick?.invoke(filterListResult[adapterPosition]) }
         }
+
     }
 
     var filterListResult: List<Film>

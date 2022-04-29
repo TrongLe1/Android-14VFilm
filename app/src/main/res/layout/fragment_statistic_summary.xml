@@ -8,14 +8,33 @@
     android:overScrollMode="never"
     tools:context=".sellerActivity.StatisticSummaryFragment">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:ignore="ScrollViewSize">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
 
-        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tổng kết số lượng"
+            android:textSize="20dp"
+            android:background="@color/seller_menu"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,98 +142,133 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="Biểu đồ thống kê"
+            android:textSize="20dp"
+            android:background="@color/seller_menu"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/seller_menu">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
 
-                <TextView
-                    android:id="@+id/tvStatisticJoiner"
-                    android:layout_width="327dp"
-                    android:layout_height="31dp"
-                    android:backgroundTint="#FAC99E"
-                    android:gravity="left"
-                    android:text="Người tham gia từng phim"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:paddingStart="10sp"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ibStatisticJoiner"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
+        <!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
 
-                <ImageButton
-                    android:id="@+id/ibStatisticJoiner"
-                    android:layout_width="81dp"
-                    android:layout_height="38dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/tvStatisticJoiner"
-                    android:background="@color/seller_menu"
-                    android:src="@drawable/ic_action_name"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/seller_menu">-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvStatisticJoiner"-->
+<!--                    android:layout_width="327dp"-->
+<!--                    android:layout_height="31dp"-->
+<!--                    android:backgroundTint="#FAC99E"-->
+<!--                    android:gravity="left"-->
+<!--                    android:text="Người tham gia từng phim"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:paddingStart="10sp"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/ibStatisticJoiner"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/ibStatisticJoiner"-->
+<!--                    android:layout_width="81dp"-->
+<!--                    android:layout_height="38dp"-->
+<!--                    android:layout_alignParentTop="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_toRightOf="@+id/tvStatisticJoiner"-->
+<!--                    android:background="@color/seller_menu"-->
+<!--                    android:src="@drawable/ic_action_name"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/seller_menu">
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-                <TextView
-                    android:id="@+id/tvStatisticRevenue"
-                    android:layout_width="327dp"
-                    android:layout_height="31dp"
-                    android:backgroundTint="#FAC99E"
-                    android:gravity="left"
-                    android:text="Doanh thu từng phim"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:paddingStart="10sp"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ibStatisticRevenue"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent" />-->
 
-                <ImageButton
-                    android:id="@+id/ibStatisticRevenue"
-                    android:layout_width="81dp"
-                    android:layout_height="38dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/tvStatisticRevenue"
-                    android:background="@color/seller_menu"
-                    android:src="@drawable/ic_action_name"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/seller_menu">-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvStatisticRevenue"-->
+<!--                    android:layout_width="327dp"-->
+<!--                    android:layout_height="31dp"-->
+<!--                    android:backgroundTint="#FAC99E"-->
+<!--                    android:gravity="left"-->
+<!--                    android:text="Doanh thu từng phim"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:paddingStart="10sp"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/ibStatisticRevenue"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/ibStatisticRevenue"-->
+<!--                    android:layout_width="81dp"-->
+<!--                    android:layout_height="38dp"-->
+<!--                    android:layout_alignParentTop="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_toRightOf="@+id/tvStatisticRevenue"-->
+<!--                    android:background="@color/seller_menu"-->
+<!--                    android:src="@drawable/ic_action_name"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />-->
 
-        </LinearLayout>
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent" />-->
+
+<!--        </LinearLayout>-->
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
     </LinearLayout>
 </ScrollView>

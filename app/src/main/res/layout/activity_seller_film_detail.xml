@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".detail.DetailActivity">
+
+        <ImageView
+            android:id="@+id/ivSellerFilmDetailImage"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/more_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="Tên phim"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvFilmSellerDetailType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="Đánh giá:" />
+
+            <RatingBar
+                android:id="@+id/rbFilmSellerDetailRate"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:progressTint="#ffdf00" />
+
+            <TextView
+                android:id="@+id/tvFilmSellerDetailRateCount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:text="TextView" />
+
+            <ImageButton
+                android:id="@+id/IBFavorite"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/white_heart" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailRentPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="Giá thuê: 124,124 VND/Ngày"
+            android:textColor="@android:color/holo_red_light"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailInfo"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="12dp"
+            android:drawableLeft="@drawable/line"
+            android:drawableRight="@drawable/line"
+            android:gravity="center"
+            android:paddingLeft="48dp"
+            android:paddingRight="48dp"
+            android:text="Thông tin phim"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,RtlCompat,RtlHardcoded,UseCompatTextViewDrawableXml" />
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="Thể loại: Kinh dị, Tình cảm, Tâm lý"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="Thời lượng: 124 phút" />
+
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailDatePublished"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="Quốc gia: Âu - Mỹ"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="Ngày công chiếu: 29/04/2022"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:drawableLeft="@drawable/line"
+            android:drawableRight="@drawable/line"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="96dp"
+            android:paddingRight="96dp"
+            android:text="Mô tả"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="RtlCompat,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tvFilmSellerDetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Mô tả phim..." />
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvFilmSellerDetailRate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Đánh giá: "-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvFilmSellerDetailName" />-->
+
+
+        <TextView
+            android:id="@+id/rbFilmSellerDetailTrailer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:drawableLeft="@drawable/line"
+            android:drawableRight="@drawable/line"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="96dp"
+            android:paddingRight="96dp"
+            android:text="Trailer"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="RtlCompat" />
+
+
+        <VideoView
+            android:id="@+id/YTPVTrailer"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="12dp"/>
+
+        <TextView
+            android:id="@+id/rbFilmSellerDetailFull"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:drawableLeft="@drawable/line"
+            android:drawableRight="@drawable/line"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="72dp"
+            android:paddingRight="72dp"
+            android:text="Video đầy đủ"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="RtlCompat" />
+
+
+        <VideoView
+            android:id="@+id/YTPVFull"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="12dp"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:drawableLeft="@drawable/line"
+            android:drawableRight="@drawable/line"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="72dp"
+            android:paddingRight="72dp"
+            android:text="Danh sách người thuê"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="RtlCompat" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/BTNComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/comment"
+                android:text="Sửa thông tin"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@android:color/holo_red_light" />
+
+            <Button
+                android:id="@+id/BTNBuy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="42dp"
+                android:paddingEnd="42dp"
+                android:background="@color/dark_blue"
+                android:drawableLeft="@drawable/bill"
+                android:text="Xóa phim"
+                android:layout_marginLeft="44dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+

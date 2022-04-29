@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.a14vfilm.R
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.XAxis
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +26,14 @@ class StatisticSummaryFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    /*Init variable of component view of fragment*/
+    private lateinit var lineChart: LineChart
+    private lateinit var pieChart: PieChart
+    private lateinit var barChart: BarChart
+
+    /*Init variable to data array display to Chart*/
+//    private var
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +47,80 @@ class StatisticSummaryFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistic_summary, container, false)
+        val view = inflater.inflate(R.layout.fragment_statistic_summary, container, false)
+
+        lineChart = view.findViewById(R.id.lineChart)
+        pieChart = view.findViewById(R.id.pieChart)
+
+        initViewComponent()
+        return view
+    }
+
+    private fun initViewComponent() {
+
+        /*set up chart*/
+        initLineChart()
+        initPieChart()
+        initBarChart()
+
+        /*passing data to chart*/
+        setDataToLineChart()
+        setDataToPieChart()
+        setDataToBarChart()
+
+    }
+
+    private fun setDataToBarChart() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setDataToPieChart() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setDataToLineChart() {
+        TODO("Not yet implemented")
+    }
+
+    private fun initLineChart(){
+
+//        /*hide grid lines*/
+//        lineChart.axisLeft.setDrawGridLines(false)
+//        val xAxis: XAxis = lineChart.xAxis
+//        xAxis.setDrawGridLines(false)
+//        xAxis.setDrawAxisLine(false)
+//
+//        //remove right y-axis
+//        lineChart.axisRight.isEnabled = false
+//
+//        //remove legend
+//        lineChart.legend.isEnabled = false
+//
+//
+//        //remove description label
+//        lineChart.description.isEnabled = false
+//
+//
+//        //add animation
+//        lineChart.animateX(1000, Easing.EaseInSine)
+//
+//        // to draw label on xAxis
+//        xAxis.position = XAxis.XAxisPosition.BOTTOM_INSIDE
+//        xAxis.valueFormatter = MyAxisFormatter()
+//        xAxis.setDrawLabels(true)
+//        xAxis.granularity = 1f
+//        xAxis.labelRotationAngle = +90f
+
+
+
+    }
+
+    private fun initPieChart(){
+
+    }
+
+    private fun initBarChart(){
+
     }
 
     companion object {

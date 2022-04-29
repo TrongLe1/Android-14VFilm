@@ -24,7 +24,6 @@ class SellerHomeActivity : AppCompatActivity() {
         initComponent()
         initBottomNavigationView()
 
-
     }
 
     // set up component with ID
@@ -36,7 +35,7 @@ class SellerHomeActivity : AppCompatActivity() {
     // set up Navigation Item of BottomNavigationView
     @SuppressLint("ResourceAsColor")
     private fun initBottomNavigationView(){
-//        setCurrentFragment(HomeFragment())
+        setCurrentFragment(HomeFragment())
 //        bnvSellerHomeActivity!!.setBackgroundColor(R.color.seller_menu)
         bnvSellerHomeActivity!!.setOnNavigationItemSelectedListener{
 

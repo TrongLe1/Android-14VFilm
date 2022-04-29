@@ -50,7 +50,6 @@ class SellerStatisticFragment : Fragment() {
             when (position) {
                 0 -> {
                     tab.text = "Tổng kết"
-
                 }
                 1 -> tab.text = "Người tham gia"
                 2 -> tab.text = "Doanh thu"

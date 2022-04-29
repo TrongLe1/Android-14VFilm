@@ -24,8 +24,10 @@ data class Film (
     var dateUpdated: Date,
     var image: String,
     var trailer: String,
+//    var video: String,
     var genre: ArrayList<String>,
-    var rateTime: Int
+    var rateTime: Int,
+//    var status: Boolean
 ) : Serializable{
 //    override fun toString(): String {
 //        return "$id $name $datePublished"

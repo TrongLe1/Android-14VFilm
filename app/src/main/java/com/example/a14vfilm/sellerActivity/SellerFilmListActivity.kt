@@ -1,8 +1,8 @@
 package com.example.a14vfilm.sellerActivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
@@ -25,6 +25,12 @@ class SellerFilmListActivity : AppCompatActivity() {
     /*init variable for view*/
     private var rcvListManagement: RecyclerView? = null
 
+    private val ref = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL).getReference("film")
+
+    /*init array save film*/
+    private val newFilm = ArrayList<Film>()
+    private val adapter = CurrentSellerAdapter(newFilm)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller_film_list)
@@ -35,9 +41,7 @@ class SellerFilmListActivity : AppCompatActivity() {
         setSupportActionBarActivity()
 
         /*accessing to get film data of Firebase Database*/
-        val ref = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL).getReference("film")
 
-        val newFilm = ArrayList<Film>()
         rcvListManagement!!.layoutManager = LinearLayoutManager(this)
         rcvListManagement!!.addItemDecoration(LayoutMarginDecoration(1, 20))
 //        val query = ref.orderByChild("dateUpdated").limitToLast(5)
@@ -53,7 +57,7 @@ class SellerFilmListActivity : AppCompatActivity() {
                     val country = singleSnapshot.child("country").getValue<String>()
                     val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
                     val price = singleSnapshot.child("price").getValue<Int>()
-                    val quantity = singleSnapshot.child("quantity").getValue<Int>()
+//                    val quantity = singleSnapshot.child("quantity").getValue<Int>()
                     val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
                     val image = singleSnapshot.child("image").getValue<String>()
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
@@ -61,11 +65,18 @@ class SellerFilmListActivity : AppCompatActivity() {
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                     newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
                 }
-                rcvListManagement!!.adapter = CurrentSellerAdapter(newFilm)
+
+                rcvListManagement!!.adapter = adapter
+
             }
             override fun onCancelled(error: DatabaseError) {}
         })
 
+        adapter.onItemClick = { film ->
+            val intent = Intent(this, SellerFilmDetailActivity::class.java)
+            intent.putExtra("Film", film)
+            startActivity(intent)
+        }
 
     }
 

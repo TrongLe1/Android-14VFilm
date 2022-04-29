@@ -1,6 +1,7 @@
 package com.example.a14vfilm.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.sellerActivity.SellerFilmDetailActivity
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,9 +27,9 @@ class CurrentSellerAdapter (private val filmList: List<Film>): RecyclerView.Adap
     override fun onBindViewHolder(holder: CurrentSellerAdapter.ViewHolder, position: Int) {
         val film = filterListResult[position]
         holder.bindView(film)
-        holder.itemView.setOnClickListener{
-            onItemClick?.invoke(film)
-        }
+//        holder.itemView.setOnClickListener{
+//            onItemClick?.invoke(film)
+//        }
 
     }
 
@@ -44,6 +46,7 @@ class CurrentSellerAdapter (private val filmList: List<Film>): RecyclerView.Adap
         TODO("Not yet implemented")
     }
 
+
     inner class ViewHolder(listItemView: View): RecyclerView.ViewHolder(listItemView){
 
         val tvName = listItemView.findViewById<TextView>(R.id.tvSellerFilmNameItem)
@@ -51,22 +54,25 @@ class CurrentSellerAdapter (private val filmList: List<Film>): RecyclerView.Adap
         val tvCountry = listItemView.findViewById<TextView>(R.id.tvSellerFilmCountry)
         val tvDescription = listItemView.findViewById<TextView>(R.id.tvSellerFilmDescriptionItem)
         val tvImage = listItemView.findViewById<ImageView>(R.id.ivSellerFilmImageItem)
+        val btnDetail = listItemView.findViewById<Button>(R.id.btnItemDetail)
 
         @SuppressLint("SetTextI18n", "SimpleDateFormat")
         @RequiresApi(Build.VERSION_CODES.O)
         fun bindView(film: Film) {
+
             tvName.text = film.name
-
-
-
-//            val date =
-            Log.e("pppp", SimpleDateFormat("dd MM yyyy").format(film.datePublished.time).toString())
-
-            tvPublished.text = film.datePublished.toString().format("dd/mm/yyyy")
-
+            tvPublished.text = "Ngày đăng: ${SimpleDateFormat("dd MM yyyy").format(film.datePublished.time)}"
             tvCountry.text = "Quốc gia: ${film.country}"
             tvDescription.text = film.description
             Picasso.get().load(film.image).resize(130, 130).into(tvImage)
+            btnDetail.setOnClickListener {
+                onItemClick?.invoke(film)
+            }
+
+            tvImage.setOnClickListener{
+                onItemClick?.invoke(film)
+            }
+
         }
 
 
