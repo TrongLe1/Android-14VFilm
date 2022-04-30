@@ -1,7 +1,9 @@
 package com.example.a14vfilm.adapters
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.TransactionExtend
+import com.example.a14vfilm.order.PlayVideoActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -42,7 +45,7 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
         return ViewHolder(contactView)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         /*
         if (type == "ordered") {
             holder.BTNRate.visibility = View.GONE
@@ -162,7 +165,9 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
             notifyItemRangeChanged(position, transList.size)
 
             */
-
+            val intent = Intent(context, PlayVideoActivity::class.java)
+            intent.putExtra("video", transList[position].video)
+            context!!.startActivity(intent)
         }
     }
 

@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         val newAdapter = FilmAdapter(newFilm)
         RVNew.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
         RVNew.addItemDecoration(LayoutMarginDecoration(1, 20))
-        val query = ref.orderByChild("dateUpdated").limitToLast(5)
+        val query = ref.orderByChild("dateUpdated").limitToFirst(5)
         query.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {

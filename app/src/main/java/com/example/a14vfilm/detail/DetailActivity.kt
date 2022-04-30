@@ -37,9 +37,10 @@ class DetailActivity : AppCompatActivity() {
     var TVQuantity: TextView? = null
     var TVDescription: TextView? = null
     var TVRateCount: TextView? = null
-    var YTPVTrailer: YouTubePlayerView? = null
+    var YTPVTrailer: VideoView? = null
     var quantity: Int? = null
     var IBFavorite: ImageButton? = null
+    var trailerMediaController: MediaController? = null
 
     private val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val ref = FirebaseDatabase.getInstance(url).getReference("favorite")
@@ -64,7 +65,7 @@ class DetailActivity : AppCompatActivity() {
         BTNComment = findViewById(R.id.BTNComment)
         BTNOrder = findViewById(R.id.BTNBuy)
         IBFavorite = findViewById(R.id.IBFavorite)
-        lifecycle.addObserver(YTPVTrailer!!)
+        //lifecycle.addObserver(YTPVTrailer!!)
         val film = intent.getSerializableExtra("Film") as Film
         //quantity = film.quantity
         if (film.image != "")
@@ -94,12 +95,25 @@ class DetailActivity : AppCompatActivity() {
         */
 
         TVDescription!!.text = film.description
+
+        trailerMediaController = MediaController(this)
+        trailerMediaController!!.setAnchorView(YTPVTrailer)
+        YTPVTrailer!!.setMediaController(trailerMediaController)
+        YTPVTrailer!!.setVideoPath(film.trailer)
+        YTPVTrailer!!.requestFocus()
+        YTPVTrailer!!.setOnPreparedListener {
+            YTPVTrailer!!.pause()
+        }
+
+        /*
         YTPVTrailer!!.addYouTubePlayerListener(object: AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 super.onReady(youTubePlayer)
                 youTubePlayer.cueVideo(film.trailer, 0F);
             }
         })
+
+        */
         if (UserLogin.info != null) {
             val query = ref.orderByChild("user").equalTo(UserLogin.info!!.id)
             query.addListenerForSingleValueEvent(object : ValueEventListener {
