@@ -65,27 +65,31 @@ class FavoriteActivity : AppCompatActivity() {
                                 val genreList =
                                     singleSnapshot.child("genre").getValue<ArrayList<String>>()
                                 val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                                favList.add(
-                                    FavoriteExtend(
-                                        Favorite(favId!!, user!!, film!!),
-                                        Film(
-                                            id!!,
-                                            seller!!,
-                                            name!!,
-                                            description!!,
-                                            rate!!,
-                                            length!!,
-                                            country!!,
-                                            datePublished!!,
-                                            price!!,
-                                            dateUpdated!!,
-                                            image!!,
-                                            trailer!!,
-                                            genreList!!,
-                                            rateTime!!
+                                val status = singleSnapshot.child("status").getValue<Boolean>()
+                                if (status == true)
+                                    favList.add(
+                                        FavoriteExtend(
+                                            Favorite(favId!!, user!!, film!!),
+                                            Film(
+                                                id!!,
+                                                seller!!,
+                                                name!!,
+                                                description!!,
+                                                rate!!,
+                                                length!!,
+                                                country!!,
+                                                datePublished!!,
+                                                price!!,
+                                                dateUpdated!!,
+                                                image!!,
+                                                trailer!!,
+                                                genreList!!,
+                                                rateTime!!,
+                                                status!!,
+                                                ""
+                                            )
                                         )
                                     )
-                                )
                             }
                             RVFavorite!!.adapter = favoriteAdapter
                         }

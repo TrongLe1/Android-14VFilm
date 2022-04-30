@@ -79,7 +79,8 @@ class ExpiredFragment : Fragment() {
                                     for (singleSnapshot in snapshot.children) {
                                         val name = singleSnapshot.child("name").getValue<String>()
                                         val image = singleSnapshot.child("image").getValue<String>()
-                                        transList.add(TransactionExtend(trans, name!!, image!!))
+                                        val video = singleSnapshot.child("video").getValue<String>()
+                                        transList.add(TransactionExtend(trans, name!!, image!!, video!!))
                                     }
                                     RVExpired.adapter = TransactionAdapter(transList, "expired")
                                 }

@@ -53,13 +53,16 @@ class SearchActivity : AppCompatActivity() {
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                    filmList.add(Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
+                    val status = singleSnapshot.child("status").getValue<Boolean>()
+                    if (status == true)
+                        filmList.add(Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
                 RVSearch!!.adapter = searchAdapter
             }
             override fun onCancelled(error: DatabaseError) {}
         })
         RVSearch!!.layoutManager = GridLayoutManager(this, 2)
+        RVSearch!!.addItemDecoration(LayoutMarginDecoration(2, 30))
 
         ACTVSearch!!.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}

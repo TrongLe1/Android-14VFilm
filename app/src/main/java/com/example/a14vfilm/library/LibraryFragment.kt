@@ -134,47 +134,54 @@ class LibraryFragment : Fragment() {
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
                         val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
                         for (i in 0 until genreList!!.size) {
                             if (genreList[i] == genre) {
                                 if (sort == "Giá tăng dần") {
-                                    filmList.add(
-                                        Film(
-                                            id!!,
-                                            seller!!,
-                                            name!!,
-                                            description!!,
-                                            rate!!,
-                                            length!!,
-                                            country!!,
-                                            datePublished!!,
-                                            price!!,
-                                            dateUpdated!!,
-                                            image!!,
-                                            trailer!!,
-                                            genreList,
-                                            rateTime!!
+                                    if (status == true)
+                                        filmList.add(
+                                            Film(
+                                                id!!,
+                                                seller!!,
+                                                name!!,
+                                                description!!,
+                                                rate!!,
+                                                length!!,
+                                                country!!,
+                                                datePublished!!,
+                                                price!!,
+                                                dateUpdated!!,
+                                                image!!,
+                                                trailer!!,
+                                                genreList,
+                                                rateTime!!,
+                                                status!!,
+                                                ""
+                                            )
                                         )
-                                    )
                                 }
                                 if (sort == "Giá giảm dần") {
-                                    filmList.add(0,
-                                        Film(
-                                            id!!,
-                                            seller!!,
-                                            name!!,
-                                            description!!,
-                                            rate!!,
-                                            length!!,
-                                            country!!,
-                                            datePublished!!,
-                                            price!!,
-                                            dateUpdated!!,
-                                            image!!,
-                                            trailer!!,
-                                            genreList,
-                                            rateTime!!
+                                    if (status == true)
+                                        filmList.add(0,
+                                            Film(
+                                                id!!,
+                                                seller!!,
+                                                name!!,
+                                                description!!,
+                                                rate!!,
+                                                length!!,
+                                                country!!,
+                                                datePublished!!,
+                                                price!!,
+                                                dateUpdated!!,
+                                                image!!,
+                                                trailer!!,
+                                                genreList,
+                                                rateTime!!,
+                                                status!!,
+                                                ""
+                                            )
                                         )
-                                    )
                                 }
                             }
                         }
@@ -204,26 +211,30 @@ class LibraryFragment : Fragment() {
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
                         val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
                         for (i in 0 until genreList!!.size) {
                             if (genreList[i] == genre) {
-                                filmList.add(
-                                    Film(
-                                        id!!,
-                                        seller!!,
-                                        name!!,
-                                        description!!,
-                                        rate!!,
-                                        length!!,
-                                        country!!,
-                                        datePublished!!,
-                                        price!!,
-                                        dateUpdated!!,
-                                        image!!,
-                                        trailer!!,
-                                        genreList,
-                                        rateTime!!
+                                if (status == true)
+                                    filmList.add(
+                                        Film(
+                                            id!!,
+                                            seller!!,
+                                            name!!,
+                                            description!!,
+                                            rate!!,
+                                            length!!,
+                                            country!!,
+                                            datePublished!!,
+                                            price!!,
+                                            dateUpdated!!,
+                                            image!!,
+                                            trailer!!,
+                                            genreList,
+                                            rateTime!!,
+                                            status!!,
+                                            ""
+                                        )
                                     )
-                                )
                             }
                         }
                     }
@@ -252,26 +263,30 @@ class LibraryFragment : Fragment() {
                         val trailer = singleSnapshot.child("trailer").getValue<String>()
                         val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
                         for (i in 0 until genreList!!.size) {
                             if (genreList[i] == genre) {
-                                filmList.add(0,
-                                    Film(
-                                        id!!,
-                                        seller!!,
-                                        name!!,
-                                        description!!,
-                                        rate!!,
-                                        length!!,
-                                        country!!,
-                                        datePublished!!,
-                                        price!!,
-                                        dateUpdated!!,
-                                        image!!,
-                                        trailer!!,
-                                        genreList,
-                                        rateTime!!
+                                if (status == true)
+                                    filmList.add(0,
+                                        Film(
+                                            id!!,
+                                            seller!!,
+                                            name!!,
+                                            description!!,
+                                            rate!!,
+                                            length!!,
+                                            country!!,
+                                            datePublished!!,
+                                            price!!,
+                                            dateUpdated!!,
+                                            image!!,
+                                            trailer!!,
+                                            genreList,
+                                            rateTime!!,
+                                            status!!,
+                                            ""
+                                        )
                                     )
-                                )
                             }
                         }
                     }

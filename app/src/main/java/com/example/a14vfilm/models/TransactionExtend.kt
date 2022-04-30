@@ -4,4 +4,5 @@ data class TransactionExtend (
     var transaction: Transaction,
     var name: String,
     var image: String,
+    var video: String
 )

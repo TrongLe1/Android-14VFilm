@@ -36,54 +36,60 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        //val mPrefs = getPreferences(MODE_PRIVATE)
-//        val sharedPreference =  getSharedPreferences("UserLogin", MODE_PRIVATE)
-//        val json = sharedPreference.getString("user", "")
-//        val gson = Gson()
-//        val user = gson.fromJson(json, User::class.java)
-//
-//        mAuth = FirebaseAuth.getInstance()
-//        val currentUser = mAuth!!.currentUser
-//        if (currentUser != null) {
-//            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-//            val ref = FirebaseDatabase.getInstance(url).getReference("user")
-//            val query = ref.orderByChild("id").equalTo(currentUser!!.uid)
-//            query.addValueEventListener(object: ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    for (singleSnapshot in snapshot.children) {
-//                        val id = singleSnapshot.child("id").getValue<String>()
-//                        val email = singleSnapshot.child("email").getValue<String>()
-//                        val name = singleSnapshot.child("name").getValue<String>()
-//                        val address = singleSnapshot.child("address").getValue<String>()
-//                        val phone = singleSnapshot.child("phone").getValue<String>()
-//                        val image = singleSnapshot.child("image").getValue<String>()
-//                        val status = singleSnapshot.child("status").getValue<Boolean>()
-//                        UserLogin.info = User(
-//                            id!!,
-//                            email!!,
-//                            "",
-//                            name!!,
-//                            address!!,
-//                            phone!!,
-//                            image!!,
-//                            status!!
-//                        )
-//                    }
-//                }
-//                override fun onCancelled(error: DatabaseError) {}
-//            })
-//            userUI()
-//        }
-//        else if (json != "") {
-//            UserLogin.info = user
-//            userUI()
-//        }
-//        else {
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivityForResult(intent, 102)
-//        }
-//        supportActionBar!!.hide()
-        change()
+        val sharedPreference = getSharedPreferences("UserLogin", MODE_PRIVATE)
+        val json = sharedPreference.getString("user", "")
+        val gson = Gson()
+        val user = gson.fromJson(json, User::class.java)
+
+        mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth!!.currentUser
+        if (currentUser != null) {
+            val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+            val ref = FirebaseDatabase.getInstance(url).getReference("user")
+            val query = ref.orderByChild("id").equalTo(currentUser!!.uid)
+            query.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (singleSnapshot in snapshot.children) {
+                        val id = singleSnapshot.child("id").getValue<String>()
+                        val email = singleSnapshot.child("email").getValue<String>()
+                        val name = singleSnapshot.child("name").getValue<String>()
+                        val address = singleSnapshot.child("address").getValue<String>()
+                        val phone = singleSnapshot.child("phone").getValue<String>()
+                        val image = singleSnapshot.child("image").getValue<String>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
+                        val role = singleSnapshot.child("role").getValue<Int>()
+                        UserLogin.info = User(
+                            id!!,
+                            email!!,
+                            "",
+                            name!!,
+                            address!!,
+                            phone!!,
+                            image!!,
+                            status!!,
+                            role!!
+                        )
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+            userUI()
+        }
+        else if (json != "") {
+            UserLogin.info = user
+            if (UserLogin.info!!.role == 0)
+                userUI()
+            else if (UserLogin.info!!.role == 1) {
+                finish()
+                sellerUI()
+            }
+        }
+        else {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivityForResult(intent, 102)
+        }
+        supportActionBar!!.hide()
+        //change()
 
     }
 
@@ -93,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
 
-    private fun change(){
+    private fun sellerUI(){
         val intent: Intent = Intent(this, SellerHomeActivity::class.java)
         //val intent: Intent = Intent(this, FilmDetailActivity::class.java)
         startActivity(intent)
@@ -101,7 +107,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        userUI()
+        if (UserLogin.info!!.role == 0)
+            userUI()
+        else if (UserLogin.info!!.role == 1) {
+            finish()
+            sellerUI()
+        }
     }
 
     private fun userUI(){

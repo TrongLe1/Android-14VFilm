@@ -23,7 +23,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVSearch"
-        android:layout_width="360dp"
+        android:layout_width="340dp"
         android:layout_height="640dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"

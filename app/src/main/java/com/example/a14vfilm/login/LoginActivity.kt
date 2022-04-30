@@ -84,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
                                 val phone = singleSnapshot.child("phone").getValue<String>()
                                 val image = singleSnapshot.child("image").getValue<String>()
                                 val status = singleSnapshot.child("status").getValue<Boolean>()
+                                val role = singleSnapshot.child("role").getValue<Int>()
                                 val result = BCrypt.verifyer().verify(ETPassword!!.text.toString().toCharArray(), password)
                                 if (result.verified) {
                                     if (status!!) {
@@ -95,7 +96,8 @@ class LoginActivity : AppCompatActivity() {
                                             address!!,
                                             phone!!,
                                             image!!,
-                                            status
+                                            status,
+                                            role!!
                                         )
                                         val gson = Gson()
                                         val json = gson.toJson(UserLogin.info)
@@ -161,7 +163,8 @@ class LoginActivity : AppCompatActivity() {
                                     "",
                                     "",
                                     currentUser.photoUrl.toString(),
-                                    true
+                                    true,
+                                    0
                                 )
                                 ref.child(currentUser.uid).setValue(temp)
                             }
@@ -183,7 +186,8 @@ class LoginActivity : AppCompatActivity() {
                                             address!!,
                                             phone!!,
                                             image!!,
-                                            status
+                                            status,
+                                            0
                                         )
                                         finish()
                                     }

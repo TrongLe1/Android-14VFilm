@@ -84,10 +84,10 @@
         android:textColor="@android:color/holo_red_light"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BTNCancel" />
+        app:layout_constraintTop_toBottomOf="@+id/BTNPlay" />
 
     <Button
-        android:id="@+id/BTNCancel"
+        android:id="@+id/BTNPlay"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_marginTop="8dp"

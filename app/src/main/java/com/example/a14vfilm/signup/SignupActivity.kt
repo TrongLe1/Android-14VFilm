@@ -56,7 +56,7 @@ class SignupActivity : AppCompatActivity() {
                             else {
                                 val hash = BCrypt.withDefaults().hashToString(10, ETPassword!!.text.toString().toCharArray())
                                 val user = User(ref.push().key!!, ETEmail!!.text.toString(),
-                                    hash.toString(), ETName!!.text.toString(), "", "", "", true)
+                                    hash.toString(), ETName!!.text.toString(), "", "", "", true, 0)
                                 ref.child(user.id).setValue(user)
                                 finish()
                             }

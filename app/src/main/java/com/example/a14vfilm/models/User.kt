@@ -10,7 +10,8 @@ data class User(
     var address: String,
     var phone: String,
     var image: String,
-    var status: Boolean
+    var status: Boolean,
+    var role: Int //0 buyer, 1 seller, 2 admin
 )
 
 /*

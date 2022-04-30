@@ -72,7 +72,9 @@ class HomeFragment : Fragment() {
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                    newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
+                    val status = singleSnapshot.child("status").getValue<Boolean>()
+                    if (status == true)
+                        newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
                 RVNew.adapter = newAdapter
             }
@@ -108,7 +110,9 @@ class HomeFragment : Fragment() {
                     val trailer = singleSnapshot.child("trailer").getValue<String>()
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                    hotFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!))
+                    val status = singleSnapshot.child("status").getValue<Boolean>()
+                    if (status == true)
+                        hotFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
                 RVHot.adapter = hotAdapter
             }

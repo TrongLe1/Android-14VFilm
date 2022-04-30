@@ -99,7 +99,8 @@ class OrderedFragment : Fragment() {
                                     for (singleSnapshot in snapshot.children) {
                                         val name = singleSnapshot.child("name").getValue<String>()
                                         val image = singleSnapshot.child("image").getValue<String>()
-                                        transList.add(TransactionExtend(trans, name!!, image!!))
+                                        val video = singleSnapshot.child("video").getValue<String>()
+                                        transList.add(TransactionExtend(trans, name!!, image!!, video!!))
                                     }
                                     RVOrdered.adapter = TransactionAdapter(transList, "ordered")
                                 }

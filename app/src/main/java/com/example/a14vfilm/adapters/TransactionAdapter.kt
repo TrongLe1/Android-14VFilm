@@ -1,12 +1,9 @@
 package com.example.a14vfilm.adapters
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +11,7 @@ import android.view.Window
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
-import com.example.a14vfilm.models.Transaction
 import com.example.a14vfilm.models.TransactionExtend
-import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -35,7 +30,7 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
         val TVRentDate = listItemView.findViewById<TextView>(R.id.TVRentDate)!!
         val TVExpiredDate = listItemView.findViewById<TextView>(R.id.TVExpiredDate)!!
         val TVPrice = listItemView.findViewById<TextView>(R.id.TVPriceTrans)!!
-        val BTNCancel = listItemView.findViewById<Button>(R.id.BTNCancel)!!
+        val BTNPlay = listItemView.findViewById<Button>(R.id.BTNPlay)!!
         val BTNRate = listItemView.findViewById<Button>(R.id.BTNRate)!!
         val RBTrans = listItemView.findViewById<RatingBar>(R.id.RBRateTrans)!!
     }
@@ -60,7 +55,7 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
         */
 
         if (type == "expired")
-            holder.BTNCancel.visibility = View.GONE
+            holder.BTNPlay.visibility = View.GONE
         if (transList[position].image != "")
             Picasso.get().load(transList[position].image).resize(130, 130).into(holder.IVTrans)
         holder.TVId.text = "Hóa đơn: #" + transList[position].transaction.id
@@ -142,7 +137,8 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
             holder.BTNRate.isEnabled = false
             holder.BTNRate.visibility = View.GONE
         }
-        holder.BTNCancel.setOnClickListener {
+        holder.BTNPlay.setOnClickListener {
+            /*
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
             val ref = FirebaseDatabase.getInstance(url).getReference("transaction")
             ref.child(transList[position].transaction.id).child("type").setValue(false)
@@ -164,6 +160,9 @@ class TransactionAdapter(private val transList: MutableList<TransactionExtend>, 
             transList.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, transList.size)
+
+            */
+
         }
     }
 

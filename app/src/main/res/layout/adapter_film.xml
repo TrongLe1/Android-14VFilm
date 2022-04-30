@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="158dp"
-    android:layout_height="250dp">
+    android:layout_height="250dp"
+    android:background="@drawable/border_layout_film">
 
     <ImageView
         android:id="@+id/IVFilm"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:scaleType="centerCrop"
         android:src="@drawable/more_background"
         app:layout_constraintStart_toStartOf="parent"
