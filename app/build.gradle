@@ -57,6 +57,7 @@ dependencies {
     implementation 'com.github.thekhaeng:recycler-margin:1.2.1'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
     implementation 'net.alhazmy13.MediaPicker:libary:2.4.4'
     implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
     implementation 'com.henryblue.mxvideoplayer:xvideoplayer:1.2.1'

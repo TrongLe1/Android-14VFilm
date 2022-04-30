@@ -46,7 +46,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/etFilmName"
+                android:id="@+id/etFilmEditDetailName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
@@ -65,7 +65,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/etFilmDescription"
+                android:id="@+id/etFilmEditDetailDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
@@ -83,7 +83,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvGenre"
+                android:id="@+id/tvFilmEditDetailGenre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_action_arrow"
@@ -102,7 +102,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvCountry"
+                android:id="@+id/tvFilmEditDetailCountry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_action_arrow"
@@ -121,7 +121,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/etFilmRentPrice"
+                android:id="@+id/etFilmEditDetailRentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
@@ -171,7 +171,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/etFilmDuration"
+                android:id="@+id/etFilmEditDetailDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
@@ -197,7 +197,7 @@
                 tools:ignore="HardcodedText" />
 
             <ImageView
-                android:id="@+id/ivFilmImage"
+                android:id="@+id/ivFilmEditDetailImage"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="10sp"
@@ -266,7 +266,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnFilmUpload"
+            android:id="@+id/btnSaveChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"

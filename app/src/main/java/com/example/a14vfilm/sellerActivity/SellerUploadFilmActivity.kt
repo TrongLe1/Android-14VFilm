@@ -421,7 +421,7 @@ class SellerUploadFilmActivity : AppCompatActivity() {
                                 hashMap["trailer"] = "$trailerDownloadUri"
                                 hashMap["video"] = "$videoUri"
                                 hashMap["datePublished"] = Date()
-                                hashMap["dateUpdated"] = Date(0)
+                                hashMap["dateUpdated"] = Date(0, 0,0)
                                 hashMap["price"] = etFilmRentPrice!!.text.trim().toString().toInt()
                                 hashMap["rate"] = 0.0f
                                 hashMap["rateTime"] = 0
