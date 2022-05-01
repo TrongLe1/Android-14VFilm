@@ -10,9 +10,8 @@
         android:id="@+id/TVFav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="32dp"
-        android:drawableLeft="@drawable/white_heart"
         android:drawablePadding="10dp"
         android:text="Danh sách yêu thích"
         android:textSize="24sp"
@@ -30,4 +29,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVFav"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/IBFavBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="37dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/black_back" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,6 +57,7 @@ class CheckoutActivity : AppCompatActivity() {
     var price: Long? = null
     var TVCPayment: TextView? = null
     var BTNPaypal: PayPalButton? = null
+    var IBBack: ImageButton? = null
 
 
 
@@ -90,6 +91,7 @@ class CheckoutActivity : AppCompatActivity() {
         BTNCheckout = findViewById(R.id.BTNCheckout)
         TVCPayment = findViewById(R.id.TVCPayDetail)
         BTNPaypal = findViewById(R.id.BTNPaypal)
+        IBBack = findViewById(R.id.IBCBack)
 
         //BTNCheckout!!.isEnabled = false
         BTNCheckout!!.isClickable = false
@@ -207,6 +209,10 @@ class CheckoutActivity : AppCompatActivity() {
                 }
             }
         )
+
+        IBBack!!.setOnClickListener {
+            finish()
+        }
         supportActionBar!!.hide()
     }
 }

@@ -3,6 +3,7 @@ package com.example.a14vfilm.more
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
@@ -20,12 +21,15 @@ import kotlin.collections.ArrayList
 
 class FavoriteActivity : AppCompatActivity() {
     var RVFavorite: RecyclerView? = null
+    var IBBack: ImageButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
         supportActionBar!!.hide()
 
         RVFavorite = findViewById(R.id.RVFavorite)
+        IBBack = findViewById(R.id.IBFavBack)
+
         val layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         RVFavorite!!.layoutManager = layoutManager
@@ -104,6 +108,10 @@ class FavoriteActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("Film", film)
             startActivityForResult(intent, 100)
+        }
+
+        IBBack!!.setOnClickListener {
+            finish()
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

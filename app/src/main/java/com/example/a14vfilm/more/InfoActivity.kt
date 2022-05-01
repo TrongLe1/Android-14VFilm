@@ -6,9 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.UserLogin
 import com.google.android.gms.tasks.OnSuccessListener
@@ -30,6 +28,8 @@ class InfoActivity : AppCompatActivity() {
     var BTNSubmit: Button? = null
     var IVAvatar: CircleImageView? = null
     var imageUri: Uri? = null
+    var IBBack: ImageButton? = null
+    var IVBackground: ImageView? = null
     private val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
     private val ref = FirebaseDatabase.getInstance(url).getReference("user")
 
@@ -43,6 +43,10 @@ class InfoActivity : AppCompatActivity() {
         ETPhone = findViewById(R.id.ETDIPhone)
         BTNSubmit = findViewById(R.id.BTNSubmit)
         IVAvatar = findViewById(R.id.IVDIAvatar)
+        IBBack = findViewById(R.id.IBDIBack)
+        IVBackground = findViewById(R.id.IVBackground)
+
+        IVBackground!!.clipToOutline = true
 
 
         if (UserLogin.info!!.image != "")
@@ -66,6 +70,10 @@ class InfoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Cập nhập thông tin thành công", Toast.LENGTH_SHORT).show()
                 finish()
             }
+        }
+
+        IBBack!!.setOnClickListener {
+            finish()
         }
 
 

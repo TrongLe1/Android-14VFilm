@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/heart"
+        android:drawableLeft="@drawable/red_heart"
         android:drawableRight="@drawable/arrow"
         android:gravity="left|center_vertical"
         android:text="Danh sách yêu thích"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import at.favre.lib.crypto.bcrypt.BCrypt
 import com.example.a14vfilm.R
@@ -20,6 +21,7 @@ class ChangePasswordActivity : AppCompatActivity() {
     var ETNew: EditText? = null
     var ETNew2: EditText? = null
     var BTNSubmit: Button? = null
+    var IBBack: ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         ETNew = findViewById(R.id.ETNewPass)
         ETNew2 = findViewById(R.id.ETNewPass2)
         BTNSubmit = findViewById(R.id.BTNChangePass)
+        IBBack = findViewById(R.id.IBCPBack)
 
         BTNSubmit!!.setOnClickListener {
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
@@ -58,6 +61,10 @@ class ChangePasswordActivity : AppCompatActivity() {
                 }
                 override fun onCancelled(error: DatabaseError) {}
             })
+        }
+
+        IBBack!!.setOnClickListener {
+            finish()
         }
 
 

@@ -4,16 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/info_bg"
+    android:background="#fafafa"
     tools:context=".more.InfoActivity">
+
+    <ImageView
+        android:id="@+id/IVBackground"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/info_bg2" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/IVDIAvatar"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="90dp"
         android:scaleType="centerCrop"
         android:src="@drawable/user"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +38,6 @@
         android:layout_height="520dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/info_layout"
-        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -161,5 +172,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ETDIAddress" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/IBDIBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="37dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/black_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
