@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="104dp"
             android:layout_marginTop="204dp"
-            android:background="@color/dark_blue"
+            android:background="@drawable/border_button_green_admin"
             android:drawableLeft="@drawable/save"
             android:paddingLeft="10dp"
             android:text="Thêm thể loại"

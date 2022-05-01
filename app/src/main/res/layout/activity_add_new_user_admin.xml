@@ -22,8 +22,8 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="365dp"
-        android:layout_height="550dp"
+        android:layout_width="369dp"
+        android:layout_height="584dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/info_layout"
         android:elevation="8dp"
@@ -51,8 +51,8 @@
             android:id="@+id/TVDIEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
             android:text="Email"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -164,19 +164,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVDIPassword" />
 
+        <TextView
+            android:id="@+id/TVDIRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Vai trò"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_etUserPassword" />
+
+        <Spinner
+            android:id="@+id/addnewuseradminactivity_spinner"
+            android:layout_width="367dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="492dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVDIRole" ></Spinner>
+
         <Button
             android:id="@+id/addnewuseradminactivity_addUser"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="4dp"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="Thêm người dùng"
             android:textAllCaps="false"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintHorizontal_bias="0.376"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_etUserAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/addnewuseradminactivity_spinner" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

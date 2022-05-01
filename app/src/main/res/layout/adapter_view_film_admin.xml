@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/border_layout_admin"
     android:padding="5dp">
 
     <LinearLayout
@@ -69,9 +70,11 @@
                     android:id="@+id/viewfilmadmin_btnStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textOn="Dừng ẩn phim"
-                    android:textOff="Ẩn phim"
+                    android:textOff="Dừng ẩn phim"
+                    android:textOn="Ẩn phim"
                     tools:ignore="HardcodedText"
+                    android:layout_marginBottom="3dp"
+                    android:background="@drawable/admin_toggle_btn"
                     android:layout_gravity="bottom"/>
 
             </LinearLayout>

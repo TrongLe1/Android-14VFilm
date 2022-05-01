@@ -28,6 +28,7 @@ class AddNewGenreAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_genre_admin)
+        supportActionBar!!.hide()
 
         etGenreName = findViewById(R.id.addnewgenreadmin_TVDName)
         ivImage = findViewById(R.id.addnewgenreadmin_IVDetail)

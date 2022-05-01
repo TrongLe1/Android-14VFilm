@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/border_layout_admin"
     android:padding="5dp">
 
     <LinearLayout
@@ -14,8 +15,10 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/viewuseradapter_imageView"
-            android:layout_width="116dp"
-            android:layout_height="108dp"
+            android:layout_width="107dp"
+            android:layout_height="97dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/user"
@@ -50,30 +53,32 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/viewuseradapter_tvUserPhone"
+                android:id="@+id/viewuseradapter_tvUserRole"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SĐT: "
+                android:text="Vai trò: "
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="61dp"
+                android:gravity="right"
                 android:orientation="horizontal"
                 android:paddingStart="5sp"
                 android:paddingEnd="5sp"
-                tools:ignore="RtlHardcoded,RtlSymmetry"
-                android:gravity="right">
+                tools:ignore="RtlHardcoded,RtlSymmetry">
 
                 <ToggleButton
                     android:id="@+id/viewuseradapter_btnStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="3dp"
+                    android:background="@drawable/admin_toggle_btn"
+                    android:textOff="Cho phép hoạt động"
                     android:textOn="Dừng hoạt động"
-                    android:textOff="Hoạt động"
-                    tools:ignore="HardcodedText"
-                    android:layout_gravity="bottom"/>
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 

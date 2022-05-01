@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".adminActivity.ViewUserActivity"
-    android:background="#FFb8b8b8"
     android:orientation="vertical"
     tools:viewBindingIgnore="true" >
 
@@ -15,7 +14,7 @@
         android:id="@+id/viewusers_svUserSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_layout_film"
+        android:background="@drawable/border_button"
         android:textCursorDrawable="@null"
         app:iconifiedByDefault="false"
         android:layout_marginTop="5dp"
@@ -27,10 +26,37 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/black"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        />
+        android:layout_marginBottom="5dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp">
+
+        <TextView
+            android:id="@+id/viewusers_TVSort"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="19dp"
+            android:layout_toStartOf="@+id/viewusers_SSort"
+            android:text="Sắp xếp theo:"
+            app:layout_constraintEnd_toStartOf="@+id/viewusers_SSort" />
+
+        <Spinner
+            android:id="@+id/viewusers_SSort"
+            android:layout_width="239dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,12 +64,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/viewusers_rcvUsersManagement"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="401dp"
+            android:layout_height="644dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/border_layout_film"
             tools:ignore="MissingConstraints,ScrollViewSize"
             tools:layout_editor_absoluteX="-16dp">
 
@@ -55,8 +80,9 @@
             android:layout_height="76dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="34dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="33dp"
+            android:backgroundTint="#4B7BE5"
             android:clickable="true"
             app:srcCompat="@android:drawable/ic_input_add" />
 

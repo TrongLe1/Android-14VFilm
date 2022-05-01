@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.a14vfilm.adminActivity.AdminHomeActivity
 import com.example.a14vfilm.home.HomeFragment
 import com.example.a14vfilm.library.LibraryFragment
 import com.example.a14vfilm.login.LoginActivity
@@ -89,7 +90,8 @@ class MainActivity : AppCompatActivity() {
 //            startActivityForResult(intent, 102)
 //        }
 //        supportActionBar!!.hide()
-        sellerUI()
+        //sellerUI()
+        adminUI()
 
     }
 
@@ -102,6 +104,10 @@ class MainActivity : AppCompatActivity() {
     private fun sellerUI(){
         val intent: Intent = Intent(this, SellerHomeActivity::class.java)
         //val intent: Intent = Intent(this, FilmDetailActivity::class.java)
+        startActivity(intent)
+    }
+    private fun adminUI(){
+        val intent: Intent = Intent(this, AdminHomeActivity::class.java)
         startActivity(intent)
     }
 

@@ -27,6 +27,7 @@ class ViewGenreActivity : AppCompatActivity() {
 
         // Initialize the required components
         initComponent()
+        supportActionBar!!.hide()
 
         //create a list of user for adapter
         val genreList = ArrayList<Genre>()
@@ -45,7 +46,7 @@ class ViewGenreActivity : AppCompatActivity() {
                     genreList.add(0, Genre(id!!, name!!, image!!))
                 }
 
-                rcvViewGenre!!.adapter = adapterViewGenre
+                rcvViewGenre!!.adapter!!.notifyDataSetChanged()
             }
             override fun onCancelled(error: DatabaseError) {}
         })
@@ -74,6 +75,7 @@ class ViewGenreActivity : AppCompatActivity() {
     private fun initComponent(){
         rcvViewGenre = findViewById(R.id.viewgenre_rcvGenreManagement)
         genreSearch = findViewById(R.id.viewgenre_svGenreSearch)
+        genreSearch!!.setFocusable(false);
         rcvViewGenre!!.layoutManager = LinearLayoutManager(this)
     }
 }

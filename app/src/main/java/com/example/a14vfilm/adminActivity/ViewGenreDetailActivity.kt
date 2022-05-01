@@ -37,6 +37,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
         genreImage =  intent.getStringExtra("genreImage").toString()
 
         initComponent()
+        supportActionBar!!.hide()
 
         //set layout with user information
         tvGenreName!!.setText(genreName)
