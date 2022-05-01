@@ -146,29 +146,7 @@ class SellerUploadFilmActivity : AppCompatActivity() {
 
     }
 
-
-//    private fun imageRequestPermission() {
-//        val permissionlistener: PermissionListener = object : PermissionListener {
-////            override fun onPermissionGranted() {
-////                selectFilmImage()
-////            }
-////
-////            override fun onPermissionDenied(deniedPermissions: List<String>) {
-////                Toast.makeText(this@SellerUploadFilmActivity,
-//                    "Permission Denied\n$deniedPermissions",
-//                    Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//
-//        TedPermission.create()
-//            .setPermissionListener(permissionlistener)
-//            .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
-//            .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
-//            .check();
-//
-//    }
-
-    /*=========================Video trailer picker====================*/
+    /*=========================Video picker====================*/
 
     /*set Video to Video View by Uri */
     private fun setVideoToVideoView(view: VideoView?, uri: Uri?) {
@@ -228,6 +206,7 @@ class SellerUploadFilmActivity : AppCompatActivity() {
         startActivityForResult(intent, resultValue)
     }
 
+    /*=====================================Image picker====================================*/
     /*set Image to Image View by Uri*/
     private fun setImageToImageView(uri: Uri?) {
         Picasso.get().load(imageUri).resize(200, 200).into(filmImage)
@@ -307,24 +286,6 @@ class SellerUploadFilmActivity : AppCompatActivity() {
     }
 
     /*===========================================*/
-
-//    private fun selectFilmImage() {
-//        val kwikPicker = KwikPicker.Builder(this@SellerUploadFilmActivity,
-//            imageProvider = { imageView, uri ->
-//                Glide.with(this@SellerUploadFilmActivity)//Any image provider here!
-//                    .load(uri)
-//                    .into(imageView)
-//            },
-//            onImageSelectedListener = { uri: Uri ->
-////                filmImage!!.visibility = View.VISIBLE
-//                val bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-//                filmImage!!.setImageBitmap(bitmap)
-//                imageUri = uri
-//            },
-//            peekHeight = 1200)
-//            .create(this@SellerUploadFilmActivity)
-//        kwikPicker.show(supportFragmentManager)
-//    }
 
     /*Upload film and its information to firebase */
     private fun uploadFilm() {

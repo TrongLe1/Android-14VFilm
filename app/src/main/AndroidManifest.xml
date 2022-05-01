@@ -23,6 +23,9 @@
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".sellerActivity.SellerEditFilmActivity"
+            android:exported="false" />
+        <activity
             android:name=".sellerActivity.FilmRevenueDetailActivity"
             android:exported="false" />
         <activity

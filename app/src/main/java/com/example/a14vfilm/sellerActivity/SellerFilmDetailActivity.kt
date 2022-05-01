@@ -1,6 +1,7 @@
 package com.example.a14vfilm.sellerActivity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -73,12 +74,26 @@ class SellerFilmDetailActivity : AppCompatActivity() {
 
         /*handling click to edit this film*/
         btnEditFilm!!.setOnClickListener {
-
+            editFilm()
         }
 
-//        vvFilmTrailer!!.setOnClickListener {
-//            vvFilmTrailer!!.pause()
-//        }
+        /*click trailer videoview to resume video*/
+        vvFilmTrailer!!.setOnClickListener {
+            vvFilmTrailer!!.resume()
+        }
+
+        /*click video videoview to resume video*/
+        vvFilmVideo!!.setOnClickListener {
+            vvFilmVideo!!.pause()
+        }
+
+    }
+
+    /*function to change to SellerEditFilmActivity (edit detail film)*/
+    private fun editFilm() {
+        val intent = Intent(this,  SellerEditFilmActivity::class.java)
+        intent.putExtra("Film", filmDetail)
+        startActivity(intent)
     }
 
     /*handling click delete film*/
@@ -96,8 +111,6 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     private fun deleteFilmFromFirebaseDatabase(filmDetail: Film?) {
 
         val dialogBuilder = AlertDialog.Builder(this)
-
-//        Log.e("ppppp", "${filmDetail!!.id}")
 
         // set message of alert dialog
         dialogBuilder.setMessage("Bạn có chấp nhận xóa phim này không?")
@@ -178,10 +191,10 @@ class SellerFilmDetailActivity : AppCompatActivity() {
         }
 
 
-//        vvFilmVideo!!.setVideoPath(filmDetail!!.video)
-//        vvFilmVideo!!.setOnPreparedListener {
-//            vvFilmVideo!!.pause()
-//        }
+        vvFilmVideo!!.setVideoPath(filmDetail!!.video)
+        vvFilmVideo!!.setOnPreparedListener {
+            vvFilmVideo!!.pause()
+        }
 
     }
 

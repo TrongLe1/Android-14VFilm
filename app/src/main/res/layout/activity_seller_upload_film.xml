@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <TextView
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <EditText
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <EditText
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <TextView
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <TextView
@@ -117,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <EditText
@@ -134,7 +134,7 @@
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_marginBottom="10sp"-->
-<!--            android:background="@drawable/border_layout_film"-->
+<!--            android:background="@drawable/film_editable"-->
 <!--            android:orientation="vertical">-->
 
 <!--            <EditText-->
@@ -151,7 +151,7 @@
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_marginBottom="10sp"-->
-<!--            android:background="@drawable/border_layout_film"-->
+<!--            android:background="@drawable/film_editable"-->
 <!--            android:orientation="vertical">-->
 
 <!--            <Spinner-->
@@ -167,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <EditText
@@ -185,7 +185,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <TextView
@@ -211,7 +211,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <TextView
@@ -240,7 +240,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:background="@drawable/border_layout_film"
+            android:background="@drawable/film_editable"
             android:orientation="vertical">
 
             <TextView

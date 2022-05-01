@@ -57,7 +57,7 @@ class ViewUserActivity: AppCompatActivity() {
                     val image = singleSnapshot.child("image").getValue<String>()
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     //userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!, status!!))
-                    userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!))
+//                    userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!))
                 }
 
                 rcvViewUser!!.adapter = adapterViewUser

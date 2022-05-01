@@ -51,8 +51,8 @@ class AddNewUserAdminActivity : AppCompatActivity() {
             var userPhone = etUserPhone!!.text.toString()
 
 
-            val user = User(ref.push().key!!, userEmail, userPassword,userName, userAddress, userPhone, userImage!!,true)
-            ref.child(user.id).setValue(user)
+//            val user = User(ref.push().key!!, userEmail, userPassword,userName, userAddress, userPhone, userImage!!,true)
+//            ref.child(user.id).setValue(user)
             Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_SHORT).show()
 //            val intent = Intent(this, ViewUserActivity::class.java)
 //            startActivity(intent)

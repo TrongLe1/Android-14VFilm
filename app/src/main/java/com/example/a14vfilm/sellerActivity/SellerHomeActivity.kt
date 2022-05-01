@@ -41,12 +41,12 @@ class SellerHomeActivity : AppCompatActivity() {
 
             // Get item ID of Menu item to set Fragment to FrameLayout
             when(it.itemId){
-//
-//                R.id.menu_item_seller_home -> {
-//                    setCurrentFragment(HomeFragment())
-////                    setCurrentFragment(SellerHomeFragment())
-//                    supportActionBar!!.title = "Trang chủ"
-//                }
+
+                R.id.menu_item_seller_home -> {
+                    setCurrentFragment(HomeFragment())
+//                    setCurrentFragment(SellerHomeFragment())
+                    supportActionBar!!.title = "Trang chủ"
+                }
 
                 R.id.menu_item_seller_management -> {
                     setCurrentFragment(SellerManagementFragment())
