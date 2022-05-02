@@ -68,7 +68,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="360dp"
-        android:layout_height="300dp"
+        android:layout_height="330dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/border_transaction_layout"
         app:layout_constraintEnd_toEndOf="parent"

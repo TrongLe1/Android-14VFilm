@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Genre
@@ -16,6 +17,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ViewGenreDetailActivity : AppCompatActivity() {
     private var tvGenreName: EditText? = null
@@ -49,7 +51,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
         //Update Genre information
         findViewById<Button>(R.id.viewgenredetail_BTNSave).setOnClickListener{
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-            val ref = FirebaseDatabase.getInstance(url).getReference()
+            val ref = FirebaseDatabase.getInstance(url).reference
 
             //update for "genre" collection
             val query1 = ref.child("genre").child(genreID!!).child("name").setValue(tvGenreName!!.text.toString())
@@ -77,21 +79,33 @@ class ViewGenreDetailActivity : AppCompatActivity() {
         //Delete Genre
         findViewById<Button>(R.id.viewgenredetail_BTNDelete).setOnClickListener{
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-            val ref = FirebaseDatabase.getInstance(url).getReference()
+            val ref = FirebaseDatabase.getInstance(url).reference
 
             //update for "genre" collection
             val query1 = ref.child("genre").child(genreID!!).removeValue()
 
+            val genreList: MutableList<String> = mutableListOf()
+
             //update for "film" collection
             val query2 = ref.child("film")
-            query2.addValueEventListener(object : ValueEventListener {
+            query2.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (singleSnapshot in snapshot.children) {
+                        val filmId = singleSnapshot.child("id").getValue<String>()
                         for (singleSnapshotChild in singleSnapshot.child("genre").children){
+                            /*
                             if (singleSnapshotChild.value.toString() == genreName){
                                 singleSnapshotChild.ref.removeValue()
                             }
+
+                            */
+                            if (singleSnapshotChild.value.toString() != genreName){
+                                //singleSnapshotChild.ref.removeValue()
+                                genreList.add(singleSnapshotChild.value.toString())
+                            }
                         }
+                        ref.child("film").child(filmId!!).child("genre").setValue(genreList)
+                        genreList.clear()
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {}
@@ -127,7 +141,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
             imageUri = data?.data!!
             if (imageUri != null) {
                 val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-                val imageRef = FirebaseDatabase.getInstance(url).getReference()
+                val imageRef = FirebaseDatabase.getInstance(url).reference
                 val fileName = UUID.randomUUID().toString() + ".jpg"
                 val storageRef = FirebaseStorage.getInstance("gs://vfilm-83cf4.appspot.com").reference.child("avatars/$fileName")
                 storageRef.putFile(imageUri!!).addOnSuccessListener { taskSnapshot ->

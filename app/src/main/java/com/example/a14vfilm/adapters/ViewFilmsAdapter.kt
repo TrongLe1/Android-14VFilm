@@ -118,6 +118,8 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
 
                 if (film.status == true){
                     statusChange = false
+                    film.status = false
+                    tbFilmStatus.isChecked = false
 
                     //find user information by query firebase
                     val query = ref.child("user").child(film.seller)
@@ -150,6 +152,8 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
                 }
                 else{
                     statusChange = true
+                    film.status = true
+                    tbFilmStatus.isChecked = true
                 }
                 ref.child("film")
                     .child(film.id)

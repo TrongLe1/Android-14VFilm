@@ -100,6 +100,8 @@ class ViewUserAdapter (private val userList: List<User>): RecyclerView.Adapter<V
 
                 if (user.status == true){
                     statusChange = false
+                    user.status = false
+                    tbUserStatus.isChecked = false
 
                     //Automail
                     BackgroundMail.newBuilder(it.context)
@@ -125,6 +127,8 @@ class ViewUserAdapter (private val userList: List<User>): RecyclerView.Adapter<V
 //                    it.context.startActivity(intent1)
                 }
                 else{
+                    tbUserStatus.isChecked = true
+                    user.status = true
                     statusChange = true
                 }
                 ref.child(user.id)
