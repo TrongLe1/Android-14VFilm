@@ -36,14 +36,14 @@ class ViewGenreActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance(url).getReference("genre")
         val adapterViewGenre = ViewGenreAdapter(genreList)
 
-        ref.addValueEventListener(object : ValueEventListener {
+        ref.orderByChild("name").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 genreList.clear()
                 for (singleSnapshot in snapshot.children) {
                     val id = singleSnapshot.child("id").getValue<String>()
                     val name = singleSnapshot.child("name").getValue<String>()
                     val image = singleSnapshot.child("image").getValue<String>()
-                    genreList.add(0, Genre(id!!, name!!, image!!))
+                    genreList.add( Genre(id!!, name!!, image!!))
                 }
 
                 rcvViewGenre!!.adapter!!.notifyDataSetChanged()

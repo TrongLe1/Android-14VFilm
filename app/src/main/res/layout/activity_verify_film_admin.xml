@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminActivity.ViewFilmsActivityAdmin"
+    tools:context=".adminActivity.VerifyFilmAdminActivity"
     android:orientation="vertical"
     tools:viewBindingIgnore="true" >
 
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/viewfilm_svFilmSearch"
+        android:id="@+id/verifyfilm_svFilmSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textCursorDrawable="@null"
@@ -29,7 +29,7 @@
         android:layout_height="49dp">
 
         <TextView
-            android:id="@+id/viewfilm_TVSort"
+            android:id="@+id/verifyfilm_TVSort"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -37,12 +37,12 @@
             android:layout_marginStart="27dp"
             android:layout_marginTop="13dp"
             android:layout_marginEnd="19dp"
-            android:layout_toStartOf="@+id/viewfilm_SSort"
+            android:layout_toStartOf="@+id/verifyfilm_SSort"
             android:text="Sắp xếp theo:"
-            app:layout_constraintEnd_toStartOf="@+id/viewfilm_SSort" />
+            app:layout_constraintEnd_toStartOf="@+id/verifyfilm_SSort" />
 
         <Spinner
-            android:id="@+id/viewfilm_SSort"
+            android:id="@+id/verifyfilm_SSort"
             android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -54,7 +54,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewfilm_rcvFilmsManagement"
+        android:id="@+id/verifyfilm_rcvFilmsManagement"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"

@@ -52,7 +52,7 @@ class ViewUserActivity: AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance(url).getReference("user")
         val adapterViewUser = ViewUserAdapter(userList)
         rcvViewUser!!.adapter = adapterViewUser
-        ref.addValueEventListener(object : ValueEventListener {
+        ref.orderByChild("name").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()
                 for (singleSnapshot in snapshot.children) {
@@ -65,7 +65,7 @@ class ViewUserActivity: AppCompatActivity() {
                     val image = singleSnapshot.child("image").getValue<String>()
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val role = singleSnapshot.child("role").getValue<Int>()
-                    userList.add(0, User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
+                    userList.add( User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
                 }
                 rcvViewUser!!.adapter!!.notifyDataSetChanged()
             }

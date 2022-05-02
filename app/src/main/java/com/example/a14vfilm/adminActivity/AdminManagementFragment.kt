@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.a14vfilm.MainActivity
 import com.example.a14vfilm.R
+import com.example.a14vfilm.adminActivity.VerifyFilmAdminActivity
 import com.example.a14vfilm.adminActivity.ViewFilmsActivityAdmin
 import com.example.a14vfilm.adminActivity.ViewGenreActivity
 import com.example.a14vfilm.adminActivity.ViewUserActivity
@@ -60,6 +61,10 @@ class AdminManagementFragment : Fragment() {
 
         view.findViewById<Button>(R.id.button4).setOnClickListener{
             val intent = Intent(context, ViewGenreActivity::class.java)
+            startActivity(intent)
+        }
+        view.findViewById<Button>(R.id.button5).setOnClickListener{
+            val intent = Intent(context, VerifyFilmAdminActivity::class.java)
             startActivity(intent)
         }
 
