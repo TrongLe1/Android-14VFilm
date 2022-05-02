@@ -2,6 +2,7 @@ package com.example.a14vfilm.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration
 class CommentActivity : AppCompatActivity() {
     var RVComment: RecyclerView? = null
     var TVComment: TextView? = null
+    var IBBack: ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class CommentActivity : AppCompatActivity() {
 
         RVComment = findViewById(R.id.RVComment)
         TVComment = findViewById(R.id.TVComment)
+        IBBack = findViewById(R.id.IBComBack)
 
         val id = intent.getStringExtra("ID")
         val layoutManager =
@@ -61,6 +64,10 @@ class CommentActivity : AppCompatActivity() {
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+
+        IBBack!!.setOnClickListener {
+            finish()
+        }
         supportActionBar!!.hide()
     }
 }
