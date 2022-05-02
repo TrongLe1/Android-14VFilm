@@ -147,6 +147,8 @@
         <entry key="app/src/main/res/layout/activity_seller_upload_film.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_verify_film_admin.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_view_ads.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_view_ads_detail.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_view_film_detail.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/activity_view_films_admin.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_view_genre.xml" value="0.23641304347826086" />
@@ -156,7 +158,9 @@
         <entry key="app/src/main/res/layout/adapter_film.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_film_management.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_genre.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/adapter_trans.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_verify_film.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/adapter_view_ads.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_view_film_admin.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/adapter_view_genre_admin.xml" value="0.17325227963525835" />
         <entry key="app/src/main/res/layout/adapter_view_user.xml" value="0.35625" />

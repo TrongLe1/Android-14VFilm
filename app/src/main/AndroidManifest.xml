@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.14VFilm">
         <activity
+            android:name=".adminActivity.ViewAdsDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adminActivity.ViewAdsActivity"
+            android:exported="false" />
+        <activity
             android:name=".adminActivity.VerifyFilmAdminActivity"
             android:exported="false" />
         <activity
