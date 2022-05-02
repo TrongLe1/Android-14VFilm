@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "14VFilm"
 include ':app'
+include ':chart'

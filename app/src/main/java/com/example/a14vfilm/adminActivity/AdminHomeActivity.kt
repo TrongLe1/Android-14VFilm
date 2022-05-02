@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.a14vfilm.R
 import com.example.a14vfilm.home.HomeFragment
-import com.example.a14vfilm.more.AdminManagementFragment
+import com.example.a14vfilm.adminActivity.AdminManagementFragment
 import com.example.a14vfilm.more.MoreFragment
 import com.example.a14vfilm.sellerActivity.SellerManagementFragment
 import com.example.a14vfilm.sellerActivity.SellerStatisticFragment
@@ -49,7 +49,7 @@ class AdminHomeActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_item_admin_statistic -> {
-                    setCurrentFragment(SellerStatisticFragment())
+                    setCurrentFragment(AdminStatisticsFragment())
                 }
 
                 R.id.menu_item_admin_more -> {

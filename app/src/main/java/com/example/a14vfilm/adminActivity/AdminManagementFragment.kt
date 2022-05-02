@@ -1,4 +1,4 @@
-package com.example.a14vfilm.more
+package com.example.a14vfilm.adminActivity
 
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent

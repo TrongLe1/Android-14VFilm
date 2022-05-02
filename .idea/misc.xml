@@ -134,6 +134,7 @@
         <entry key="app/src/main/res/layout/activity_add_new_genre_admin.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/activity_add_new_user_admin.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_admin_home.xml" value="0.23641304347826086" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_film_detail.xml" value="0.35625" />
@@ -142,6 +143,7 @@
         <entry key="app/src/main/res/layout/activity_film_statistic_revenue.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_seller_film_detail.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_seller_film_management.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_seller_home.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_seller_upload_film.xml" value="0.35625" />
@@ -155,6 +157,7 @@
         <entry key="app/src/main/res/layout/activity_view_genre_detail.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/activity_view_user_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_view_users.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/adapter_comment.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_film.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_film_management.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_genre.xml" value="0.17325227963525835" />
@@ -164,16 +167,20 @@
         <entry key="app/src/main/res/layout/adapter_view_film_admin.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/adapter_view_genre_admin.xml" value="0.17325227963525835" />
         <entry key="app/src/main/res/layout/adapter_view_user.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/admin_fragment_statistics.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/dialog_rating.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_admin_management.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_admin_statistics.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_cancelled.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_expired.xml" value="0.35625" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="1.0" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5081723625557206" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_more.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_ordered.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layout/fragment_seller_management.xml" value="0.35625" />
         <entry key="app/src/main/res/menu/admin_home_menu.xml" value="0.35625" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.35625" />
       </map>
     </option>
   </component>
@@ -186,7 +193,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.5" />
+        <option name="scale" value="0.35625" />
       </ProjectState>
     </option>
   </component>
