@@ -148,7 +148,7 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
                     })
 
                     //Update date
-                    film.dateUpdated = Date(0,0,0)
+                    film.dateUpdated = Date(0,0,1)
 
                 }
                 else{

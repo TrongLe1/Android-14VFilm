@@ -26,7 +26,7 @@ data class Film (
     var trailer: String,
     var genre: ArrayList<String>,
     var rateTime: Int,
-    var status: Boolean?,
+    var status: Boolean,
     var video: String
 ) : Serializable{
 //    override fun toString(): String {
