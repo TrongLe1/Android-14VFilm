@@ -30,6 +30,12 @@
             android:exported="false" />
         <activity
             android:name=".adminActivity.AdminHomeActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".sellerActivity.RevenueStatisticDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sellerActivity.JoinerStatisticDetailActivity"
             android:exported="false" />
         <activity
             android:name=".order.PlayVideoActivity"
@@ -37,12 +43,6 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".sellerActivity.SellerEditFilmActivity"
-            android:exported="false" />
-        <activity
-            android:name=".sellerActivity.FilmRevenueDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".sellerActivity.JoinerDetailActivity"
             android:exported="false" />
         <activity
             android:name=".adminActivity.AddNewGenreAdminActivity"

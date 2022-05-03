@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvJoinerTableName"
+            android:layout_width="0dp"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="15dp"
+            tools:ignore="SpUsage" />
+
+        <TextView
+            android:id="@+id/tvJoinerTableRentDate"
+            android:layout_width="0dp"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tvJoinerTableExpiredDate"
+            android:layout_width="0dp"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="15dp" />
+
+    </TableRow>
+</LinearLayout>
+
+    <!--</TableLayout>-->

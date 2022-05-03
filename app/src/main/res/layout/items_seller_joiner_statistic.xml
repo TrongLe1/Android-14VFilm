@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="wrap_content"
     android:background="@color/item_film"
     android:orientation="horizontal"
     android:layout_margin="5dp"
@@ -31,7 +31,7 @@
         >
 
         <TextView
-            android:id="@+id/ivSellerFilmNameItem"
+            android:id="@+id/tvStatisticJoinerFilmName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Phim truyền hình"
@@ -41,19 +41,29 @@
             />
 
         <TextView
-            android:id="@+id/ivSellerFilmDescriptionItem"
+            android:id="@+id/tvStatisticJoinerDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:lines="2"
             android:text="Short description"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:ellipsize="end"/>
 
         <TextView
-            android:id="@+id/ivSellerFilmDatePublishedItem"
+            android:id="@+id/tvStatisticJoinerDatePublished"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ngày đăng: 28/04/2022"
-            android:textSize="17sp"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvJoinerTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Người thuê: 3 người"
+            android:textSize="16sp"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
@@ -64,9 +74,10 @@
             tools:ignore="RtlHardcoded">
 
             <Button
+                android:id="@+id/btnViewJoiners"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chi tiết"
+                android:text="Xem danh sách"
                 tools:ignore="HardcodedText"
                 />
 

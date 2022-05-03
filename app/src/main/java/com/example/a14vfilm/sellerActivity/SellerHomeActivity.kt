@@ -29,7 +29,6 @@ class SellerHomeActivity : AppCompatActivity() {
     // set up component with ID
     private fun initComponent(){
         bnvSellerHomeActivity = findViewById(R.id.bnvSellerHomeActivity)
-
     }
 
     // set up Navigation Item of BottomNavigationView

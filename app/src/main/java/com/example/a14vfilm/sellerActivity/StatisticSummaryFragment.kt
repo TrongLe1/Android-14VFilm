@@ -49,10 +49,10 @@ class StatisticSummaryFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_statistic_summary, container, false)
 
-        lineChart = view.findViewById(R.id.lineChart)
-        pieChart = view.findViewById(R.id.pieChart)
-
-        initViewComponent()
+//        lineChart = view.findViewById(R.id.lineChart)
+//        pieChart = view.findViewById(R.id.pieChart)
+//
+//        initViewComponent()
         return view
     }
 
@@ -110,8 +110,6 @@ class StatisticSummaryFragment : Fragment() {
 //        xAxis.setDrawLabels(true)
 //        xAxis.granularity = 1f
 //        xAxis.labelRotationAngle = +90f
-
-
 
     }
 

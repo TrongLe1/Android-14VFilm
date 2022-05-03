@@ -12,6 +12,7 @@
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/statistic_film.xml" value="0.1745" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/statistic_joiner.xml" value="0.1745" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/statistic_revenue.xml" value="0.1745" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/table.xml" value="0.1" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-xhdpi/stroke.xml" value="0.1575" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/border.xml" value="0.124" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/border_button.xml" value="0.124" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/img_radius.xml" value="0.1745" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/info_layout.xml" value="0.164" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable/table.xml" value="0.1" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_comment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_detail.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_favorite.xml" value="0.1" />
@@ -30,8 +32,13 @@
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_film_statistic.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_film_statistic_renter.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_film_statistic_revenue.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_joiner_detail.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_joiner_statistic_detail.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_login.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_play_video.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_revenue_statistic_detail.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_search.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_seller_current_film.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_seller_edit_film.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/activity_seller_film_detail.xml" value="0.19110378912685339" />
@@ -50,6 +57,7 @@
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_trans.xml" value="0.176" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_view_film_admin.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/adapter_view_user.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/dialog_payment.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/dialog_rating.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_cancelled.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_home.xml" value="0.264" />
@@ -67,9 +75,14 @@
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/fragment_summary_tab_item.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/item_seller_home_current_management.xml" value="0.536" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_films_seller_management.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_joiner_table.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_revenue_table.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_seller_film_management.xml" value="0.4" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_seller_film_statistic.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_seller_home_current_management.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_seller_joiner_statistic.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_seller_revenue_statistic.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/layout/items_stastic_joiners.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/menu-v26/seller_home_menu.xml" value="0.17239583333333333" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/menu/bottom_nav_menu.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/menu/seller_home_menu.xml" value="0.25416666666666665" />
