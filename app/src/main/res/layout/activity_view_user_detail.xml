@@ -22,8 +22,8 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="352dp"
-        android:layout_height="492dp"
+        android:layout_width="351dp"
+        android:layout_height="427dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/info_layout"
         android:elevation="8dp"
@@ -136,28 +136,6 @@
             app:layout_constraintTop_toBottomOf="@+id/TVDIAddress" />
 
         <TextView
-            android:id="@+id/TVDIPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Mật khẩu"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserAddress" />
-
-        <TextView
-            android:id="@+id/viewuserdetail_tvUserPassword"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TVDIPassword" />
-
-        <TextView
             android:id="@+id/TVDIUserRole"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -167,7 +145,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/viewuserdetail_tvUserAddress" />
 
         <TextView
             android:id="@+id/viewuserdetail_tvUserRole"

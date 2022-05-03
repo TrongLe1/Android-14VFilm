@@ -49,7 +49,7 @@ class ViewAdsAdapter (private val adsList: List<String>): RecyclerView.Adapter<V
         fun bindView(ads: String) {
             //set image for genre
             if (ads != "")
-                Picasso.get().load(ads).resize(375, 150).into(ivGenreImage)
+                Picasso.get().load(ads).fit().centerCrop().into(ivGenreImage)
 
         }
 

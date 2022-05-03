@@ -43,6 +43,7 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
             onItemClick?.invoke(film)
             val intent = Intent(it.context, DetailActivity::class.java)
             intent.putExtra("Film", film)
+            intent.putExtra("admin", true)
             it.context.startActivity(intent)
         }
 
@@ -114,10 +115,8 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
                 //   Connect to firebase
                 val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
                 val ref = FirebaseDatabase.getInstance(url).getReference()
-                var statusChange: Boolean?
 
                 if (film.status == true){
-                    statusChange = false
                     film.status = false
                     tbFilmStatus.isChecked = false
 
@@ -148,17 +147,53 @@ class ViewFilmsAdapter (private val filmList: List<Film>): RecyclerView.Adapter<
                         override fun onCancelled(error: DatabaseError) {}
                     })
 
+                    //Update date
+                    film.dateUpdated = Date(0,0,0)
 
                 }
                 else{
-                    statusChange = true
                     film.status = true
                     tbFilmStatus.isChecked = true
+
+                    //find user information by query firebase
+                    val query = ref.child("user").child(film.seller)
+                    query.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            val userEmail = snapshot.child("email").getValue<String>()
+                            val userName = snapshot.child("name").getValue<String>()
+
+                            //send email
+                            BackgroundMail.newBuilder(it.context)
+                                .withUsername("14vfilmquantrivien@gmail.com")
+                                .withPassword("14vfilmquantrivien123")
+                                .withMailto(userEmail.toString())
+                                .withType(BackgroundMail.TYPE_PLAIN)
+                                .withSubject("Phim trên 14VFilm của bạn đã được mở khóa")
+                                .withBody("Bộ phim " +film.name+ " của tài khoản "+ userName.toString() + " của bạn đã được mở khóa bởi Admin")
+                                .withOnSuccessCallback(BackgroundMail.OnSuccessCallback {
+                                    //do some magic
+                                })
+                                .withOnFailCallback(BackgroundMail.OnFailCallback {
+                                    //do some magic
+                                })
+                                .send()
+
+                        }
+                        override fun onCancelled(error: DatabaseError) {}
+                    })
+                    //Update date
+                    film.dateUpdated = Calendar.getInstance().time
                 }
+                //set status
                 ref.child("film")
                     .child(film.id)
                     .child("status")
-                    .setValue(statusChange)
+                    .setValue(film.status)
+                //set date
+                ref.child("film")
+                    .child(film.id)
+                    .child("dateUpdated")
+                    .setValue(film.dateUpdated)
                 //notifyDataSetChanged()
             }
         }

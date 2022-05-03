@@ -12,45 +12,17 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/verifyfilm_svFilmSearch"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
         android:textCursorDrawable="@null"
         app:iconifiedByDefault="false"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layoutDirection="rtl"
         android:background="@drawable/border_button"
 
         app:queryBackground="@null" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="49dp">
-
-        <TextView
-            android:id="@+id/verifyfilm_TVSort"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="19dp"
-            android:layout_toStartOf="@+id/verifyfilm_SSort"
-            android:text="Sắp xếp theo:"
-            app:layout_constraintEnd_toStartOf="@+id/verifyfilm_SSort" />
-
-        <Spinner
-            android:id="@+id/verifyfilm_SSort"
-            android:layout_width="239dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="22dp"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </RelativeLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView

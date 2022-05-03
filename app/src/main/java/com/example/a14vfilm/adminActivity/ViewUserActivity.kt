@@ -91,7 +91,7 @@ class ViewUserActivity: AppCompatActivity() {
         })
 
         //Filter
-        val option = arrayListOf("A-Z", "Vai trò", "Trạng thái hoạt động")
+        val option = arrayListOf("A-Z","Người mua", "Người bán", "Quản trị viên", "Đang hoạt động", "Đã dừng hoạt động")
         val SSort = findViewById<Spinner>(R.id.viewusers_SSort)
         val sAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, option)
         sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -118,10 +118,9 @@ class ViewUserActivity: AppCompatActivity() {
     private fun getFilterLibrary(sort: String, RVLibrary: RecyclerView, userList: ArrayList<User>, libraryAdapter: ViewUserAdapter) {
         val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
         val ref = FirebaseDatabase.getInstance(url).getReference("user")
-        if (sort == "Vai trò") {
-            val query = ref.orderByChild("role")
+        if (sort == "A-Z") {
             RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
+            ref.orderByChild("name").addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     userList.clear()
                     for (singleSnapshot in snapshot.children) {
@@ -141,10 +140,9 @@ class ViewUserActivity: AppCompatActivity() {
                 override fun onCancelled(error: DatabaseError) {}
             })
         }
-        else if (sort == "A-Z") {
-            val query = ref.orderByChild("name")
+        else if (sort == "Người mua") {
             RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
+            ref.addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     userList.clear()
                     for (singleSnapshot in snapshot.children) {
@@ -157,7 +155,81 @@ class ViewUserActivity: AppCompatActivity() {
                         val image = singleSnapshot.child("image").getValue<String>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val role = singleSnapshot.child("role").getValue<Int>()
-                        userList.add(User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
+                        if (role == 0){
+                            userList.add(User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
+                        }
+                    }
+                    RVLibrary.adapter!!.notifyDataSetChanged()
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
+        else if (sort == "Người bán") {
+            RVLibrary.adapter = libraryAdapter
+            ref.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    userList.clear()
+                    for (singleSnapshot in snapshot.children) {
+                        val id = singleSnapshot.child("id").getValue<String>()
+                        val email = singleSnapshot.child("email").getValue<String>()
+                        val password = singleSnapshot.child("password").getValue<String>()
+                        val name = singleSnapshot.child("name").getValue<String>()
+                        val address = singleSnapshot.child("address").getValue<String>()
+                        val phone = singleSnapshot.child("phone").getValue<String>()
+                        val image = singleSnapshot.child("image").getValue<String>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
+                        val role = singleSnapshot.child("role").getValue<Int>()
+                        if (role == 1){
+                            userList.add(User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
+                        }
+                    }
+                    RVLibrary.adapter!!.notifyDataSetChanged()
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
+        else if (sort == "Quản trị viên") {
+            RVLibrary.adapter = libraryAdapter
+            ref.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    userList.clear()
+                    for (singleSnapshot in snapshot.children) {
+                        val id = singleSnapshot.child("id").getValue<String>()
+                        val email = singleSnapshot.child("email").getValue<String>()
+                        val password = singleSnapshot.child("password").getValue<String>()
+                        val name = singleSnapshot.child("name").getValue<String>()
+                        val address = singleSnapshot.child("address").getValue<String>()
+                        val phone = singleSnapshot.child("phone").getValue<String>()
+                        val image = singleSnapshot.child("image").getValue<String>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
+                        val role = singleSnapshot.child("role").getValue<Int>()
+                        if (role == 2){
+                            userList.add(User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
+                        }
+                    }
+                    RVLibrary.adapter!!.notifyDataSetChanged()
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
+        else if (sort == "Đang hoạt động") {
+            RVLibrary.adapter = libraryAdapter
+            ref.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    userList.clear()
+                    for (singleSnapshot in snapshot.children) {
+                        val id = singleSnapshot.child("id").getValue<String>()
+                        val email = singleSnapshot.child("email").getValue<String>()
+                        val password = singleSnapshot.child("password").getValue<String>()
+                        val name = singleSnapshot.child("name").getValue<String>()
+                        val address = singleSnapshot.child("address").getValue<String>()
+                        val phone = singleSnapshot.child("phone").getValue<String>()
+                        val image = singleSnapshot.child("image").getValue<String>()
+                        val status = singleSnapshot.child("status").getValue<Boolean>()
+                        val role = singleSnapshot.child("role").getValue<Int>()
+                        if (status == true){
+                            userList.add(User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
+                        }
                     }
                     RVLibrary.adapter!!.notifyDataSetChanged()
                 }
@@ -165,9 +237,8 @@ class ViewUserActivity: AppCompatActivity() {
             })
         }
         else {
-            val query = ref.orderByChild("status")
             RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
+            ref.addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     userList.clear()
                     for (singleSnapshot in snapshot.children) {
@@ -180,8 +251,9 @@ class ViewUserActivity: AppCompatActivity() {
                         val image = singleSnapshot.child("image").getValue<String>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val role = singleSnapshot.child("role").getValue<Int>()
-                        userList.add(0,User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
-                    }
+                        if (status == false){
+                            userList.add(User(id!!, email!! , password!!, name!!, address!!, phone!!,image!!, status!!, role!!))
+                        }                    }
                     RVLibrary.adapter!!.notifyDataSetChanged()
                 }
                 override fun onCancelled(error: DatabaseError) {}

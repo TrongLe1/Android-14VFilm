@@ -3,6 +3,7 @@ package com.example.a14vfilm.detail
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.example.a14vfilm.R
 import com.example.a14vfilm.login.LoginActivity
@@ -67,6 +68,15 @@ class DetailActivity : AppCompatActivity() {
         IBFavorite = findViewById(R.id.IBFavorite)
         //lifecycle.addObserver(YTPVTrailer!!)
         val film = intent.getSerializableExtra("Film") as Film
+
+        //check if intent from admin
+        val checkAdmin = intent.getBooleanExtra("admin",false)
+        if (checkAdmin){
+            BTNOrder!!.visibility = View.GONE
+            IBFavorite!!.visibility = View.GONE
+            BTNComment!!.visibility = View.GONE
+        }
+
         //quantity = film.quantity
         if (film.image != "")
             Picasso.get().load(film.image).resize(400, 360).into(IVDetail)

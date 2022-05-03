@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.1745" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/button_upload_film.xml" value="0.124" />
         <entry key="..\:/Users/LENOVO/Github Code/Android-14VFilm/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
@@ -101,7 +102,7 @@
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/drawable/border_transaction_layout.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/drawable/radius.xml" value="0.1305" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_change_password.xml" value="0.536" />
-        <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_checkout.xml" value="0.264" />
+        <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_checkout.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_comment.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_favorite.xml" value="0.4" />
@@ -111,7 +112,6 @@
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_seller_film_detail.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/adapter_film.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/adapter_trans.xml" value="0.1" />
-        <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/adapter_view_genre_admin.xml" value="0.10925925925925926" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/fragment_library.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/fragment_more.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19814814814814816" />
@@ -153,9 +153,9 @@
         <entry key="app/src/main/res/layout/activity_view_ads.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_view_ads_detail.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_view_film_detail.xml" value="0.18177083333333333" />
-        <entry key="app/src/main/res/layout/activity_view_films_admin.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_view_films_admin.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_view_genre.xml" value="0.23641304347826086" />
-        <entry key="app/src/main/res/layout/activity_view_genre_detail.xml" value="0.23641304347826086" />
+        <entry key="app/src/main/res/layout/activity_view_genre_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_view_user_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_view_users.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_comment.xml" value="0.35625" />
@@ -174,7 +174,7 @@
         <entry key="app/src/main/res/layout/fragment_admin_statistics.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_cancelled.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_expired.xml" value="0.35625" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5081723625557206" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.45208333333333334" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_more.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.18177083333333333" />

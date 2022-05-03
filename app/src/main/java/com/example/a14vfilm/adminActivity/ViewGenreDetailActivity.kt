@@ -46,7 +46,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
 
         //set image for genre
         if (genreImage != "")
-            Picasso.get().load(genreImage).resize(150, 150).into(ivGenreImage!!)
+            Picasso.get().load(genreImage).fit().centerCrop().into(ivGenreImage!!)
 
         //Update Genre information
         findViewById<Button>(R.id.viewgenredetail_BTNSave).setOnClickListener{
@@ -147,7 +147,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
                 storageRef.putFile(imageUri!!).addOnSuccessListener { taskSnapshot ->
                     taskSnapshot.storage.downloadUrl.addOnSuccessListener {
                         imageRef.child("genre").child(genreID!!).child("image").setValue(it.toString())
-                        Picasso.get().load(imageUri).resize(150, 150).into(ivGenreImage)
+                        Picasso.get().load(imageUri).fit().centerCrop().into(ivGenreImage)
                     }
                 }.addOnProgressListener {
                 }

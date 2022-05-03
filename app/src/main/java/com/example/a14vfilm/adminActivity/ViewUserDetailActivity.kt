@@ -22,7 +22,6 @@ class ViewUserDetailActivity : AppCompatActivity() {
 
     private var tvUserName: TextView? = null
     private var tvUserEmail: TextView? = null
-    private var tvUserPassword: TextView? = null
     private var tvUserAddress: TextView? = null
     private var tvUserPhone: TextView? = null
     private var ivUserAvatar: CircleImageView? = null
@@ -42,7 +41,6 @@ class ViewUserDetailActivity : AppCompatActivity() {
         val userID:String = intent.getStringExtra("userID").toString()
         val userName:String = intent.getStringExtra("userName").toString()
         val userEmail:String = intent.getStringExtra("userEmail").toString()
-        val userPassword:String = intent.getStringExtra("userPassword").toString()
         val userAddress:String = intent.getStringExtra("userAddress").toString()
         val userPhone:String = intent.getStringExtra("userPhone").toString()
         val userAvatar:String = intent.getStringExtra("userImage").toString()
@@ -51,7 +49,6 @@ class ViewUserDetailActivity : AppCompatActivity() {
         //set layout with user information
         tvUserName!!.text = userName
         tvUserEmail!!.text = userEmail
-        tvUserPassword!!.text = userPassword
         tvUserAddress!!.text = userAddress
         tvUserPhone!!.text = userPhone
 
@@ -74,7 +71,6 @@ class ViewUserDetailActivity : AppCompatActivity() {
     fun initComponent(){
         tvUserName = findViewById(R.id.viewuserdetail_tvUserName)
         tvUserEmail = findViewById(R.id.viewuserdetail_tvUserEmail)
-        tvUserPassword = findViewById(R.id.viewuserdetail_tvUserPassword)
         tvUserAddress = findViewById(R.id.viewuserdetail_tvUserAddress)
         tvUserPhone = findViewById(R.id.viewuserdetail_tvUserPhone)
         ivUserAvatar = findViewById(R.id.viewuserdetail_imageView)

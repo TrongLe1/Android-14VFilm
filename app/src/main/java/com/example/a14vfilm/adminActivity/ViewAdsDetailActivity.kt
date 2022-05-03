@@ -39,7 +39,7 @@ class ViewAdsDetailActivity : AppCompatActivity() {
 
         //set image for genre
         if (ads != "")
-            Picasso.get().load(ads).resize(150, 150).into(ivGenreImage)
+            Picasso.get().load(ads).fit().centerCrop().into(ivGenreImage)
 
         //Update Ads information
         findViewById<Button>(R.id.viewadsdetail_BTNSave).setOnClickListener {

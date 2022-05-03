@@ -70,7 +70,7 @@ class AddNewGenreAdminActivity : AppCompatActivity() {
                     taskSnapshot.storage.downloadUrl.addOnSuccessListener {
                         genreImage = it.toString()
 
-                        Picasso.get().load(imageUri).resize(150, 150).into (ivImage)
+                        Picasso.get().load(imageUri).fit().centerCrop().into (ivImage)
                     }
                 }.addOnProgressListener {
                 }

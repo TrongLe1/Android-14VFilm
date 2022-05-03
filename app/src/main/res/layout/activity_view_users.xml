@@ -12,15 +12,15 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/viewusers_svUserSearch"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
         android:background="@drawable/border_button"
+        android:layoutDirection="rtl"
         android:textCursorDrawable="@null"
         app:iconifiedByDefault="false"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layoutDirection="rtl"
         app:queryBackground="@null" />
 
     <View
@@ -29,7 +29,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp" />
 
-    <RelativeLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="49dp">
 
@@ -40,10 +40,11 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="27dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="19dp"
             android:layout_toStartOf="@+id/viewusers_SSort"
-            android:text="Sắp xếp theo:"
+            android:text="Hiển thị theo:"
+            android:textSize="15dp"
             app:layout_constraintEnd_toStartOf="@+id/viewusers_SSort" />
 
         <Spinner
@@ -52,10 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="22dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent" />
-    </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     <RelativeLayout

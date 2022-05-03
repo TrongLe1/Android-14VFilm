@@ -62,7 +62,7 @@ class VerifyFilmAdminActivity : AppCompatActivity() {
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val video = singleSnapshot.child("video").getValue<String>()
 
-                    if (dateUpdated == Date(0,0,0)) {
+                    if (dateUpdated == null) {
                         filmList.add(
                             Film(
                                 id!!,
@@ -92,21 +92,6 @@ class VerifyFilmAdminActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        //Filter
-        val option = arrayListOf("A-Z", "Thể loại", "Trạng thái")
-        val SSort = findViewById<Spinner>(R.id.verifyfilm_SSort)
-        val sAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, option)
-        sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        SSort.adapter = sAdapter
-        SSort.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                filmList.clear()
-                getFilterLibrary(SSort.selectedItem.toString(), rcvVerifyFilm!!, filmList, adapterVerifyFilm)
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {}
-        }
-
 
         filmSearch!!.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -127,165 +112,5 @@ class VerifyFilmAdminActivity : AppCompatActivity() {
         filmSearch!!.setFocusable(false);
         rcvVerifyFilm!!.layoutManager = LinearLayoutManager(this)
 
-    }
-    private fun getFilterLibrary(sort: String, RVLibrary: RecyclerView, filmList: ArrayList<Film>, libraryAdapter: VerifyFilmAdapter) {
-        val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-        val ref = FirebaseDatabase.getInstance(url).getReference("film")
-        if (sort == "Thể loại") {
-            val query = ref.orderByChild("genre")
-            RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    filmList.clear()
-                    for (singleSnapshot in snapshot.children) {
-                        val id = singleSnapshot.child("id").getValue<String>()
-                        val seller = singleSnapshot.child("seller").getValue<String>()
-                        val name = singleSnapshot.child("name").getValue<String>()
-                        val description = singleSnapshot.child("description").getValue<String>()
-                        val rate = singleSnapshot.child("rate").getValue<Float>()
-                        val length = singleSnapshot.child("length").getValue<Int>()
-                        val country = singleSnapshot.child("country").getValue<String>()
-                        val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
-                        val price = singleSnapshot.child("price").getValue<Int>()
-                        //val quantity = singleSnapshot.child("quantity").getValue<Int>()
-                        val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
-                        val image = singleSnapshot.child("image").getValue<String>()
-                        val trailer = singleSnapshot.child("trailer").getValue<String>()
-                        val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
-                        val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                        val status = singleSnapshot.child("status").getValue<Boolean>()
-                        val video = singleSnapshot.child("video").getValue<String>()
-                        if (dateUpdated == Date(0,0,0)) {
-                            filmList.add(
-                                Film(
-                                    id!!,
-                                    seller!!,
-                                    name!!,
-                                    description!!,
-                                    rate!!,
-                                    length!!,
-                                    country!!,
-                                    datePublished!!,
-                                    price!!,
-                                    dateUpdated!!,
-                                    image!!,
-                                    trailer!!,
-                                    genreList!!,
-                                    rateTime!!,
-                                    status!!,
-                                    video!!
-                                )
-                            )
-                        }
-                    }
-                    RVLibrary.adapter!!.notifyDataSetChanged()
-                }
-                override fun onCancelled(error: DatabaseError) {}
-            })
-        }
-        else if (sort == "A-Z") {
-            val query = ref.orderByChild("name")
-            RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    filmList.clear()
-                    for (singleSnapshot in snapshot.children) {
-                        val id = singleSnapshot.child("id").getValue<String>()
-                        val seller = singleSnapshot.child("seller").getValue<String>()
-                        val name = singleSnapshot.child("name").getValue<String>()
-                        val description = singleSnapshot.child("description").getValue<String>()
-                        val rate = singleSnapshot.child("rate").getValue<Float>()
-                        val length = singleSnapshot.child("length").getValue<Int>()
-                        val country = singleSnapshot.child("country").getValue<String>()
-                        val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
-                        val price = singleSnapshot.child("price").getValue<Int>()
-                        //val quantity = singleSnapshot.child("quantity").getValue<Int>()
-                        val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
-                        val image = singleSnapshot.child("image").getValue<String>()
-                        val trailer = singleSnapshot.child("trailer").getValue<String>()
-                        val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
-                        val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                        val status = singleSnapshot.child("status").getValue<Boolean>()
-                        val video = singleSnapshot.child("video").getValue<String>()
-                        if (dateUpdated == Date(0,0,0)) {
-                            filmList.add(
-                                Film(
-                                    id!!,
-                                    seller!!,
-                                    name!!,
-                                    description!!,
-                                    rate!!,
-                                    length!!,
-                                    country!!,
-                                    datePublished!!,
-                                    price!!,
-                                    dateUpdated!!,
-                                    image!!,
-                                    trailer!!,
-                                    genreList!!,
-                                    rateTime!!,
-                                    status!!,
-                                    video!!
-                                )
-                            )
-                        }
-                    }
-                    RVLibrary.adapter!!.notifyDataSetChanged()
-                }
-                override fun onCancelled(error: DatabaseError) {}
-            })
-        }
-        else {
-            val query = ref.orderByChild("status")
-            RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    filmList.clear()
-                    for (singleSnapshot in snapshot.children) {
-                        val id = singleSnapshot.child("id").getValue<String>()
-                        val seller = singleSnapshot.child("seller").getValue<String>()
-                        val name = singleSnapshot.child("name").getValue<String>()
-                        val description = singleSnapshot.child("description").getValue<String>()
-                        val rate = singleSnapshot.child("rate").getValue<Float>()
-                        val length = singleSnapshot.child("length").getValue<Int>()
-                        val country = singleSnapshot.child("country").getValue<String>()
-                        val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
-                        val price = singleSnapshot.child("price").getValue<Int>()
-                        //val quantity = singleSnapshot.child("quantity").getValue<Int>()
-                        val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
-                        val image = singleSnapshot.child("image").getValue<String>()
-                        val trailer = singleSnapshot.child("trailer").getValue<String>()
-                        val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
-                        val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
-                        val status = singleSnapshot.child("status").getValue<Boolean>()
-                        val video = singleSnapshot.child("video").getValue<String>()
-                        if (dateUpdated == Date(0,0,0)) {
-                            filmList.add(
-                                Film(
-                                    id!!,
-                                    seller!!,
-                                    name!!,
-                                    description!!,
-                                    rate!!,
-                                    length!!,
-                                    country!!,
-                                    datePublished!!,
-                                    price!!,
-                                    dateUpdated!!,
-                                    image!!,
-                                    trailer!!,
-                                    genreList!!,
-                                    rateTime!!,
-                                    status!!,
-                                    video!!
-                                )
-                            )
-                        }
-                    }
-                    RVLibrary.adapter!!.notifyDataSetChanged()
-                }
-                override fun onCancelled(error: DatabaseError) {}
-            })
-        }
     }
 }

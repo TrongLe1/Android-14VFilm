@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".adminActivity.AddNewGenreAdminActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".adminActivity.AddNewGenreAdminActivity">
 
         <ImageView
             android:id="@+id/addnewgenreadmin_IVDetail"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
             android:src="@drawable/more_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,23 +30,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addnewgenreadmin_IVDetail" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/addnewgenreadmin_BTNSave"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
-            android:layout_marginTop="204dp"
-            android:background="@drawable/border_button_green_admin"
-            android:drawableLeft="@drawable/save"
-            android:paddingLeft="10dp"
-            android:text="Thêm thể loại"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addnewgenreadmin_TVDName"
-            app:layout_constraintVertical_bias="0.0" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addnewgenreadmin_BTNSave"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="204dp"
+        android:background="@drawable/border_button_green_admin"
+        android:drawableLeft="@drawable/save"
+        android:paddingLeft="10dp"
+        android:text="Thêm thể loại"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addnewgenreadmin_TVDName"
+        app:layout_constraintVertical_bias="0.166" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

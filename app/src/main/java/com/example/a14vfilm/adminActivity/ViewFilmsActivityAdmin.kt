@@ -77,7 +77,7 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
         })
 
         //Filter
-                val option = arrayListOf("A-Z", "Thể loại", "Trạng thái")
+                val option = arrayListOf("A-Z", "Đang hoạt động", "Đã bị ẩn")
                 val SSort = findViewById<Spinner>(R.id.viewfilm_SSort)
                 val sAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, option)
                 sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -115,10 +115,9 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
     private fun getFilterLibrary(sort: String, RVLibrary: RecyclerView, filmList: ArrayList<Film>, libraryAdapter: ViewFilmsAdapter) {
         val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
         val ref = FirebaseDatabase.getInstance(url).getReference("film")
-        if (sort == "Thể loại") {
-            val query = ref.orderByChild("genre")
+        if (sort == "A-Z") {
             RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
+            ref.orderByChild("name").addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     filmList.clear()
                     for (singleSnapshot in snapshot.children) {
@@ -139,18 +138,36 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val video = singleSnapshot.child("video").getValue<String>()
-                        filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!,rateTime!!, status!!, video!!))
-
-                    }
+                            filmList.add(
+                                0,
+                                Film(
+                                    id!!,
+                                    seller!!,
+                                    name!!,
+                                    description!!,
+                                    rate!!,
+                                    length!!,
+                                    country!!,
+                                    datePublished!!,
+                                    price!!,
+                                    dateUpdated!!,
+                                    image!!,
+                                    trailer!!,
+                                    genreList!!,
+                                    rateTime!!,
+                                    status!!,
+                                    video!!
+                                )
+                            )
+                        }
                     RVLibrary.adapter!!.notifyDataSetChanged()
                 }
                 override fun onCancelled(error: DatabaseError) {}
             })
         }
-        else if (sort == "A-Z") {
-            val query = ref.orderByChild("name")
+        else if (sort == "Đang hoạt động") {
             RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
+            ref.addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     filmList.clear()
                     for (singleSnapshot in snapshot.children) {
@@ -171,7 +188,29 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val video = singleSnapshot.child("video").getValue<String>()
-                        filmList.add( Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!,rateTime!!, status!!, video!!))
+                        if (dateUpdated != null && status == true) {
+                            filmList.add(
+                                0,
+                                Film(
+                                    id!!,
+                                    seller!!,
+                                    name!!,
+                                    description!!,
+                                    rate!!,
+                                    length!!,
+                                    country!!,
+                                    datePublished!!,
+                                    price!!,
+                                    dateUpdated!!,
+                                    image!!,
+                                    trailer!!,
+                                    genreList!!,
+                                    rateTime!!,
+                                    status!!,
+                                    video!!
+                                )
+                            )
+                        }
 
                     }
                     RVLibrary.adapter!!.notifyDataSetChanged()
@@ -180,9 +219,8 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
             })
         }
         else {
-            val query = ref.orderByChild("status")
             RVLibrary.adapter = libraryAdapter
-            query.addValueEventListener(object: ValueEventListener {
+            ref.addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     filmList.clear()
                     for (singleSnapshot in snapshot.children) {
@@ -203,7 +241,29 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val video = singleSnapshot.child("video").getValue<String>()
-                        filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!,rateTime!!, status!!, video!!))
+                        if (dateUpdated != null && status == false) {
+                            filmList.add(
+                                0,
+                                Film(
+                                    id!!,
+                                    seller!!,
+                                    name!!,
+                                    description!!,
+                                    rate!!,
+                                    length!!,
+                                    country!!,
+                                    datePublished!!,
+                                    price!!,
+                                    dateUpdated!!,
+                                    image!!,
+                                    trailer!!,
+                                    genreList!!,
+                                    rateTime!!,
+                                    status!!,
+                                    video!!
+                                )
+                            )
+                        }
 
                     }
                     RVLibrary.adapter!!.notifyDataSetChanged()
@@ -211,5 +271,6 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                 override fun onCancelled(error: DatabaseError) {}
             })
         }
+
     }
 }

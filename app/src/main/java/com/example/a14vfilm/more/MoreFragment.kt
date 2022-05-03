@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import com.example.a14vfilm.MainActivity
 import com.example.a14vfilm.R
+import com.example.a14vfilm.adminActivity.AdminHomeActivity
 import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
@@ -44,6 +46,8 @@ class MoreFragment : Fragment() {
         val TVChangePass = view.findViewById<TextView>(R.id.TVChangePass)
         val IVAvatar = view.findViewById<ImageView>(R.id.IVAvatar)
 
+
+
         if (UserLogin.info == null) {
             TVInfo.isEnabled = false
             TVInfo.isClickable = false
@@ -64,6 +68,10 @@ class MoreFragment : Fragment() {
                 TVChangePass.isClickable = false
                 TVChangePass.visibility = View.GONE
             }
+            //if admin, hide favourite
+            if (UserLogin.info!!.role == 2){
+                TVFavourite!!.visibility = View.GONE
+            }
             BTNLogin.text = "Xin chào, " + UserLogin.info!!.name
             BTNLogin.isClickable = false
             BTNLogin.isEnabled = false
@@ -82,6 +90,7 @@ class MoreFragment : Fragment() {
             editor.remove("user")
             editor.commit()
 
+
             /*
             val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.BNVMain)
             bottomNavigationView.setSelectedItemId(R.id.home)
@@ -99,6 +108,7 @@ class MoreFragment : Fragment() {
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
         }
+
 
         /*
         BTNLogin.setOnClickListener {

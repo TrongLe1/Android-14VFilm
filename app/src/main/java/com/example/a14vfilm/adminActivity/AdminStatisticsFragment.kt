@@ -32,6 +32,8 @@ class AdminStatisticsFragment : Fragment() {
     private var tvUserCount: TextView? = null
     private var tvFilmCount: TextView? = null
     private var tvGenreCount: TextView? = null
+    private var tvVerifyCount: TextView? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +62,7 @@ class AdminStatisticsFragment : Fragment() {
                 for (singleSnapshot in snapshot.children) {
                     countUser++
                 }
-                tvUserCount!!.text = countUser.toString()
+                tvUserCount!!.append(countUser.toString())
 
             }
             override fun onCancelled(error: DatabaseError) {}
@@ -76,7 +78,7 @@ class AdminStatisticsFragment : Fragment() {
                         countFilm++
                     }
                 }
-                tvFilmCount!!.text = countFilm.toString()
+                tvFilmCount!!.append(countFilm.toString())
             }
             override fun onCancelled(error: DatabaseError) {}
         })
@@ -89,7 +91,22 @@ class AdminStatisticsFragment : Fragment() {
                 for (singleSnapshot in snapshot.children) {
                         countGenre++
                 }
-                tvGenreCount!!.text = countGenre.toString()
+                tvGenreCount!!.append(countGenre.toString())
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        //Count unverified
+        var countVerify = 0
+        tvVerifyCount = view.findViewById(R.id.fragmentstatistics_textView4)
+        ref.child("film").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (singleSnapshot in snapshot.children) {
+                    if (singleSnapshot.child("dateUpdated").getValue<Date>() == null){
+                        countVerify++
+                    }
+                }
+                tvVerifyCount!!.append(countVerify.toString())
             }
             override fun onCancelled(error: DatabaseError) {}
         })
@@ -138,20 +155,20 @@ class AdminStatisticsFragment : Fragment() {
                     }
                 }
 
+                val aaChartView:AAChartView = view.findViewById<AAChartView>(R.id.fragmentstatistics_barChart)
                 //config chart
                 val aaChartModel : AAChartModel = AAChartModel()
                     .chartType(AAChartType.Line)
-                    .title("Transactions")
-                    .subtitle("Number of transactions in last 7 days")
+                    .title("Các giao dịch")
+                    .subtitle("Số lượng giao dịch trong 7 ngày qua")
                     .backgroundColor("#C4DDFF")
                     .dataLabelsEnabled(true)
                     .series(arrayOf(
                         AASeriesElement()
-                            .name("Transactions")
+                            .name("Giao dịch")
                             .data(arrayOf(day1, day2, day3, day4, day5, day6, day7)),
                     )
                     )
-                val aaChartView = view.findViewById<AAChartView>(R.id.fragmentstatistics_barChart)
 
                 aaChartView.aa_drawChartWithChartModel(aaChartModel)
 

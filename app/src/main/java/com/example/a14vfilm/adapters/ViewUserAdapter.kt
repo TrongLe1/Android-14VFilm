@@ -119,17 +119,27 @@ class ViewUserAdapter (private val userList: List<User>): RecyclerView.Adapter<V
                         })
                         .send()
 
-//                    val intent1 = Intent(Intent.ACTION_SENDTO)
-//                    intent1.putExtra(Intent.EXTRA_SUBJECT, "Tài khoản 14VFilm của bạn đã bị khóa");
-//                    intent1.putExtra(Intent.EXTRA_TEXT, "Tài khoản với tên người dùng "+ user.name + " của bạn đã bị khóa vì vi phạm chính sách người dùng");
-//                    intent1.setData(Uri.parse("mailto:"+user.email));
-//                    intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
-//                    it.context.startActivity(intent1)
                 }
                 else{
                     tbUserStatus.isChecked = true
                     user.status = true
                     statusChange = true
+
+                    //Automail
+                    BackgroundMail.newBuilder(it.context)
+                        .withUsername("14vfilmquantrivien@gmail.com")
+                        .withPassword("14vfilmquantrivien123")
+                        .withMailto(user.email)
+                        .withType(BackgroundMail.TYPE_PLAIN)
+                        .withSubject("Tài khoản 14VFilm của bạn đã được mở khóa")
+                        .withBody("Tài khoản với tên người dùng "+ user.name + " của bạn đã được mở khóa bởi Admin")
+                        .withOnSuccessCallback(OnSuccessCallback {
+                            //do some magic
+                        })
+                        .withOnFailCallback(OnFailCallback {
+                            //do some magic
+                        })
+                        .send()
                 }
                 ref.child(user.id)
                     .child("status")

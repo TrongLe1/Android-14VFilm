@@ -32,6 +32,7 @@ class VerifyFilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter
             onItemClick?.invoke(film)
             val intent = Intent(it.context, DetailActivity::class.java)
             intent.putExtra("Film", film)
+            intent.putExtra("admin", true)
             it.context.startActivity(intent)
         }
 
