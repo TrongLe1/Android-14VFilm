@@ -62,7 +62,7 @@ class VerifyFilmAdminActivity : AppCompatActivity() {
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val video = singleSnapshot.child("video").getValue<String>()
 
-                    if (dateUpdated == null) {
+                    if (status == null) {
                         filmList.add(
                             Film(
                                 id!!,

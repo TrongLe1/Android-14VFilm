@@ -12,16 +12,16 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/viewfilm_svFilmSearch"
-        android:layout_width="370dp"
+        android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="5dp"
+        android:background="@drawable/border_button"
+        android:layoutDirection="rtl"
+
         android:textCursorDrawable="@null"
         app:iconifiedByDefault="false"
-
-        android:layoutDirection="rtl"
-        android:background="@drawable/border_button"
 
         app:queryBackground="@null" />
 

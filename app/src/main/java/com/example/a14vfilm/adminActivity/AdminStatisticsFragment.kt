@@ -74,7 +74,7 @@ class AdminStatisticsFragment : Fragment() {
         ref.child("film").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
-                    if (singleSnapshot.child("status").getValue<Boolean>() == true){
+                    if (singleSnapshot.child("dateUpdated").getValue<Date>() != null){
                         countFilm++
                     }
                 }
@@ -102,7 +102,7 @@ class AdminStatisticsFragment : Fragment() {
         ref.child("film").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
-                    if (singleSnapshot.child("dateUpdated").getValue<Date>() == null){
+                    if (singleSnapshot.child("status").getValue<Boolean>() == null){
                         countVerify++
                     }
                 }

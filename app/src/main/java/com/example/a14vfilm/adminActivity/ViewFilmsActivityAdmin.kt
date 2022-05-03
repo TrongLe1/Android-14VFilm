@@ -66,8 +66,28 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val video = singleSnapshot.child("video").getValue<String>()
 
-
-                    filmList.add(Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!,rateTime!!, status!!, video!!))
+                    if (status != null) {
+                        filmList.add(
+                            Film(
+                                id!!,
+                                seller!!,
+                                name!!,
+                                description!!,
+                                rate!!,
+                                length!!,
+                                country!!,
+                                datePublished!!,
+                                price!!,
+                                dateUpdated!!,
+                                image!!,
+                                trailer!!,
+                                genreList!!,
+                                rateTime!!,
+                                status!!,
+                                video!!
+                            )
+                        )
+                    }
                 }
                 rcvViewFilm!!.adapter!!.notifyDataSetChanged()
 
@@ -138,6 +158,7 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val video = singleSnapshot.child("video").getValue<String>()
+                        if (status != null) {
                             filmList.add(
                                 0,
                                 Film(
@@ -159,6 +180,7 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                                     video!!
                                 )
                             )
+                        }
                         }
                     RVLibrary.adapter!!.notifyDataSetChanged()
                 }
@@ -188,7 +210,7 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val video = singleSnapshot.child("video").getValue<String>()
-                        if (dateUpdated != null && status == true) {
+                        if (status != null ) {
                             filmList.add(
                                 0,
                                 Film(
@@ -241,7 +263,7 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                         val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                         val status = singleSnapshot.child("status").getValue<Boolean>()
                         val video = singleSnapshot.child("video").getValue<String>()
-                        if (dateUpdated != null && status == false) {
+                        if (status != null) {
                             filmList.add(
                                 0,
                                 Film(

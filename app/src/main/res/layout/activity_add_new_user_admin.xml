@@ -61,10 +61,11 @@
 
         <EditText
             android:id="@+id/addnewuseradminactivity_etUserEmail"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
+            android:layout_width="323dp"
+            android:layout_height="33dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,10 +85,11 @@
 
         <EditText
             android:id="@+id/addnewuseradminactivity_etUserName"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
+            android:layout_width="323dp"
+            android:layout_height="33dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,13 +109,15 @@
 
         <EditText
             android:id="@+id/addnewuseradminactivity_etUserPhone"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
+            android:layout_width="323dp"
+            android:layout_height="33dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="phone"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/TVDIPhone" />
 
         <TextView
@@ -130,13 +134,15 @@
 
         <EditText
             android:id="@+id/addnewuseradminactivity_etUserAddress"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
+            android:layout_width="323dp"
+            android:layout_height="33dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/TVDIAddress" />
 
         <TextView
@@ -153,13 +159,15 @@
 
         <EditText
             android:id="@+id/addnewuseradminactivity_etUserPassword"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
+            android:layout_width="323dp"
+            android:layout_height="33dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_border"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/TVDIPassword" />
 
         <TextView

@@ -138,6 +138,7 @@
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_favorite.xml" value="0.24728260869565216" />
         <entry key="app/src/main/res/layout/activity_film_detail.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_film_statistic.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_film_statistic_renter.xml" value="0.35625" />
