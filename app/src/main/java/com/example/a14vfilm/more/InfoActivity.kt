@@ -1,10 +1,12 @@
 package com.example.a14vfilm.more
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.*
 import com.example.a14vfilm.R
@@ -13,6 +15,7 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
@@ -63,10 +66,22 @@ class InfoActivity : AppCompatActivity() {
         BTNSubmit!!.setOnClickListener {
             if (ETPhone!!.text.length != 10)
                 Toast.makeText(this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show()
+            else if (TextUtils.isEmpty(ETName!!.text.toString()))
+                Toast.makeText(this, "Tên người dùng không được để trống", Toast.LENGTH_SHORT).show()
             else {
                 ref.child(UserLogin.info!!.id).child("name").setValue(ETName!!.text.toString())
                 ref.child(UserLogin.info!!.id).child("address").setValue(ETAddress!!.text.toString())
                 ref.child(UserLogin.info!!.id).child("phone").setValue(ETPhone!!.text.toString())
+                UserLogin.info!!.name = ETName!!.text.toString()
+                UserLogin.info!!.address = ETAddress!!.text.toString()
+                UserLogin.info!!.phone = ETPhone!!.text.toString()
+                val gson = Gson()
+                val json = gson.toJson(UserLogin.info)
+                val sharedPreference =  getSharedPreferences("UserLogin",
+                    Context.MODE_PRIVATE)
+                val editor = sharedPreference.edit()
+                editor.putString("user", json)
+                editor.commit()
                 Toast.makeText(this, "Cập nhập thông tin thành công", Toast.LENGTH_SHORT).show()
                 finish()
             }
@@ -101,6 +116,14 @@ class InfoActivity : AppCompatActivity() {
                         ref.child(UserLogin.info!!.id).child("image").setValue(imageUrl)
                         Picasso.get().load(imageUri).resize(150, 150).into  (IVAvatar)
                         BTNSubmit!!.isClickable = true
+                        UserLogin.info!!.image = imageUrl
+                        val gson = Gson()
+                        val json = gson.toJson(UserLogin.info)
+                        val sharedPreference =  getSharedPreferences("UserLogin",
+                            Context.MODE_PRIVATE)
+                        val editor = sharedPreference.edit()
+                        editor.putString("user", json)
+                        editor.commit()
                         Toast.makeText(this, "Cập nhật ảnh đại diện thành công", Toast.LENGTH_SHORT).show()
                     }
                 }.addOnProgressListener {

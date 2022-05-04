@@ -76,7 +76,11 @@ class HomeFragment : Fragment() {
                     if (status == true)
                         newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
-                newFilm = newFilm.subList(0, 5).toList() as ArrayList<Film>
+                newFilm.sortByDescending { it.dateUpdated }
+                if (newFilm.size >= 5)
+                    newFilm = newFilm.subList(0, 5).toList() as ArrayList<Film>
+                else
+                    newFilm = newFilm.subList(0, newFilm.size).toList() as ArrayList<Film>
                 newAdapter = FilmAdapter(newFilm)
                 newAdapter.onItemClick = {film ->
                     val intent = Intent(requireActivity(), DetailActivity::class.java)
@@ -117,7 +121,10 @@ class HomeFragment : Fragment() {
                     if (status == true)
                         hotFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
-                hotFilm = hotFilm.subList(0, 5).toList() as ArrayList<Film>
+                if (hotFilm.size >= 5)
+                    hotFilm = hotFilm.subList(0, 5).toList() as ArrayList<Film>
+                else
+                    hotFilm = hotFilm.subList(0, hotFilm.size).toList() as ArrayList<Film>
                 hotAdapter = FilmAdapter(hotFilm)
                 hotAdapter.onItemClick = {film ->
                     val intent = Intent(requireActivity(), DetailActivity::class.java)

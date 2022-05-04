@@ -82,6 +82,7 @@ class ExpiredFragment : Fragment() {
                                         val video = singleSnapshot.child("video").getValue<String>()
                                         transList.add(TransactionExtend(trans, name!!, image!!, video!!))
                                     }
+                                    transList.sortByDescending { it.transaction.expired }
                                     RVExpired.adapter = TransactionAdapter(transList, "expired")
                                 }
                                 override fun onCancelled(error: DatabaseError) {}

@@ -92,6 +92,7 @@ class OrderedFragment : Fragment() {
                                         val video = singleSnapshot.child("video").getValue<String>()
                                         transList.add(TransactionExtend(trans, name!!, image!!, video!!))
                                     }
+                                    transList.sortByDescending { it.transaction.rentDate }
                                     RVOrdered.adapter = TransactionAdapter(transList, "ordered")
                                 }
                                 override fun onCancelled(error: DatabaseError) {}
