@@ -58,7 +58,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
 
             //update for "film" collection
             val query2 = ref.child("film")
-            query2.addValueEventListener(object : ValueEventListener {
+            query2.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (singleSnapshot in snapshot.children) {
                         for (singleSnapshotChild in singleSnapshot.child("genre").children){
@@ -81,51 +81,29 @@ class ViewGenreDetailActivity : AppCompatActivity() {
             val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
             val ref = FirebaseDatabase.getInstance(url).reference
 
-            val genreList: MutableList<String> = mutableListOf()
-
             //update for "film" collection
             val query2 = ref.child("film")
             query2.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     var canBeDelete: Boolean = true
                     for (singleSnapshot in snapshot.children) {
-                        var flag = 0
-                        val filmId = singleSnapshot.child("id").getValue<String>()
-                        for (singleSnapshotChild in singleSnapshot.child("genre").children){
-                            /*
-                            if (singleSnapshotChild.value.toString() == genreName){
-                                singleSnapshotChild.ref.removeValue()
-                            }
 
-                            */
-                            if (singleSnapshotChild.value.toString() != genreName){
-                                //singleSnapshotChild.ref.removeValue()
-                                genreList.add(singleSnapshotChild.value.toString())
-                            }
-                            else {
-                                flag = 1
+                        for (singleSnapshotChild in singleSnapshot.child("genre").children){
+                            if (singleSnapshotChild.value.toString() == genreName){
                                 canBeDelete = false
                                 Toast.makeText(it.context, "Không thể xoá do tồn tại thể loại này trong phim đang chiếu", Toast.LENGTH_SHORT).show()
                             }
                         }
-                        if (flag == 0){
-                            ref.child("film").child(filmId!!).child("genre").setValue(genreList)
-                            genreList.clear()
-                        }
                     }
                     if (canBeDelete){
-                    //update for "genre" collection
-                    val query1 = ref.child("genre").child(genreID!!).removeValue()
+                        //update for "genre" collection
+                        val query1 = ref.child("genre").child(genreID!!).removeValue()
                         Toast.makeText(it.context, "Xoá thể loại thành công", Toast.LENGTH_SHORT).show()
+                        finish()
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {}
-            })
-            //Toast.makeText(it.context, "Xóa thể loại thành công", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(it.context, ViewGenreActivity::class.java)
-//            startActivity(intent)
-            finish()
-        }
+            })}
 
 
         ivGenreImage!!.setOnClickListener {
