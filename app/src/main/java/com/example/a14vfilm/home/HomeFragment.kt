@@ -48,12 +48,12 @@ class HomeFragment : Fragment() {
         val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
         val ref = FirebaseDatabase.getInstance(url).getReference("film")
 
-        val newFilm = ArrayList<Film>()
+        var newFilm = ArrayList<Film>()
         val RVNew = view.findViewById<RecyclerView>(R.id.RVNew)
-        val newAdapter = FilmAdapter(newFilm)
+        var newAdapter = FilmAdapter(newFilm)
         RVNew.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
         RVNew.addItemDecoration(LayoutMarginDecoration(1, 20))
-        val query = ref.orderByChild("dateUpdated").limitToFirst(5)
+        val query = ref.orderByChild("dateUpdated")
         query.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
@@ -76,22 +76,25 @@ class HomeFragment : Fragment() {
                     if (status == true)
                         newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
+                newFilm = newFilm.subList(0, 5).toList() as ArrayList<Film>
+                newAdapter = FilmAdapter(newFilm)
+                newAdapter.onItemClick = {film ->
+                    val intent = Intent(requireActivity(), DetailActivity::class.java)
+                    intent.putExtra("Film", film)
+                    startActivity(intent)
+                }
                 RVNew.adapter = newAdapter
             }
             override fun onCancelled(error: DatabaseError) {}
         })
-        newAdapter.onItemClick = {film ->
-            val intent = Intent(requireActivity(), DetailActivity::class.java)
-            intent.putExtra("Film", film)
-            startActivity(intent)
-        }
 
-        val hotFilm = ArrayList<Film>()
+
+        var hotFilm = ArrayList<Film>()
         val RVHot = view.findViewById<RecyclerView>(R.id.RVHot)
-        val hotAdapter = FilmAdapter(hotFilm)
+        var hotAdapter = FilmAdapter(hotFilm)
         RVHot.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
         RVHot.addItemDecoration(LayoutMarginDecoration(1, 20))
-        val sQuery = ref.orderByChild("rate").limitToLast(5)
+        val sQuery = ref.orderByChild("rate")
         sQuery.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
@@ -114,15 +117,18 @@ class HomeFragment : Fragment() {
                     if (status == true)
                         hotFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
+                hotFilm = hotFilm.subList(0, 5).toList() as ArrayList<Film>
+                hotAdapter = FilmAdapter(hotFilm)
+                hotAdapter.onItemClick = {film ->
+                    val intent = Intent(requireActivity(), DetailActivity::class.java)
+                    intent.putExtra("Film", film)
+                    startActivity(intent)
+                }
                 RVHot.adapter = hotAdapter
             }
             override fun onCancelled(error: DatabaseError) {}
         })
-        hotAdapter.onItemClick = {film ->
-            val intent = Intent(requireActivity(), DetailActivity::class.java)
-            intent.putExtra("Film", film)
-            startActivity(intent)
-        }
+
 
         /*
         val RVHome = view.findViewById<RecyclerView>(R.id.RVHome)
