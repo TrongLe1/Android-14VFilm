@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -118,6 +119,13 @@ class SellerEditFilmActivity : AppCompatActivity() {
 
     }
 
+    private fun getBack() {
+        val back = Intent(intent)
+        back.putExtra("Film", filmDetail)
+        setResult(RESULT_OK, back)
+        finish()
+    }
+
     /*handling action of button component*/
     private fun handleButtonClick() {
 
@@ -164,28 +172,33 @@ class SellerEditFilmActivity : AppCompatActivity() {
     private fun saveFilmDetailChange() {
 
         /*check conditions of view component*/
-        if (checkEmptyFilmInputField()) {
-            /*notify to user fill all input*/
-            Toast.makeText(this, "Please fill all film information!", Toast.LENGTH_LONG).show()
-            return;
-        } else if (trailerUri == null) {
-            /*notify Trailer Video is not selected*/
-            Toast.makeText(this, "Pick film trailer!", Toast.LENGTH_LONG).show()
-            return;
-        } else if (videoUri == null) {
-            /*notify Full Video is not selected*/
-            Toast.makeText(this, "Pick film full video!", Toast.LENGTH_LONG).show()
-            return;
-        } else if (imageUri == null) {
-            /*notify Film Image is not selected*/
-            Toast.makeText(this, "Pick film image!", Toast.LENGTH_LONG).show()
-            return;
+        when {
+            checkEmptyFilmInputField() -> {
+                /*notify to user fill all input*/
+                Toast.makeText(this, "Please fill all film information!", Toast.LENGTH_LONG).show()
+                return;
+            }
+            trailerUri == null -> {
+                /*notify Trailer Video is not selected*/
+                Toast.makeText(this, "Pick film trailer!", Toast.LENGTH_LONG).show()
+                return;
+            }
+            videoUri == null -> {
+                /*notify Full Video is not selected*/
+                Toast.makeText(this, "Pick film full video!", Toast.LENGTH_LONG).show()
+                return;
+            }
+            imageUri == null -> {
+                /*notify Film Image is not selected*/
+                Toast.makeText(this, "Pick film image!", Toast.LENGTH_LONG).show()
+                return;
 
+            }
+
+            /*Everything is OK
+                Save data to firebase*/
+            else -> updateFilmToFirebase(filmDetail!!)
         }
-
-        /*Everything is OK
-            Save data to firebase*/
-        updateFilmToFirebase(filmDetail!!)
 
     }
 
@@ -195,14 +208,7 @@ class SellerEditFilmActivity : AppCompatActivity() {
         /*timestamp when update film to firebase*/
         val timestamp = "" + System.currentTimeMillis()
 
-        val videoCheck = updateNewVideoToFirebase(timestamp)
-        val trailerCheck = updateNewTrailerToFirebase(timestamp)
-        val imageCheck = updateNewImageToFirebase(timestamp)
-        while (!videoCheck);
-        while (!trailerCheck);
-        while (!imageCheck);
-        /*doneTask*/
-        if(videoCheck && trailerCheck && imageCheck) {
+        if(!videoChange && !trailerChange && !imageChange) {
 
             /*upload information and add video*/
             val hashMap = HashMap<String, Any>() /*hashmap contains value of film upload*/
@@ -236,12 +242,129 @@ class SellerEditFilmActivity : AppCompatActivity() {
                         "Succesfully Uploading to Firebase",
                         Toast.LENGTH_SHORT).show()
 
+//                    val backIntent = Intent(this, SellerFilmDetailActivity::class.java)
+//                    backIntent.putExtra("Film", filmDetail!!)
+//                    startActivity(backIntent)
+                    getBack()
                 }
                 .addOnFailureListener { e ->
                     progressDialog.dismiss()
                     Toast.makeText(this,
                         "Failure Uploading to Firebase",
                         Toast.LENGTH_SHORT).show()
+                }
+        }else {
+
+            val trailerFileAndPathName = "Videos/trailer_$timestamp"
+            val videoFileAndPathName = "Videos/video_$timestamp"
+            val imageFileAndPathName = "Images/image_$timestamp"
+
+            /*upload full video to Firebase first*/
+            storageReference =
+                FirebaseStorage.getInstance(FIREBASE_STORAGE_URL).getReference(videoFileAndPathName)
+            storageReference!!.putFile(videoUri!!)
+                .addOnSuccessListener { taskSnapshot ->
+                    // uploaded full Video -> get url of uploaded full video
+                    val videoUriTask = taskSnapshot.storage.downloadUrl
+                    while (!videoUriTask.isSuccessful);
+
+                    /*uploaded full video succesfully*/
+                    if (videoUriTask.isSuccessful) {
+                        /*store url to videoUri to save to film Firebase Database*/
+                        videoUri = videoUriTask.result
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
+                }
+
+            /*upload trailer and film detail*/
+            storageReference =
+                FirebaseStorage.getInstance(FIREBASE_STORAGE_URL).getReference(trailerFileAndPathName)
+            storageReference!!.putFile(trailerUri!!)
+                .addOnSuccessListener { taskSnapshot ->
+                    // uploaded, get video url of uploaded trailer video
+                    val trailerUriTask = taskSnapshot.storage.downloadUrl
+                    while (!trailerUriTask.isSuccessful);
+                    val trailerDownloadUri = trailerUriTask.result
+
+                    /*uploaded trailer successfully*/
+                    if (trailerUriTask.isSuccessful) {
+                        /*Successfully upload trailer video*/
+
+                        /*Upload Image*/
+                        val stReference = FirebaseStorage.getInstance(FIREBASE_STORAGE_URL)
+                            .getReference(imageFileAndPathName)
+                        stReference!!.putFile(imageUri!!)
+                            .addOnSuccessListener { taskSnapshot ->
+                                /*waiting uploading and get uri of image uploaded to firebase */
+                                val imageUriTask = taskSnapshot.storage.downloadUrl
+                                while (!imageUriTask.isSuccessful);
+                                val imageUri = imageUriTask.result
+
+                                /*upload success*/
+                                if (imageUriTask.isSuccessful) {
+
+                                    /*upload information and add video*/
+                                    val hashMap = HashMap<String, Any?>() /*hashmap contains value of film upload*/
+                                    hashMap["id"] = filmDetail!!.id
+                                    hashMap["name"] = "${etEditName!!.text.trim()}"
+                                    hashMap["description"] = "${etEditDescription!!.text.trim()}"
+                                    hashMap["length"] = etEditDuration!!.text.trim().toString().toInt()
+                                    hashMap["seller"] = filmDetail!!.seller
+                                    hashMap["image"] = "$imageUri"
+                                    hashMap["trailer"] = "$trailerDownloadUri"
+                                    hashMap["video"] = "$videoUri"
+                                    hashMap["datePublished"] = filmDetail!!.datePublished
+                                    hashMap["dateUpdated"] = filmDetail!!.dateUpdated!!
+                                    hashMap["price"] = etEditPrice!!.text.trim().toString().toInt()
+                                    hashMap["rate"] = filmDetail!!.rate
+                                    hashMap["rateTime"] = filmDetail!!.rateTime
+                                    hashMap["genre"] = genreChoiceList
+                                    hashMap["country"] = "${tvEditCountry!!.text.trim()}"
+                                    hashMap["status"] = filmDetail!!.status
+
+
+//                                val film = Film(filmID,"","${etFilmName!!.text.trim()}","${etFilmDescription!!.text.trim()}", 0F,
+//                                    etFilmDuration!!.text.toString().toInt(), tvSelectCountry!!.text.toString(), Date(), etFilmRentPrice.toString().toInt(),
+//                                    etFilmQuantity!!.text.toString().toInt(), Date(""), "$imageUri", "$trailerUri", genreChoiceList, 0)
+
+                                    /*accessing to Firebase Database -> Model film*/
+                                    val dbReference =
+                                        FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL)
+                                            .getReference("film")
+                                    dbReference
+                                        .child(filmDetail!!.id)
+                                        .setValue(hashMap)
+                                        .addOnSuccessListener {
+                                            progressDialog.dismiss()
+                                            Toast.makeText(this,
+                                                "Succesfully Uploading to Firebase",
+                                                Toast.LENGTH_SHORT).show()
+                                            getBack()
+//                                            val backIntent = Intent(this, SellerFilmDetailActivity::class.java)
+//                                            backIntent.putExtra("Film", filmDetail!!)
+//                                            startActivity(backIntent)
+                                        }
+                                        .addOnFailureListener { e ->
+                                            progressDialog.dismiss()
+                                            Toast.makeText(this,
+                                                "Failure Uploading to Firebase",
+                                                Toast.LENGTH_SHORT).show()
+                                        }
+
+                                }
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("ppppps", e.message.toString())
+                            }
+
+                    }
+                }
+                .addOnFailureListener { e ->
+                    /*failed uploading*/
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "${e.message}", Toast.LENGTH_LONG).show()
                 }
         }
 
@@ -723,7 +846,6 @@ class SellerEditFilmActivity : AppCompatActivity() {
         }
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
     }
 
 

@@ -4,13 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
+import com.example.a14vfilm.adapters.JoinerTableAdapter
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.Transaction
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
@@ -31,6 +36,8 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     private var tvDetailPrice: TextView? = null
     private var tvDetailDuration: TextView? = null
     private var tvDetailDatePublished: TextView? = null
+    private var tvDetailCommentCount: TextView? = null
+    private var rbFilmSellerDetailRate: RatingBar? = null
 
     private var tvDetailImage: ImageView? = null
     private var vvFilmTrailer: VideoView? = null
@@ -48,6 +55,7 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     private var trailerMediaController: MediaController? = null
     private var videoMediaController: MediaController? = null
     private var checkAdapter: Int? =  null
+    private var transactionList: ArrayList<Transaction> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,7 +103,7 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     private fun editFilm() {
         val intent = Intent(this,  SellerEditFilmActivity::class.java)
         intent.putExtra("Film", filmDetail)
-        startActivity(intent)
+        startActivityForResult(intent, 100)
     }
 
     /*handling click delete film*/
@@ -169,41 +177,87 @@ class SellerFilmDetailActivity : AppCompatActivity() {
         TODO("Not yet implemented")
     }
 
+
     /*display film detail stored in film variable to view*/
     @SuppressLint("SetTextI18n")
     private fun displayDataToViewComponent() {
 
-        tvDetailName!!.text = filmDetail!!.name
-        tvDetailDescription!!.text = filmDetail!!.description
-        tvDetailPrice!!.text = "Giá thuê: ${filmDetail!!.price} VNĐ/Ngày"
-        tvDetailDuration!!.text = "Thời lượng: ${filmDetail!!.length} phút"
-        tvDetailCountry!!.text = "Quốc gia: ${filmDetail!!.country}"
+        val dbReference = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL).getReference("transaction")
+        dbReference.addListenerForSingleValueEvent( object: ValueEventListener {
+            @SuppressLint("SetTextI18n")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var totalRate: Float = "0".toFloat()
+                var avg = 0
+                var commentCount = 0
+                for (singleSnapshot in snapshot.children) {
+                    val film = singleSnapshot.child("film").getValue<String>()
+                    if(film.toString().equals(filmDetail!!.id)){
+                        val id = singleSnapshot.child("id").getValue<String>()
+                        val user = singleSnapshot.child("user").getValue<String>()
+                        val rentDate = singleSnapshot.child("rentDate").getValue<Date>()
+                        val expired = singleSnapshot.child("expired").getValue<Date>()
+                        val total = singleSnapshot.child("total").getValue<Long>()
+                        val rate = singleSnapshot.child("rate").getValue<Float>()
+                        val type = singleSnapshot.child("type").getValue<Boolean>()
+                        val comment = singleSnapshot.child("comment").getValue<String>()
+                        if(film == filmDetail!!.id) {
+                            transactionList.add(Transaction(id!!,
+                                user!!,
+                                film!!,
+                                rentDate!!,
+                                expired!!,
+                                total!!,
+                                rate!!,
+                                type!!,
+                                comment!!))
+                            totalRate += rate
+                            avg+=1
+                            if(comment != "")
+                                commentCount++
+                        }
+                    }
+                }
+                
+                rbFilmSellerDetailRate!!.rating = filmDetail!!.rate
+                tvDetailCommentCount!!.text = "(Có ${commentCount.toString()} lượt đánh giá)"
+                tvDetailName!!.text = filmDetail!!.name
+                tvDetailDescription!!.text = filmDetail!!.description
+                tvDetailPrice!!.text = "Giá thuê: ${filmDetail!!.price} VNĐ/Ngày"
+                tvDetailDuration!!.text = "Thời lượng: ${filmDetail!!.length} phút"
+                tvDetailCountry!!.text = "Quốc gia: ${filmDetail!!.country}"
 
-        if(SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
-                Date(0,0,0))
-            && SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
-                Date(0,0,1)))
-            tvDetailDatePublished!!.text = "Ngày đăng: ${SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated)}"
+                if(SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
+                        Date(0,0,0))
+                    && SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
+                        Date(0,0,1)))
+                    tvDetailDatePublished!!.text = "Ngày đăng: ${SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated)}"
 
 
-        var genre = "Thể loại: "
-        for (i in filmDetail!!.genre.indices) {
-            genre += "${filmDetail!!.genre[i]} "
-        }
+                var genre = "Thể loại: "
+                for (i in filmDetail!!.genre.indices) {
+                    genre += "${filmDetail!!.genre[i]} "
+                }
 
-        tvDetailGenre!!.text = genre
-        Picasso.get().load(filmDetail!!.image).into(tvDetailImage)
+                tvDetailGenre!!.text = genre
+                Picasso.get().load(filmDetail!!.image).into(tvDetailImage)
 
-        vvFilmTrailer!!.setVideoPath(filmDetail!!.trailer)
-        vvFilmTrailer!!.setOnPreparedListener {
-            vvFilmTrailer!!.pause()
-        }
+                vvFilmTrailer!!.setVideoPath(filmDetail!!.trailer)
+                vvFilmTrailer!!.setOnPreparedListener {
+                    vvFilmTrailer!!.pause()
+                }
 
 
-        vvFilmVideo!!.setVideoPath(filmDetail!!.video)
-        vvFilmVideo!!.setOnPreparedListener {
-            vvFilmVideo!!.pause()
-        }
+                vvFilmVideo!!.setVideoPath(filmDetail!!.video)
+                vvFilmVideo!!.setOnPreparedListener {
+                    vvFilmVideo!!.pause()
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+        
 
     }
 
@@ -216,6 +270,8 @@ class SellerFilmDetailActivity : AppCompatActivity() {
         tvDetailPrice = findViewById(R.id.tvFilmSellerDetailRentPrice)
         tvDetailDuration = findViewById(R.id.tvFilmSellerDetailDuration)
         tvDetailDatePublished = findViewById(R.id.tvFilmSellerDetailDatePublished)
+        tvDetailCommentCount = findViewById(R.id.tvFilmSellerDetailRateCount)
+        rbFilmSellerDetailRate = findViewById(R.id.rbFilmSellerDetailRate)
 
         tvDetailCountry = findViewById(R.id.tvFilmSellerDetailCountry)
         tvDetailGenre = findViewById(R.id.tvFilmSellerDetailGenre)
@@ -243,6 +299,18 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     private fun getDataIntent() {
         filmDetail = intent.getSerializableExtra("Film") as Film?
         checkAdapter = intent.getIntExtra("check", 2)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+
+                // Get String data from Intent
+                filmDetail = data!!.getSerializableExtra("Film") as Film?
+                this.recreate()
+            }
+        }
     }
 
 }

@@ -410,6 +410,8 @@ class SellerUploadFilmActivity : AppCompatActivity() {
                                             Toast.LENGTH_SHORT).show()
                                         finish();
                                         startActivity(intent);
+//                                        setResult(RESULT_OK, Intent(intent))
+//                                        finish()
                                     }
                                     .addOnFailureListener { e ->
                                         progressDialog.dismiss()

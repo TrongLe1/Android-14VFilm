@@ -70,7 +70,7 @@ class SellerHomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun setCurrentFragment(fragment:Fragment) =
+    fun setCurrentFragment(fragment:Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flSellerHomeActivity,fragment)
             commit()

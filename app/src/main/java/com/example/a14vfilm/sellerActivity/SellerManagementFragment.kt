@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
@@ -179,8 +180,6 @@ class SellerManagementFragment : Fragment() {
                 rcvHidden.adapter = hiddenAdapter
                 rcvWaiting.adapter = waitingAdapter
 
-
-
             }
 
             override fun onCancelled(error: DatabaseError) {}
@@ -194,21 +193,21 @@ class SellerManagementFragment : Fragment() {
             GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
 
         currentAdapter.onItemClick = { film ->
-            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            val intent = Intent(requireActivity(), SellerFilmDetailActivity::class.java)
             intent.putExtra("Film", film)
-            startActivity(intent)
+            startActivityForResult(intent, 100)
         }
 
 
         hiddenAdapter.onItemClick = { film ->
-            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            val intent = Intent(requireActivity(), SellerFilmDetailActivity::class.java)
             intent.putExtra("Film", film)
             startActivity(intent)
         }
 
 
         waitingAdapter.onItemClick = { film ->
-            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            val intent = Intent(requireActivity(), SellerFilmDetailActivity::class.java)
             intent.putExtra("Film", film)
             startActivity(intent)
         }
@@ -236,10 +235,11 @@ class SellerManagementFragment : Fragment() {
             }
     }
 
+
+
     private fun moveToSellerUploadFilmActivity() {
         val intent = Intent(activity, SellerUploadFilmActivity::class.java)
-
-        startActivity(intent)
+        startActivityForResult(intent, 101)
     }
 
     private fun moveToCurrentListActivity(msg: Int) {
@@ -297,5 +297,16 @@ class SellerManagementFragment : Fragment() {
         }
 
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100) {
+            if (resultCode == AppCompatActivity.RESULT_OK) {
+
+                // Get String data from Intent
+            }
+        }
+    }
+
 
 }
