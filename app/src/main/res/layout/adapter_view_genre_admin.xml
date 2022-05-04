@@ -13,16 +13,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/viewgenreadmin_imageView"
             android:layout_width="120sp"
             android:layout_height="120sp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="2dp"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/admin_genre_management_button"
-            tools:ignore="RtlHardcoded" />
+            android:src="@drawable/admin_genre_management_button"
+            tools:ignore="RtlHardcoded"></de.hdodenhof.circleimageview.CircleImageView>
 
 
-        <LinearLayout
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

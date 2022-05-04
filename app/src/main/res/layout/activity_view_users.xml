@@ -12,6 +12,7 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/viewusers_svUserSearch"
+        app:queryHint="Tìm kiếm người dùng theo tên"
         android:layout_width="351dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"

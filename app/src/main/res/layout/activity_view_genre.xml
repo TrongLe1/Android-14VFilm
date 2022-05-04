@@ -12,6 +12,7 @@
     <androidx.appcompat.widget.SearchView
         android:id="@+id/viewgenre_svGenreSearch"
         android:layout_width="344dp"
+        app:queryHint="Tìm kiếm thể loại theo tên"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"

@@ -167,7 +167,7 @@
         <entry key="app/src/main/res/layout/adapter_verify_film.xml" value="0.33" />
         <entry key="app/src/main/res/layout/adapter_view_ads.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/adapter_view_film_admin.xml" value="0.18177083333333333" />
-        <entry key="app/src/main/res/layout/adapter_view_genre_admin.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/adapter_view_genre_admin.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_view_user.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/admin_fragment_statistics.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/dialog_rating.xml" value="0.18177083333333333" />

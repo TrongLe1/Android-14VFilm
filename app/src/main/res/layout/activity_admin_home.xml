@@ -27,6 +27,7 @@
         app:itemIconTint="@color/black"
         app:itemTextAppearanceActive="@color/black"
         android:padding="2dp"
+        android:background="#C4DDFF"
         app:menu="@menu/admin_home_menu"
         />
 

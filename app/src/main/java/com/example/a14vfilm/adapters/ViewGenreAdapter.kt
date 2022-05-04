@@ -10,6 +10,7 @@ import com.example.a14vfilm.R
 import com.example.a14vfilm.adminActivity.ViewGenreDetailActivity
 import com.example.a14vfilm.models.Genre
 import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
 
 class ViewGenreAdapter (private val genreList: List<Genre>): RecyclerView.Adapter<ViewGenreAdapter.ViewHolder>(),
@@ -72,7 +73,7 @@ class ViewGenreAdapter (private val genreList: List<Genre>): RecyclerView.Adapte
 
     inner class ViewHolder(listItemView: View): RecyclerView.ViewHolder(listItemView){
         val tvGenreName = listItemView.findViewById<TextView>(R.id.viewgenreadmin_tvGenreName)
-        val ivGenreImage = listItemView.findViewById<ImageView>(R.id.viewgenreadmin_imageView)
+        val ivGenreImage = listItemView.findViewById<CircleImageView>(R.id.viewgenreadmin_imageView)
 
         fun bindView(genre: Genre) {
             tvGenreName.text = genre.name

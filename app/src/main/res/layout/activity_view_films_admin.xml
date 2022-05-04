@@ -12,6 +12,7 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/viewfilm_svFilmSearch"
+        app:queryHint="Tìm kiếm phim theo tên"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
