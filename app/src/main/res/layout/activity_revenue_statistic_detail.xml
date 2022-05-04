@@ -42,7 +42,6 @@
                 android:id="@+id/tvRevenueStatisticDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="12dp"
                 android:text="ádfasdf"
                 android:lines="3"
                 android:ellipsize="end"
@@ -148,25 +147,25 @@
                     android:background="@drawable/table"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Ngày thuê"
+                    android:text="Doanh thu"
                     android:textAllCaps="true"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText,SpUsage" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Ngày hết hạn"
-                    android:textAllCaps="true"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText,SpUsage" />
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_column="2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/table"-->
+<!--                    android:gravity="center"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:text="Ngày hết hạn"-->
+<!--                    android:textAllCaps="true"-->
+<!--                    android:textSize="16dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    tools:ignore="HardcodedText,SpUsage" />-->
 
             </TableRow>
 
@@ -177,6 +176,12 @@
 
         </TableLayout>
 
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pcRevenue"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
 
     </LinearLayout>
 

@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 102)
         }
         supportActionBar!!.hide()
+//        sellerUI()
     }
 
     private fun setCurrentFragment(fragment: Fragment) =

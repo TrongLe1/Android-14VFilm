@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 
 
@@ -65,17 +66,19 @@ class RevenueStatisticAdapter (private val filmList: List<Film>): RecyclerView.A
         fun bindView(film: Film) {
             val dbReference = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL).getReference("transaction")
             dbReference.addListenerForSingleValueEvent( object: ValueEventListener {
-                @SuppressLint("SetTextI18n")
+                @SuppressLint("SetTextI18n", "SimpleDateFormat")
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                    var count = 0
+                    var total = 0
                     for (singleSnapshot in snapshot.children) {
                         val pname = singleSnapshot.child("film").getValue<String>()
+                        val price = singleSnapshot.child("total").getValue<Int>()
                         if(pname.toString().equals(film.id))
-                            count+=1
+                            total += price!!
                     }
 
-                    tvTotal.text = "Doanh thu: $count lượt thuê"
+                    val formatter = DecimalFormat("#,###")
+                    tvTotal.text = "Doanh thu: ${formatter.format(total)} VNĐ"
                     tvName.text = film.name
                     Picasso.get().load(film.image).resize(130, 130).into(ivImage)
                     tvDescription.text = film.description
@@ -83,7 +86,6 @@ class RevenueStatisticAdapter (private val filmList: List<Film>): RecyclerView.A
                     tvDatePublished.text = "Ngày đăng: " + SimpleDateFormat("dd/MM/yyyy").format(film.datePublished).toString()
                     btnViewRevenue!!.setOnClickListener {
                         onItemClick?.invoke(film)
-                        rentCount = count
                     }
 
                 }

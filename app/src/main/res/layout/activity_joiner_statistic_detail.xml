@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fillViewport="true"
     tools:context=".sellerActivity.JoinerStatisticDetailActivity">
 
@@ -120,10 +120,13 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:measureWithLargestChild="true"
+            android:stretchColumns="*"
             android:paddingStart="8dp"
-            android:paddingEnd="8dp">
+            android:paddingEnd="8dp"
+            android:weightSum="1">
 
-            <TableRow>
+            <TableRow android:weightSum="3">
 
                 <TextView
                     android:layout_width="0dp"

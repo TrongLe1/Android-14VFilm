@@ -26,8 +26,9 @@ import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
-class RevenueTableAdapter(private val joinerList: MutableList<Transaction>) :
+class RevenueTableAdapter(private val joinerList: MutableList<Transaction>, private val renter: HashMap<String, Long?>) :
     RecyclerView.Adapter<RevenueTableAdapter.ViewHolder>() {
 
     /*constant url of accessing Firebase*/
@@ -38,6 +39,7 @@ class RevenueTableAdapter(private val joinerList: MutableList<Transaction>) :
 
     var onItemClick: ((Transaction) -> Unit)? = null
     var joinerListResult: List<Transaction> = joinerList
+    var renterList = renter.toSortedMap(compareByDescending { it })
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -50,7 +52,14 @@ class RevenueTableAdapter(private val joinerList: MutableList<Transaction>) :
     override fun onBindViewHolder(holder: RevenueTableAdapter.ViewHolder, position: Int) {
 
         val transaction = joinerListResult[position]
-        holder.bindView(transaction)
+        var count = 0
+        for ((key, value) in renterList) {
+            if(count == position) {
+                holder.bindView(key, value!!)
+            }
+            count++
+        }
+//        holder.bindView(transaction)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(transaction)
         }
@@ -58,33 +67,48 @@ class RevenueTableAdapter(private val joinerList: MutableList<Transaction>) :
     }
 
     override fun getItemCount(): Int {
-        return joinerList.size
+//        return joinerList.size
+        return renterList.size
     }
 
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
 
         val tvName = listItemView.findViewById<TextView>(R.id.tvJoinerTableName)
         val tvRentDate = listItemView.findViewById<TextView>(R.id.tvJoinerTableRentDate)
-        val tvExpiredDate = listItemView.findViewById<TextView>(R.id.tvJoinerTableExpiredDate)
+//        val tvExpiredDate = listItemView.findViewById<TextView>(R.id.tvJoinerTableExpiredDate)
 
-        @SuppressLint("SimpleDateFormat")
-        fun bindView(transaction: Transaction) {
+        fun bindView(userid: String, revenue: Long?){
 
             val dbReference = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL)
                 .getReference("user")
             dbReference.addListenerForSingleValueEvent(object : ValueEventListener {
 
+                @SuppressLint("SetTextI18n")
                 override fun onDataChange(snapshot: DataSnapshot) {
+
                     for (singleSnapshot in snapshot.children) {
                         val id = singleSnapshot.child("id").getValue<String>()
                         val name = singleSnapshot.child("name").getValue<String>()
-                        if (id.equals(transaction.user))
-                            tvName!!.text = name
+                        val stringArray = name!!.trim().split(" ")
+                        var resultName= ""
+                        for(idx in stringArray.indices){
+                            resultName += if(idx == stringArray.size - 1){
+                                stringArray[idx]
+                            }else
+                                stringArray[idx][0] + "."
+                        }
+                        if (id.equals(userid))
+                            tvName!!.text = resultName
                     }
-                    tvRentDate!!.text =
-                        SimpleDateFormat("dd/MM/yyyy").format(transaction.rentDate).toString()
-                    tvExpiredDate!!.text =
-                        SimpleDateFormat("dd/MM/yyyy").format(transaction.expired).toString()
+
+                    val formatter = DecimalFormat("#,###")
+                    tvRentDate!!.text = "${formatter.format(revenue!!)} VND"
+
+
+//                    tvRentDate!!.text =
+//                        SimpleDateFormat("dd/MM/yyyy").format(transaction.rentDate).toString()
+//                    tvExpiredDate!!.text =
+//                        SimpleDateFormat("dd/MM/yyyy").format(transaction.expired).toString()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -92,8 +116,45 @@ class RevenueTableAdapter(private val joinerList: MutableList<Transaction>) :
                 }
 
             })
-
         }
+//
+//        @SuppressLint("SimpleDateFormat")
+//        fun bindView(transaction: Transaction) {
+//
+//            val dbReference = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL)
+//                .getReference("user")
+//            dbReference.addListenerForSingleValueEvent(object : ValueEventListener {
+//
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                    var hashMap: HashMap<String, Long> = HashMap()
+//                    for (singleSnapshot in snapshot.children) {
+//                        val id = singleSnapshot.child("id").getValue<String>()
+//                        val name = singleSnapshot.child("name").getValue<String>()
+//                        val stringArray = name!!.trim().split(" ")
+//                        var resultName= ""
+//                        for(idx in stringArray.indices){
+//                            resultName += if(idx == stringArray.size - 1){
+//                                stringArray[idx]
+//                            }else
+//                                stringArray[idx][0] + "."
+//                        }
+//                        if (id.equals(transaction.user))
+//                            tvName!!.text = resultName
+//                    }
+//                    tvRentDate!!.text =
+//                        SimpleDateFormat("dd/MM/yyyy").format(transaction.rentDate).toString()
+////                    tvExpiredDate!!.text =
+////                        SimpleDateFormat("dd/MM/yyyy").format(transaction.expired).toString()
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//
+//                }
+//
+//            })
+
+//        }
 
     }
 

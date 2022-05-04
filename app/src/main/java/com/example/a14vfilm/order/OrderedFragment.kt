@@ -1,27 +1,17 @@
 package com.example.a14vfilm.order
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.TransactionAdapter
-import com.example.a14vfilm.home.HomeFragment
-import com.example.a14vfilm.login.LoginActivity
 import com.example.a14vfilm.models.Transaction
 import com.example.a14vfilm.models.TransactionExtend
 import com.example.a14vfilm.models.UserLogin
-import com.example.a14vfilm.more.MoreFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

@@ -78,8 +78,16 @@ class JoinerTableAdapter(private val joinerList: MutableList<Transaction>) :
                     for (singleSnapshot in snapshot.children) {
                         val id = singleSnapshot.child("id").getValue<String>()
                         val name = singleSnapshot.child("name").getValue<String>()
+                        val stringArray = name!!.trim().split(" ")
+                        var resultName= ""
+                        for(idx in stringArray.indices){
+                            resultName += if(idx == stringArray.size - 1){
+                                stringArray[idx]
+                            }else
+                                stringArray[idx][0] + "."
+                        }
                         if (id.equals(transaction.user))
-                            tvName!!.text = name
+                            tvName!!.text = resultName
                     }
                     tvRentDate!!.text =
                         SimpleDateFormat("dd/MM/yyyy").format(transaction.rentDate).toString()

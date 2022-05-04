@@ -3,7 +3,6 @@ package com.example.a14vfilm.sellerActivity
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,7 +44,6 @@ class JoinerStatisticDetailActivity : AppCompatActivity() {
     /*transaction*/
     private var transactionList: ArrayList<Transaction> = ArrayList()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_joiner_statistic_detail)
@@ -56,6 +54,7 @@ class JoinerStatisticDetailActivity : AppCompatActivity() {
         /*get data from previous activity*/
         getDataIntent()
         displayDataToViewComponent()
+
 
     }
 
@@ -95,7 +94,9 @@ class JoinerStatisticDetailActivity : AppCompatActivity() {
                 tvJoinerDescription!!.text = "Mô tả: " + filmDetail!!.description
                 tvJoinerDatePublished!!.text = SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.datePublished).toString()
                 Picasso.get().load(filmDetail!!.image).resize(400, 360).into(ivJoinerImage)
+
             }
+
             override fun onCancelled(error: DatabaseError) {
             }
         })
