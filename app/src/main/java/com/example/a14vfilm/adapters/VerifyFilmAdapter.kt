@@ -104,7 +104,7 @@ class VerifyFilmAdapter (private val filmList: List<Film>): RecyclerView.Adapter
                 //set status
                 query.child("status").setValue(true)
                 query.child("dateUpdated").setValue(Calendar.getInstance().time)
-
+                Toast.makeText(it.context, "Phê duyệt phim thành công", Toast.LENGTH_SHORT).show()
 
             }
         }

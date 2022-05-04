@@ -105,6 +105,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
                             else {
                                 flag = 1
                                 canBeDelete = false
+                                Toast.makeText(it.context, "Không thể xoá do tồn tại thể loại này trong phim đang chiếu", Toast.LENGTH_SHORT).show()
                             }
                         }
                         if (flag == 0){
@@ -115,6 +116,7 @@ class ViewGenreDetailActivity : AppCompatActivity() {
                     if (canBeDelete){
                     //update for "genre" collection
                     val query1 = ref.child("genre").child(genreID!!).removeValue()
+                        Toast.makeText(it.context, "Xoá thể loại thành công", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {}
