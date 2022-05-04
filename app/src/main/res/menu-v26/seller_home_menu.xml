@@ -4,14 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
-    <item
-        android:id="@+id/menu_item_seller_home"
-        android:title="Trang chủ"
-        tools:ignore="HardcodedText"
-        android:icon="@drawable/home"
-        android:iconTint="@drawable/home"
-        app:showAsAction="never"
-        />
+<!--    <item-->
+<!--        android:id="@+id/menu_item_seller_home"-->
+<!--        android:title="Trang chủ"-->
+<!--        tools:ignore="HardcodedText"-->
+<!--        android:icon="@drawable/home"-->
+<!--        android:iconTint="@drawable/home"-->
+<!--        app:showAsAction="never"-->
+<!--        />-->
 
     <item
         android:id="@+id/menu_item_seller_management"

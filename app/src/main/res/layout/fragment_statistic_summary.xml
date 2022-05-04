@@ -66,7 +66,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/btnStatisticFilm"
                     android:gravity="center"
-                    android:text="131"
+                    android:text="0"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="40dp"
@@ -85,18 +85,19 @@
                     android:layout_height="70dp"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Số lượng người đăng ký"
+                    android:text="Số lượng đã thuê"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="24dp"
+                    android:textSize="22dp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText,SpUsage" />
 
                 <TextView
+                    android:id="@+id/tvTotalTransaction"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="13031"
+                    android:text="0"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:backgroundTint="@color/btnStatisticJoiner"
@@ -135,7 +136,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:shadowColor="@null"
-                android:text="161.000.000 VNĐ"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="35dp"
@@ -262,15 +263,45 @@
             android:layout_height="400dp"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Biểu đồ: Thống kê doanh thu 7 ngày gần đây"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:padding="5dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="18dp"
+            />
 <!--        <com.github.mikephil.charting.charts.PieChart-->
 <!--            android:id="@+id/pieChart"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="400dp"/>-->
 
-<!--        <com.github.mikephil.charting.charts.BarChart-->
-<!--            android:id="@+id/barChart"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="400dp" />-->
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Biểu đồ: Thống kê lượt thuê phim của khách hàng 7 ngày gần đây"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:padding="5dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="18dp"
+            />
 
     </LinearLayout>
 </ScrollView>

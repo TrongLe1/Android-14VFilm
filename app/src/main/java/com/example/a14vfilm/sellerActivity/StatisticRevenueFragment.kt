@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.RevenueStatisticAdapter
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -76,8 +77,8 @@ class StatisticRevenueFragment : Fragment() {
                     val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                     val status = singleSnapshot.child("status").getValue<Boolean>()
-
-                    sellerFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
+                    if (UserLogin.info!!.id == seller!!)
+                        sellerFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
                 rcvSellerFilmList.adapter = revenueAdapter
             }

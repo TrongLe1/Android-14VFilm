@@ -46,7 +46,7 @@ class RevenueTableAdapter(private val joinerList: MutableList<Transaction>, priv
         viewType: Int,
     ): RevenueTableAdapter.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.items_joiner_table, parent, false))
+            .inflate(R.layout.items_revenue_table, parent, false))
     }
 
     override fun onBindViewHolder(holder: RevenueTableAdapter.ViewHolder, position: Int) {

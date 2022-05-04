@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="fill"
-        android:weightSum="2">
+        android:weightSum="3">
 
         <TextView
             android:id="@+id/tvJoinerTableName"
@@ -35,17 +35,17 @@
             android:layout_height="wrap_content"
             tools:ignore="SpUsage" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvJoinerTableExpiredDate"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_column="2"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/table"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="10dp"-->
-<!--            android:textSize="15dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            tools:ignore="SpUsage" />-->
+        <TextView
+            android:id="@+id/tvJoinerTableExpiredDate"
+            android:layout_width="0dp"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:layout_height="wrap_content"
+            tools:ignore="SpUsage" />
 
     </TableRow>
 </LinearLayout>

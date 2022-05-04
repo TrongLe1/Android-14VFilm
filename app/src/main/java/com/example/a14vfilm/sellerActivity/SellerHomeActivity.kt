@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.a14vfilm.R
 import com.example.a14vfilm.home.HomeFragment
 import com.example.a14vfilm.more.MoreFragment
+import com.example.a14vfilm.more.SellerMoreFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SellerHomeActivity : AppCompatActivity() {
@@ -34,18 +35,18 @@ class SellerHomeActivity : AppCompatActivity() {
     // set up Navigation Item of BottomNavigationView
     @SuppressLint("ResourceAsColor")
     private fun initBottomNavigationView(){
-        setCurrentFragment(HomeFragment())
+        setCurrentFragment(SellerManagementFragment())
 //        bnvSellerHomeActivity!!.setBackgroundColor(R.color.seller_menu)
         bnvSellerHomeActivity!!.setOnNavigationItemSelectedListener{
 
             // Get item ID of Menu item to set Fragment to FrameLayout
             when(it.itemId){
 
-                R.id.menu_item_seller_home -> {
-                    setCurrentFragment(HomeFragment())
-//                    setCurrentFragment(SellerHomeFragment())
-                    supportActionBar!!.title = "Trang chủ"
-                }
+//                R.id.menu_item_seller_home -> {
+//                    setCurrentFragment(HomeFragment())
+////                    setCurrentFragment(SellerHomeFragment())
+//                    supportActionBar!!.title = "Trang chủ"
+//                }
 
                 R.id.menu_item_seller_management -> {
                     setCurrentFragment(SellerManagementFragment())
@@ -58,8 +59,8 @@ class SellerHomeActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_item_seller_more -> {
-                    setCurrentFragment(MoreFragment())
-//                    setCurrentFragment(SellerMoreFragment())
+//                    setCurrentFragment(MoreFragment())
+                    setCurrentFragment(SellerMoreFragment())
                     supportActionBar?.title = "Khác"
                 }
 

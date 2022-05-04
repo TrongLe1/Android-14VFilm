@@ -15,6 +15,7 @@ import com.example.a14vfilm.adapters.FilmAdapter
 import com.example.a14vfilm.adapters.JoinerStatisticAdapter
 import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -84,8 +85,9 @@ class StatisticJoinerFragment : Fragment() {
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                     val status = singleSnapshot.child("status").getValue<Boolean>()
 
-                    Log.e("Pppp: ", "$name")
-                    sellerFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
+//                    Log.e("Pppp: ", "$name")
+                    if (UserLogin.info!!.id == seller!!)
+                        sellerFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
                 }
                 rcvSellerFilmList.adapter = joinerAdapter
             }

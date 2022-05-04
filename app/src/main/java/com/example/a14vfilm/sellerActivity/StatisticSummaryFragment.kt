@@ -8,21 +8,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.key
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
+import com.example.a14vfilm.adapters.RevenueStatisticAdapter
 import com.example.a14vfilm.models.Film
 import com.example.a14vfilm.models.Transaction
+import com.example.a14vfilm.models.UserLogin
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.*
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
@@ -58,6 +63,9 @@ class StatisticSummaryFragment : Fragment() {
     private lateinit var lineChart: LineChart
     private lateinit var pieChart: PieChart
     private lateinit var barChart: BarChart
+    private var totalFilm: TextView?= null
+    private var totalRevenue: TextView?= null
+    private var totalTransactionTextView: TextView?= null
 
 
     /*Init variable to data array display to Chart*/
@@ -70,6 +78,8 @@ class StatisticSummaryFragment : Fragment() {
 
     /*hashmap*/
     private var sevenDayRecentHashMap: SortedMap<Date, Long>? = null
+//    private var totalTransaction = ArrayList<Transaction>()
+//    private var totalUser = ArrayList<String>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,20 +97,24 @@ class StatisticSummaryFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_statistic_summary, container, false)
 
+        val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        val ref = FirebaseDatabase.getInstance(url).getReference("film")
+
+        totalFilm = view.findViewById(R.id.btnStatisticFilm)
+        totalRevenue = view.findViewById(R.id.tvRevenue)
+        totalTransactionTextView = view.findViewById(R.id.tvTotalTransaction)
+
         lineChart = view.findViewById(R.id.lineChart)
 //        pieChart = view.findViewById(R.id.pieChart)
-//        barChart = view.findViewById(R.id.barChart)
+        barChart = view.findViewById(R.id.barChart)
 
         getAllSellerFilm()
-
-        initViewComponent()
-
         return view
     }
 
     private fun getAllTracsaction() {
-        ref = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL).getReference("transaction")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+        val newRef = FirebaseDatabase.getInstance(FIREBASE_DATABASE_URL).getReference("transaction")
+        newRef.addListenerForSingleValueEvent(object : ValueEventListener {
             @RequiresApi(Build.VERSION_CODES.O)
             @SuppressLint("SetTextI18n", "SimpleDateFormat")
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -119,16 +133,25 @@ class StatisticSummaryFragment : Fragment() {
                 sevenDayRecentHashMap = hashMap.toSortedMap()
                 val keyMap = ArrayList<String>()
                 val valueMap = ArrayList<Long>()
+                val joinerMap = ArrayList<Int>()
                 for ((key, value) in sevenDayRecentHashMap!!) {
                     keyMap.add(SimpleDateFormat("dd/MM/yyyy")
                         .format(key).toString())
                     valueMap.add(value)
+                    joinerMap.add(0)
+
+//                    Log.e("Pppppp: ", "${SimpleDateFormat("dd/MM/yyyy")
+//                        .format(key)} $value")
+
 //                    sevenDayRecentHashMap!![key] = value
-//                    keyMap.add(SimpleDateFormat("dd/MM/yyyy")
+//                    keyMap.add(S/impleDateFormat("dd/MM/yyyy")
 //                        .format(Date(key.time - minus * MILLIS_IN_A_DAY)).toString())
                 }
 
+
+                var totalMoney: Long = 0
                 for (singleSnapshot in snapshot.children) {
+
                     val film = singleSnapshot.child("film").getValue<String>()
                     val id = singleSnapshot.child("id").getValue<String>()
                     val user = singleSnapshot.child("user").getValue<String>()
@@ -150,17 +173,28 @@ class StatisticSummaryFragment : Fragment() {
                             type!!,
                             comment!!))
 
+                        totalMoney += total!!
                         val date = SimpleDateFormat("dd/MM/yyyy").format(rentDate).toString()
+//                        Log.e("ppppp", "$date")
+
                         if (keyMap.contains(date)) {
                             val idx = keyMap.indexOf(date)
                             valueMap[idx] += total
+                            joinerMap[idx] += 1
+//                            Log.e("ppppp", "$date $idx ${valueMap[idx]}")
 //                            sevenDayRecentHashMap!![Date(date)] =
 //                                sevenDayRecentHashMap!![Date(date)]?.plus(total!!)
 //                            Log.e("pppppp", "$date ${sevenDayRecentHashMap!![date]} ")
                         }
                     }
 
+                  
                 }
+
+                val formatter = DecimalFormat("#,###")
+                totalRevenue!!.text = formatter.format(totalMoney)
+                totalTransactionTextView!!.text = transactionList.size.toString()
+                totalFilm!!.text = filmList.size.toString()
 
 //                setDataToLineChart()
                 val max = Collections.max(sevenDayRecentHashMap!!.values)
@@ -184,8 +218,8 @@ class StatisticSummaryFragment : Fragment() {
 
                 var pos = 0
                 while (pos <= 6) {
-                    Log.e("ppppp", "$pos ${valueMap[pos]}")
-                    entries.add(Entry((pos+1).toFloat(), valueMap[pos].toFloat()))
+//                    Log.e("ppppp", "$pos ${valueMap[pos]}")
+                    entries.add(Entry((pos + 1).toFloat(), valueMap[pos].toFloat()))
                     pos++
                 }
 
@@ -194,8 +228,38 @@ class StatisticSummaryFragment : Fragment() {
                 lineDataSet.valueTextSize = 13f
                 val data = LineData(lineDataSet)
                 lineChart.data = data
-                lineDataSet.label = "Ngày trước"
                 lineChart.invalidate()
+
+                //set data to bar chart
+
+                val xBarValues = barChart!!.xAxis
+                xBarValues.setDrawGridLines(false)
+                xBarValues.setDrawAxisLine(false)
+                barChart.axisRight.isEnabled = false
+                barChart.legend.isEnabled = false
+                barChart.description.isEnabled = false
+
+                barChart.animateX(1000, Easing.EaseInSine)
+
+                xBarValues.setDrawLabels(true)
+                xBarValues.granularity = 1f
+
+                val barEntries = ArrayList<BarEntry>()
+                val title: String = "Lượt thuê 7 ngày qua"
+
+                pos = 0
+                while (pos <= 6) {
+                    Log.e("ppppp", "$pos ${joinerMap[pos]}")
+                    barEntries.add(BarEntry((pos+1).toFloat(), joinerMap[pos].toFloat()))
+                    pos++
+                }
+
+                val barDataSet = BarDataSet(barEntries, title)
+                val barData = BarData(barDataSet)
+                barDataSet.label = labels.toString()
+                barDataSet.valueTextSize = 13f
+                barChart.data = barData
+                barChart.invalidate()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -226,79 +290,46 @@ class StatisticSummaryFragment : Fragment() {
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val video = singleSnapshot.child("video").getValue<String>()
-                    filmIDList.add(id!!)
-                    filmList.add(0,
-                        Film(id!!,
-                            seller!!,
-                            name!!,
-                            description!!,
-                            rate!!,
-                            length!!,
-                            country!!,
-                            datePublished!!,
-                            price!!,
-                            dateUpdated!!,
-                            image!!,
-                            trailer!!,
-                            genreList!!,
-                            rateTime!!,
-                            status!!,
-                            video!!))
+
+                    if (UserLogin.info!!.id == seller!!) {
+                        filmIDList.add(id!!)
+                        filmList.add(0,
+                            Film(id!!,
+                                seller!!,
+                                name!!,
+                                description!!,
+                                rate!!,
+                                length!!,
+                                country!!,
+                                datePublished!!,
+                                price!!,
+                                dateUpdated!!,
+                                image!!,
+                                trailer!!,
+                                genreList!!,
+                                rateTime!!,
+                                status!!,
+                                video!!))
+                    }
                     count++
                 }
 
-                if (count == size.toInt())
+                totalFilm!!.text = filmList.size.toString()
+////
+                if (count == size.toInt()) {
                     getAllTracsaction()
+                }
 
             }
 
             override fun onCancelled(error: DatabaseError) {}
         })
+
     }
 
     private fun convertDate(d: String): String {
         val array = d.split("-")
         return array[2] + array[1] + array[0]
-    }
-
-    private fun initViewComponent() {
-
-        /*set up chart*/
-        initLineChart()
-//        initPieChart()
-//        initBarChart()
-
-        /*passing data to chart*/
-//        setDataToLineChart()
-//        setDataToPieChart()
-//        setDataToBarChart()
-
-    }
-
-    private fun setDataToBarChart() {
-        TODO("Not yet implemented")
-    }
-
-    private fun setDataToPieChart() {
-        TODO("Not yet implemented")
-    }
-
-    private fun setDataToLineChart() {
-        TODO("Not yet implemented")
-    }
-
-    private fun initLineChart() {
-        // revenue of recent 7 days
-
-
-    }
-
-    private fun initPieChart() {
-
-    }
-
-    private fun initBarChart() {
-
     }
 
     companion object {

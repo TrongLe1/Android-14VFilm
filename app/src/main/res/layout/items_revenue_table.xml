@@ -29,15 +29,15 @@
             android:padding="10dp"
             android:textSize="15dp" />
 
-        <TextView
-            android:id="@+id/tvJoinerTableExpiredDate"
-            android:layout_width="0dp"
-            android:layout_column="2"
-            android:layout_weight="1"
-            android:background="@drawable/table"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textSize="15dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvJoinerTableExpiredDate"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_column="2"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/table"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="10dp"-->
+<!--            android:textSize="15dp" />-->
 
     </TableRow>
 </LinearLayout>
