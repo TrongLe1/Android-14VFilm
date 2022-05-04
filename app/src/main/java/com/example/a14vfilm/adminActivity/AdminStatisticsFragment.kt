@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import java.text.SimpleDateFormat
 import java.util.*
 
 private const val ARG_PARAM1 = "param1"
@@ -102,7 +103,7 @@ class AdminStatisticsFragment : Fragment() {
         ref.child("film").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
-                    if (singleSnapshot.child("dateUpdated").getValue<Date>() == Date(0,0,0)){
+                    if (SimpleDateFormat("dd/MM/yyy").format(singleSnapshot.child("dateUpdated").getValue<Date>()) == SimpleDateFormat("dd/MM/yyy").format(Date(0,0,0))){
                         countVerify++
                     }
                 }
