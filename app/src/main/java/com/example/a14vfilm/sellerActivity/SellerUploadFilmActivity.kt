@@ -372,7 +372,7 @@ class SellerUploadFilmActivity : AppCompatActivity() {
                             if (imageUriTask.isSuccessful) {
 
                                 /*upload information and add video*/
-                                val hashMap = HashMap<String, Any>() /*hashmap contains value of film upload*/
+                                val hashMap = HashMap<String, Any?>() /*hashmap contains value of film upload*/
                                 hashMap["id"] = filmID
                                 hashMap["name"] = "${etFilmName!!.text.trim()}"
                                 hashMap["description"] = "${etFilmDescription!!.text.trim()}"
@@ -382,7 +382,7 @@ class SellerUploadFilmActivity : AppCompatActivity() {
                                 hashMap["trailer"] = "$trailerDownloadUri"
                                 hashMap["video"] = "$videoUri"
                                 hashMap["datePublished"] = Date()
-                                hashMap["dateUpdated"] = Date(0, 0,0)
+                                hashMap["dateUpdated"] = Date(0,0,0)
                                 hashMap["price"] = etFilmRentPrice!!.text.trim().toString().toInt()
                                 hashMap["rate"] = 0.0f
                                 hashMap["rateTime"] = 0

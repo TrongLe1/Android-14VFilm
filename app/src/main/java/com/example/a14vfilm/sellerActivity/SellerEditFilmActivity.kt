@@ -215,7 +215,7 @@ class SellerEditFilmActivity : AppCompatActivity() {
             hashMap["trailer"] = "$trailerUri"
             hashMap["video"] = "$videoUri"
             hashMap["datePublished"] = filmDetail!!.datePublished
-            hashMap["dateUpdated"] = filmDetail!!.dateUpdated
+            hashMap["dateUpdated"] = filmDetail!!.dateUpdated!!
             hashMap["price"] = etEditPrice!!.text.trim().toString().toInt()
             hashMap["rate"] = filmDetail!!.rate
             hashMap["rateTime"] = filmDetail!!.rateTime

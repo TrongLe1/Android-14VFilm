@@ -102,6 +102,14 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
 
+
+    private fun change(){
+        val intent: Intent = Intent(this, SellerHomeActivity::class.java)
+        //val intent: Intent = Intent(this, FilmDetailActivity::class.java)
+        startActivity(intent)
+    }
+
+
     private fun sellerUI(){
         val intent = Intent(this, SellerHomeActivity::class.java)
         startActivity(intent)

@@ -1,11 +1,28 @@
 package com.example.a14vfilm.sellerActivity
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
+import com.example.a14vfilm.adapters.FilmAdapter
+import com.example.a14vfilm.adapters.JoinerStatisticAdapter
+import com.example.a14vfilm.detail.DetailActivity
+import com.example.a14vfilm.models.Film
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
+import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration
+import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +39,8 @@ class StatisticJoinerFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +54,50 @@ class StatisticJoinerFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistic_joiner, container, false)
+        val view = inflater.inflate(R.layout.fragment_statistic_joiner, container, false)
+
+        val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        val ref = FirebaseDatabase.getInstance(url).getReference("film")
+
+        val sellerFilm = ArrayList<Film>()
+        val rcvSellerFilmList = view.findViewById<RecyclerView>(R.id.rcvJoinerStatisticList)
+        val joinerAdapter = JoinerStatisticAdapter(sellerFilm)
+        rcvSellerFilmList.layoutManager = LinearLayoutManager(view.context)
+
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (singleSnapshot in snapshot.children) {
+                    val id = singleSnapshot.child("id").getValue<String>()
+                    val seller = singleSnapshot.child("seller").getValue<String>()
+                    val name = singleSnapshot.child("name").getValue<String>()
+                    val description = singleSnapshot.child("description").getValue<String>()
+                    val rate = singleSnapshot.child("rate").getValue<Float>()
+                    val length = singleSnapshot.child("length").getValue<Int>()
+                    val country = singleSnapshot.child("country").getValue<String>()
+                    val datePublished = singleSnapshot.child("datePublished").getValue<Date>()
+                    val price = singleSnapshot.child("price").getValue<Int>()
+                    //val quantity = singleSnapshot.child("quantity").getValue<Int>()
+                    val dateUpdated = singleSnapshot.child("dateUpdated").getValue<Date>()
+                    val image = singleSnapshot.child("image").getValue<String>()
+                    val trailer = singleSnapshot.child("trailer").getValue<String>()
+                    val genreList = singleSnapshot.child("genre").getValue<ArrayList<String>>()
+                    val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
+                    val status = singleSnapshot.child("status").getValue<Boolean>()
+
+                    Log.e("Pppp: ", "$name")
+                    sellerFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!, status!!, ""))
+                }
+                rcvSellerFilmList.adapter = joinerAdapter
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+        joinerAdapter.onItemClick = { film ->
+            val intent = Intent(requireActivity(), JoinerStatisticDetailActivity::class.java)
+            intent.putExtra("Film", film)
+            startActivity(intent)
+        }
+
+        return view
     }
 
     companion object {
