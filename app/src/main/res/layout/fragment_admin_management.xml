@@ -36,11 +36,11 @@
         android:id="@+id/button5"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/admin_management_border"
         android:drawableTop="@drawable/admin_film_verify_button"
         android:text="Phê duyệt phim"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 

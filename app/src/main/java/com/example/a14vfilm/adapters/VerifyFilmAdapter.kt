@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
-import com.creativityapps.gmailbackgroundlibrary.BackgroundMail
 import com.example.a14vfilm.R
 import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.Film

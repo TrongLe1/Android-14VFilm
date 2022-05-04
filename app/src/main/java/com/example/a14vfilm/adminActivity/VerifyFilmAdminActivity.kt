@@ -2,6 +2,7 @@ package com.example.a14vfilm.adminActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import java.text.SimpleDateFormat
 import java.util.*
 
 class VerifyFilmAdminActivity : AppCompatActivity() {
@@ -61,8 +63,7 @@ class VerifyFilmAdminActivity : AppCompatActivity() {
                     val rateTime = singleSnapshot.child("rateTime").getValue<Int>()
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val video = singleSnapshot.child("video").getValue<String>()
-
-                    if (dateUpdated == Date(0,0,0)) {
+                    if (SimpleDateFormat("dd/MM/yyy").format(dateUpdated!!) == SimpleDateFormat("dd/MM/yyy").format(Date(0,0,0))) {
                         filmList.add(
                             Film(
                                 id!!,
@@ -86,7 +87,6 @@ class VerifyFilmAdminActivity : AppCompatActivity() {
                     }
                 }
                 rcvVerifyFilm!!.adapter!!.notifyDataSetChanged()
-
 
             }
             override fun onCancelled(error: DatabaseError) {}
