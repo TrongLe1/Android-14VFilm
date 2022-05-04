@@ -161,7 +161,6 @@ class ViewFilmsActivityAdmin : AppCompatActivity() {
                         val video = singleSnapshot.child("video").getValue<String>()
                         if (SimpleDateFormat("dd/MM/yyy").format(dateUpdated!!) != SimpleDateFormat("dd/MM/yyy").format(Date(0,0,0))) {
                             filmList.add(
-                                0,
                                 Film(
                                     id!!,
                                     seller!!,
