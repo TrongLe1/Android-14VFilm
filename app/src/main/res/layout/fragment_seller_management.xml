@@ -82,7 +82,7 @@
                     android:backgroundTint="#FAC99E"
                     android:gravity="left"
                     android:paddingStart="12sp"
-                    android:text="Danh sách đang đăng"
+                    android:text="Danh sách đang hiển thị"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -130,7 +130,7 @@
                     android:backgroundTint="#FAC99E"
                     android:gravity="left"
                     android:paddingStart="12sp"
-                    android:text="Danh sách đã hết hạn"
+                    android:text="Danh sách chờ duyệt"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -164,7 +164,58 @@
                 android:layout_margin="8dp" />
 
 
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:background="@color/seller_menu">
+
+                <TextView
+                    android:id="@+id/tvHiddenList"
+                    android:layout_width="327dp"
+                    android:layout_height="31dp"
+                    android:backgroundTint="#FAC99E"
+                    android:gravity="left"
+                    android:paddingStart="12sp"
+                    android:text="Danh sách đang bị ẩn"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ibHidden"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
+
+                <ImageButton
+                    android:id="@+id/ibHidden"
+                    android:layout_width="81dp"
+                    android:layout_height="38dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/tvHiddenList"
+                    android:background="@color/seller_menu"
+                    android:src="@drawable/ic_action_name"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvSellerHidden"
+                android:layout_width="match_parent"
+                android:layout_height="245sp"
+                android:layout_margin="8dp" />
+
+
         </LinearLayout>
+
+
 
     </LinearLayout>
 

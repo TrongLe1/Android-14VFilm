@@ -1,6 +1,7 @@
 package com.example.a14vfilm.models
 
 import android.app.Application
+import java.io.Serializable
 
 data class User(
     var id: String,
@@ -12,7 +13,13 @@ data class User(
     var image: String,
     var status: Boolean,
     var role: Int //0 buyer, 1 seller, 2 admin
-)
+): Serializable {
+//    override fun toString(): String {
+//        return "$id $name $datePublished"
+//    }
+}
+
+
 
 /*
 data class UserLogin(

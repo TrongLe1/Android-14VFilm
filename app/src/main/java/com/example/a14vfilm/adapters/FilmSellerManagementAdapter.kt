@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.*
 
-class FilmSellerManagementAdapter (private val filmList: List<Film>): RecyclerView.Adapter<FilmSellerManagementAdapter.ViewHolder>(), Filterable {
+class FilmSellerManagementAdapter (private val filmList: List<Film>, private val check: Int): RecyclerView.Adapter<FilmSellerManagementAdapter.ViewHolder>(), Filterable {
 
     var onItemClick: ((Film) -> Unit)? = null
     var filterListResult: List<Film> = filmList
-
+    var checkValue: Int = check
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: FilmSellerManagementAdapter.ViewHolder, position: Int) {
         val film = filterListResult[position]
@@ -42,10 +44,16 @@ class FilmSellerManagementAdapter (private val filmList: List<Film>): RecyclerVi
 
         val tvName = listItemView.findViewById<TextView>(R.id.tvName)!!
         val tvImage = listItemView.findViewById<ImageView>(R.id.ivFilm)!!
+        val tvPublished = listItemView.findViewById<TextView>(R.id.tvDatePublished)!!
 
         fun bindView(film: Film) {
             tvName.text = film.name
             Picasso.get().load(film.image).resize(130, 130).into(tvImage)
+            if(SimpleDateFormat("dd/MM/yyyy").format(film.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
+                    Date(0,0,0))
+                && SimpleDateFormat("dd/MM/yyyy").format(film.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
+                    Date(0,0,1)))
+                tvPublished.text = "Ngày đăng: ${SimpleDateFormat("dd/MM/yyyy").format(film.dateUpdated)}"
         }
 
 

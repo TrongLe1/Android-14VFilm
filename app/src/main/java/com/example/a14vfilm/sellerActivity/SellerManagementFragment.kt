@@ -15,11 +15,16 @@ import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.FilmSellerManagementAdapter
 import com.example.a14vfilm.detail.DetailActivity
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.User
+import com.example.a14vfilm.models.UserLogin
+import com.google.firebase.auth.UserInfo
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import org.w3c.dom.Text
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -54,15 +59,22 @@ class SellerManagementFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_seller_management, container, false)
 
         initComponent(view)
-        val filmList = ArrayList<Film>()
+        val waitingList = ArrayList<Film>()
+        val hiddenList = ArrayList<Film>()
+        val currentList = ArrayList<Film>()
+
         val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
         val ref = FirebaseDatabase.getInstance(url).getReference("film")
         val rcvCurrent = view.findViewById<RecyclerView>(R.id.rcvSellerCurrent)
-        val rcvExpired = view.findViewById<RecyclerView>(R.id.rcvSellerExpired)
-        var homeAdapter = FilmSellerManagementAdapter(filmList)
+        val rcvWaiting = view.findViewById<RecyclerView>(R.id.rcvSellerExpired)
+        val rcvHidden = view.findViewById<RecyclerView>(R.id.rcvSellerHidden)
+
+        var waitingAdapter = FilmSellerManagementAdapter(waitingList, 2)
+        var hiddenAdapter = FilmSellerManagementAdapter(hiddenList,2)
+        var currentAdapter = FilmSellerManagementAdapter(currentList, 1)
 
         val query = ref.orderByChild("dateUpdated")
-        query.addListenerForSingleValueEvent(object: ValueEventListener {
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
                     val id = singleSnapshot.child("id").getValue<String>()
@@ -83,20 +95,119 @@ class SellerManagementFragment : Fragment() {
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val video = singleSnapshot.child("video").getValue<String>()
 
-                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!,status!!, video!! ))
-                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!,status!!, video!!))
-                    filmList.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!,status!!, video!!))
+                    if (UserLogin.info!!.id == seller!!) {
+                        val formatter = SimpleDateFormat("dd/MM/yyyy")
+                        /*hidden film*/
+                        if (formatter.format(dateUpdated!!).toString() == formatter.format(Date(
+                                0,
+                                0,
+                                1)).toString() && !status!!
+                        ) {
+                            hiddenList.add(0,
+                                Film(id!!,
+                                    seller!!,
+                                    name!!,
+                                    description!!,
+                                    rate!!,
+                                    length!!,
+                                    country!!,
+                                    datePublished!!,
+                                    price!!,
+                                    dateUpdated!!,
+                                    image!!,
+                                    trailer!!,
+                                    genreList!!,
+                                    rateTime!!,
+                                    status!!,
+                                    video!!))
+                        }
+
+                        /*current film*/
+                        else if (formatter.format(dateUpdated!!)
+                                .toString() != formatter.format(Date(
+                                0,
+                                0,
+                                0)).toString() && status!!
+                        ) {
+                            currentList.add(0,
+                                Film(id!!,
+                                    seller!!,
+                                    name!!,
+                                    description!!,
+                                    rate!!,
+                                    length!!,
+                                    country!!,
+                                    datePublished!!,
+                                    price!!,
+                                    dateUpdated!!,
+                                    image!!,
+                                    trailer!!,
+                                    genreList!!,
+                                    rateTime!!,
+                                    status!!,
+                                    video!!))
+
+                        } else {
+                            /*waiting film*/
+                            if (formatter.format(dateUpdated!!).toString() == formatter.format(Date(
+                                    0,
+                                    0,
+                                    0)).toString()
+                            )
+                                waitingList.add(0,
+                                    Film(id!!,
+                                        seller!!,
+                                        name!!,
+                                        description!!,
+                                        rate!!,
+                                        length!!,
+                                        country!!,
+                                        datePublished!!,
+                                        price!!,
+                                        dateUpdated!!,
+                                        image!!,
+                                        trailer!!,
+                                        genreList!!,
+                                        rateTime!!,
+                                        status!!,
+                                        video!!))
+                        }
+                    }
                 }
-                rcvCurrent.adapter = homeAdapter
-                rcvExpired.adapter = homeAdapter
+
+                rcvCurrent.adapter = currentAdapter
+                rcvHidden.adapter = hiddenAdapter
+                rcvWaiting.adapter = waitingAdapter
+
+
+
             }
+
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        rcvCurrent.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
-        rcvExpired.layoutManager = GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
+        rcvCurrent.layoutManager =
+            GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
+        rcvHidden.layoutManager =
+            GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
+        rcvWaiting.layoutManager =
+            GridLayoutManager(requireActivity(), 1, GridLayoutManager.HORIZONTAL, false)
 
-        homeAdapter.onItemClick = {film ->
+        currentAdapter.onItemClick = { film ->
+            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            intent.putExtra("Film", film)
+            startActivity(intent)
+        }
+
+
+        hiddenAdapter.onItemClick = { film ->
+            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            intent.putExtra("Film", film)
+            startActivity(intent)
+        }
+
+
+        waitingAdapter.onItemClick = { film ->
             val intent = Intent(requireActivity(), DetailActivity::class.java)
             intent.putExtra("Film", film)
             startActivity(intent)
@@ -125,44 +236,64 @@ class SellerManagementFragment : Fragment() {
             }
     }
 
-    private fun moveToSellerUploadFilmActivity(){
+    private fun moveToSellerUploadFilmActivity() {
         val intent = Intent(activity, SellerUploadFilmActivity::class.java)
+
         startActivity(intent)
     }
 
-    private fun moveToCurrentListActivity(msg: String){
+    private fun moveToCurrentListActivity(msg: Int) {
         val intent = Intent(activity, SellerFilmListActivity::class.java)
-        intent.putExtra("currentCheck",msg)
+        intent.putExtra("currentCheck", msg)
         startActivity(intent)
     }
 
-    private fun initComponent(view: View){
+    private fun initComponent(view: View) {
+
         val btnUploadFilm = view.findViewById<Button>(R.id.btnFilmUpload)
         val ibCurrent = view.findViewById<ImageButton>(R.id.ibCurrent)
         val tvCurrent = view.findViewById<TextView>(R.id.tvCurrentList)
-        val ibExpired = view.findViewById<ImageButton>(R.id.ibExpired)
-        val tvExpired = view.findViewById<TextView>(R.id.tvExpiredList)
+        val ibWaiting = view.findViewById<ImageButton>(R.id.ibExpired)
+        val tvWaiting = view.findViewById<TextView>(R.id.tvExpiredList)
+        val tvHidden = view.findViewById<TextView>(R.id.tvHiddenList)
+        val ibHidden = view.findViewById<ImageButton>(R.id.ibHidden)
+
+
+        val tvName = view.findViewById<TextView>(R.id.tvSellerName)
+        val tvSdt = view.findViewById<TextView>(R.id.tvSellerSDT)
+
+        tvName.text = UserLogin.info!!.name
+        tvSdt.text = "SDT: " + UserLogin.info!!.phone
 
 
         btnUploadFilm!!.setOnClickListener {
             moveToSellerUploadFilmActivity()
         }
 
-        ibCurrent!!.setOnClickListener {
-            moveToCurrentListActivity("true")
+        // 1 = hidden, 2 = current, 3 = waiting
+        ibHidden!!.setOnClickListener {
+            moveToCurrentListActivity(1)
+        }
+
+        tvHidden!!.setOnClickListener {
+            moveToCurrentListActivity(1)
         }
 
         tvCurrent!!.setOnClickListener {
-            moveToCurrentListActivity("true")
+            moveToCurrentListActivity(2)
         }
 
-        ibExpired!!.setOnClickListener {
-            moveToCurrentListActivity("false")
+        ibCurrent!!.setOnClickListener {
+            moveToCurrentListActivity(2)
+        }
+
+        ibWaiting!!.setOnClickListener {
+            moveToCurrentListActivity(3)
 
         }
 
-        tvExpired!!.setOnClickListener {
-            moveToCurrentListActivity("false")
+        tvWaiting!!.setOnClickListener {
+            moveToCurrentListActivity(3)
         }
 
     }

@@ -17,10 +17,11 @@ import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CurrentSellerAdapter (private val filmList: List<Film>): RecyclerView.Adapter<CurrentSellerAdapter.ViewHolder>(), Filterable {
+class CurrentSellerAdapter (private val filmList: List<Film>, private val check: Int): RecyclerView.Adapter<CurrentSellerAdapter.ViewHolder>(), Filterable {
 
     var onItemClick: ((Film) -> Unit)? = null
     var filterListResult: List<Film> = filmList
+    var checkValue: Int = check
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
@@ -61,7 +62,8 @@ class CurrentSellerAdapter (private val filmList: List<Film>): RecyclerView.Adap
         fun bindView(film: Film) {
 
             tvName.text = film.name
-            tvPublished.text = "Ngày đăng: ${SimpleDateFormat("dd MM yyyy").format(film.datePublished.time)}"
+            if(checkValue == 2)
+                tvPublished.text = "Ngày đăng: ${SimpleDateFormat("dd/MM/yyyy").format(film.dateUpdated)}"
             tvCountry.text = "Quốc gia: ${film.country}"
             tvDescription.text = film.description
             Picasso.get().load(film.image).resize(130, 130).into(tvImage)

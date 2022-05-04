@@ -612,6 +612,7 @@ class SellerEditFilmActivity : AppCompatActivity() {
                         checkedGenreArray) { dialogInterface, i, isChecked ->
                         checkedGenreArray[i] = isChecked
                     }.setPositiveButton("Chọn") { dialog, which ->
+                        genreChoiceList.clear()
                         /*count how many choice was selected and save choice to list genre choice to push it upto Firebase later */
                         var count = 0
                         for (i in checkedGenreArray.indices) {

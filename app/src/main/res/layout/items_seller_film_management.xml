@@ -59,7 +59,7 @@
             android:id="@+id/tvSellerFilmDatePublishedItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ngày đăng: 28/04/2022"
+
             android:textSize="15sp"
             tools:ignore="HardcodedText" />
 

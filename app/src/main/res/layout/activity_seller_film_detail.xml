@@ -65,14 +65,14 @@
                 android:layout_marginStart="3dp"
                 android:text="(Có 321 người đánh giá)" />
 
-            <ImageButton
-                android:id="@+id/ibFilmSellerDetailFavorite"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:background="@android:color/transparent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/white_heart" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/ibFilmSellerDetailFavorite"-->
+<!--                android:layout_width="20dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/white_heart" />-->
 
 
         </LinearLayout>
@@ -144,7 +144,6 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:text="Ngày công chiếu: 29/04/2022"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -235,33 +234,33 @@
             android:layout_height="300dp"
             android:layout_margin="12dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:drawableLeft="@drawable/line"
-            android:drawableRight="@drawable/line"
-            android:gravity="center"
-            android:paddingLeft="72dp"
-            android:paddingRight="72dp"
-            android:text="Danh sách người thuê"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="RtlCompat,UseCompatTextViewDrawableXml" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginEnd="24dp"-->
+<!--            android:drawableLeft="@drawable/line"-->
+<!--            android:drawableRight="@drawable/line"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingLeft="72dp"-->
+<!--            android:paddingRight="72dp"-->
+<!--            android:text="Danh sách người thuê"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAllCaps="true"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:ignore="RtlCompat,UseCompatTextViewDrawableXml" />-->
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvSellerDetailJoiner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="16dp"
-            />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rcvSellerDetailJoiner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginEnd="24dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            />-->
 
         <LinearLayout
             android:layout_width="match_parent"

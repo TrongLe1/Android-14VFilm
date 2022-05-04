@@ -12,6 +12,7 @@ import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -29,6 +30,7 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     private var tvDetailCountry: TextView? = null
     private var tvDetailPrice: TextView? = null
     private var tvDetailDuration: TextView? = null
+    private var tvDetailDatePublished: TextView? = null
 
     private var tvDetailImage: ImageView? = null
     private var vvFilmTrailer: VideoView? = null
@@ -45,7 +47,7 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     /*media controller to play video*/
     private var trailerMediaController: MediaController? = null
     private var videoMediaController: MediaController? = null
-
+    private var checkAdapter: Int? =  null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -177,6 +179,13 @@ class SellerFilmDetailActivity : AppCompatActivity() {
         tvDetailDuration!!.text = "Thời lượng: ${filmDetail!!.length} phút"
         tvDetailCountry!!.text = "Quốc gia: ${filmDetail!!.country}"
 
+        if(SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
+                Date(0,0,0))
+            && SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated) != SimpleDateFormat("dd/MM/yyyy").format(
+                Date(0,0,1)))
+            tvDetailDatePublished!!.text = "Ngày đăng: ${SimpleDateFormat("dd/MM/yyyy").format(filmDetail!!.dateUpdated)}"
+
+
         var genre = "Thể loại: "
         for (i in filmDetail!!.genre.indices) {
             genre += "${filmDetail!!.genre[i]} "
@@ -206,6 +215,7 @@ class SellerFilmDetailActivity : AppCompatActivity() {
         tvDetailDescription = findViewById(R.id.tvFilmSellerDetailDescription)
         tvDetailPrice = findViewById(R.id.tvFilmSellerDetailRentPrice)
         tvDetailDuration = findViewById(R.id.tvFilmSellerDetailDuration)
+        tvDetailDatePublished = findViewById(R.id.tvFilmSellerDetailDatePublished)
 
         tvDetailCountry = findViewById(R.id.tvFilmSellerDetailCountry)
         tvDetailGenre = findViewById(R.id.tvFilmSellerDetailGenre)
@@ -232,6 +242,7 @@ class SellerFilmDetailActivity : AppCompatActivity() {
     /*get data from previous activity*/
     private fun getDataIntent() {
         filmDetail = intent.getSerializableExtra("Film") as Film?
+        checkAdapter = intent.getIntExtra("check", 2)
     }
 
 }

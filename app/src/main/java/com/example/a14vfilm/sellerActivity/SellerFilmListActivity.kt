@@ -1,5 +1,6 @@
 package com.example.a14vfilm.sellerActivity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a14vfilm.R
 import com.example.a14vfilm.adapters.CurrentSellerAdapter
 import com.example.a14vfilm.models.Film
+import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -29,7 +32,9 @@ class SellerFilmListActivity : AppCompatActivity() {
 
     /*init array save film*/
     private val newFilm = ArrayList<Film>()
-    private val adapter = CurrentSellerAdapter(newFilm)
+    private var adapter: CurrentSellerAdapter? = null
+    private var checkAdapter: Int? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +42,13 @@ class SellerFilmListActivity : AppCompatActivity() {
 
         /*Init view component*/
         InitViewComponent()
-
         setSupportActionBarActivity()
+        when(checkAdapter){
+//            1,2,3 -> adapter = CurrentSellerAdapter(newFilm)
+            1 -> adapter = CurrentSellerAdapter(newFilm, 1)
+            2 -> adapter = CurrentSellerAdapter(newFilm, 2)
+            3 -> adapter = CurrentSellerAdapter(newFilm, 3)
+        }
 
         /*accessing to get film data of Firebase Database*/
 
@@ -46,6 +56,7 @@ class SellerFilmListActivity : AppCompatActivity() {
         rcvListManagement!!.addItemDecoration(LayoutMarginDecoration(1, 20))
 //        val query = ref.orderByChild("dateUpdated").limitToLast(5)
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            @SuppressLint("SimpleDateFormat")
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (singleSnapshot in snapshot.children) {
                     val id = singleSnapshot.child("id").getValue<String>()
@@ -66,7 +77,28 @@ class SellerFilmListActivity : AppCompatActivity() {
                     val status = singleSnapshot.child("status").getValue<Boolean>()
                     val video = singleSnapshot.child("video").getValue<String>()
 
-                    newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!,status!!, video!! ))
+                    if(UserLogin.info!!.id == seller!!){
+                        val formatter = SimpleDateFormat("dd/MM/yyyy")
+                        when(checkAdapter){
+                            1->{
+                                /*hidden film*/
+                                if(formatter.format(dateUpdated!!).toString() == formatter.format(Date(0,0,1)).toString() && !status!!)
+                                    newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!,status!!, video!! ))
+                            }
+
+                            2 ->{
+                                /*current film*/
+                                if(formatter.format(dateUpdated!!).toString() != formatter.format(Date(0,0,0)).toString() && status!!)
+                                newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!,status!!, video!! ))
+
+                            }
+                            3->{
+                                /*waiting film*/
+                                if(formatter.format(dateUpdated!!).toString() == formatter.format(Date(0,0,0)).toString())
+                                newFilm.add(0, Film(id!!, seller!!, name!!, description!!, rate!!, length!!, country!!, datePublished!!, price!!, dateUpdated!!, image!!, trailer!!, genreList!!, rateTime!!,status!!, video!! ))
+                            }
+                        }
+                    }
                 }
 
                 rcvListManagement!!.adapter = adapter
@@ -75,8 +107,9 @@ class SellerFilmListActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        adapter.onItemClick = { film ->
+        adapter!!.onItemClick = { film ->
             val intent = Intent(this, SellerFilmDetailActivity::class.java)
+            intent.putExtra("check", checkAdapter)
             intent.putExtra("Film", film)
             startActivity(intent)
         }
@@ -90,16 +123,18 @@ class SellerFilmListActivity : AppCompatActivity() {
 
     }
 
-    private fun getIntentList(): Boolean{
-        val check = intent.getStringExtra("currentCheck")
-        return check.equals("true")
+    private fun getIntentList(): Int {
+        return intent.getIntExtra("currentCheck", 2)
     }
 
     private fun setSupportActionBarActivity(){
-        if (getIntentList())
-            supportActionBar?.title = "Danh sách phim hiện tại"
-        else
-            supportActionBar?.title = "Danh sách phim đã hết hạn"
+        checkAdapter = getIntentList()
+        when {
+            checkAdapter == 2 -> supportActionBar?.title = "Danh sách phim đang hiển thị"
+            checkAdapter == 3 -> supportActionBar?.title = "Danh sách phim đang chờ duyệt"
+            else -> supportActionBar?.title = "Danh sách phim đang ẩn"
+        }
+
     }
 
 }

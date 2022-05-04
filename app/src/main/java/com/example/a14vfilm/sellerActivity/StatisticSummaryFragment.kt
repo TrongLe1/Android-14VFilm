@@ -88,8 +88,8 @@ class StatisticSummaryFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_statistic_summary, container, false)
 
         lineChart = view.findViewById(R.id.lineChart)
-        pieChart = view.findViewById(R.id.pieChart)
-        barChart = view.findViewById(R.id.barChart)
+//        pieChart = view.findViewById(R.id.pieChart)
+//        barChart = view.findViewById(R.id.barChart)
 
         getAllSellerFilm()
 

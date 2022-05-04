@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide
 import com.example.a14vfilm.R
 import com.example.a14vfilm.models.Film
 import com.example.a14vfilm.models.Genre
+import com.example.a14vfilm.models.UserLogin
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -377,7 +378,7 @@ class SellerUploadFilmActivity : AppCompatActivity() {
                                 hashMap["name"] = "${etFilmName!!.text.trim()}"
                                 hashMap["description"] = "${etFilmDescription!!.text.trim()}"
                                 hashMap["length"] = etFilmDuration!!.text.trim().toString().toInt()
-                                hashMap["seller"] = ""
+                                hashMap["seller"] = UserLogin.info!!.id
                                 hashMap["image"] = "$imageUri"
                                 hashMap["trailer"] = "$trailerDownloadUri"
                                 hashMap["video"] = "$videoUri"
@@ -407,7 +408,8 @@ class SellerUploadFilmActivity : AppCompatActivity() {
                                         Toast.makeText(this,
                                             "Succesfully Uploading to Firebase",
                                             Toast.LENGTH_SHORT).show()
-
+                                        finish();
+                                        startActivity(intent);
                                     }
                                     .addOnFailureListener { e ->
                                         progressDialog.dismiss()
@@ -534,6 +536,7 @@ class SellerUploadFilmActivity : AppCompatActivity() {
                         checkedGenreArray) { dialogInterface, i, isChecked ->
                         checkedGenreArray[i] = isChecked
                     }.setPositiveButton("Chọn") { dialog, which ->
+                        genreChoiceList.clear()
                         /*count how many choice was selected and save choice to list genre choice to push it upto Firebase later */
                         var count = 0
                         for (i in checkedGenreArray.indices) {
@@ -698,7 +701,6 @@ class SellerUploadFilmActivity : AppCompatActivity() {
         }
 
     }
-
 
 }
 
