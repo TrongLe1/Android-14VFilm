@@ -53,7 +53,8 @@ class CommentActivity : AppCompatActivity() {
                             for (singleSnapshot in snapshot.children) {
                                 val name = singleSnapshot.child("name").getValue<String>()
                                 val image = singleSnapshot.child("image").getValue<String>()
-                                commentList.add(Comment(image!!, name!!, rate!!, comment!!))
+                                if (rate != -1F)
+                                    commentList.add(Comment(image!!, name!!, rate!!, comment!!))
                             }
                             RVComment!!.adapter = adapter
                         }
