@@ -50,7 +50,7 @@ class AddNewUserAdminActivity : AppCompatActivity() {
         ivAvatar = findViewById(R.id.addnewuseradminactivity_IVDIAvatar)
         spinnerRole = findViewById(R.id.addnewuseradminactivity_spinner)
         //spinner choose role
-        var list_of_roles = arrayOf("Nguời mua", "Người bán", "Quản trị viên")
+        var list_of_roles = arrayOf("Người mua", "Người bán", "Quản trị viên")
         val array_adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, list_of_roles)
         array_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerRole!!.adapter = array_adapter
@@ -68,10 +68,10 @@ class AddNewUserAdminActivity : AppCompatActivity() {
                     var check = spinnerRole!!.selectedItem.toString()
                     var userRole:Int? = null
 
-                    if(check == "Nguời mua"){
+                    if(check == "Người mua"){
                         userRole = 0
                     }
-                    else if(check == "Nguời bán"){
+                    else if(check == "Người bán"){
                         userRole = 1
                     }
                     else {
