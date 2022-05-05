@@ -121,7 +121,7 @@ class CheckoutActivity : AppCompatActivity() {
                 diff /= 24
                 price = film.price * (diff + 1)
                 TVCTotal!!.text = formatter.format(price) + " VNĐ"
-                if (price!! > 0 /*&& TVCNameCus!!.text != "" && TVCAddress!!.text != "" && TVCPhone!!.text != ""*/) {
+                if (price!! > 0 && endDate > rentDate /*&& TVCNameCus!!.text != "" && TVCAddress!!.text != "" && TVCPhone!!.text != ""*/) {
                     //BTNCheckout!!.isEnabled = true
                     //BTNCheckout!!.isClickable = true
                     if (TVCPayment!!.text != "Chọn hình thức thanh toán")
@@ -131,6 +131,7 @@ class CheckoutActivity : AppCompatActivity() {
                     //BTNCheckout!!.isEnabled = false
                     //BTNCheckout!!.isClickable = false
                     TVCTotal!!.text = "0 VNĐ"
+                    BTNCheckout!!.visibility = View.VISIBLE
                 }
             }, year, month, day)
             dpd.show()
@@ -168,8 +169,10 @@ class CheckoutActivity : AppCompatActivity() {
                 val RBPayment = bottomSheetDialog.findViewById<RadioButton>(selected)
                 bottomSheetDialog.dismiss()
                 TVCPayment!!.text = RBPayment!!.text
-                if (TVCPayment!!.text == "Paypal" && TVCEndDate!!.text != "Chọn ngày trả")
+                if (TVCPayment!!.text == "Paypal" && TVCEndDate!!.text != "Chọn ngày trả" && endDate > rentDate)
                     BTNCheckout!!.visibility = View.GONE
+                else
+                    BTNCheckout!!.visibility = View.VISIBLE
             }
             bottomSheetDialog.show()
         }
