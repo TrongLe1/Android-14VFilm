@@ -119,12 +119,14 @@
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_comment.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_info.xml" value="0.1" />
+        <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_joiner_statistic_detail.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_play_video.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_search.xml" value="0.264" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/activity_seller_film_detail.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/adapter_film.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/adapter_trans.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/fragment_library.xml" value="0.1" />
+        <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/layout/fragment_statistic_joiner.xml" value="0.1" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/quoct/source/AndroidStudio/Project/Android-14VFilm/app/src/main/res/menu/seller_home_menu.xml" value="0.19814814814814816" />
         <entry key="app/src/main/res/drawable/border.xml" value="0.2845" />

@@ -164,7 +164,7 @@
                     android:background="@drawable/table"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Ngày hết hạn"
+                    android:text="Hết hạn"
                     android:textAllCaps="true"
                     android:textSize="16dp"
                     android:textStyle="bold"
