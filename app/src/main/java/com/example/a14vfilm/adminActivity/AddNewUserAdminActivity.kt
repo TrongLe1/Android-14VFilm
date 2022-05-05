@@ -79,7 +79,7 @@ class AddNewUserAdminActivity : AppCompatActivity() {
                     }
 
                     val query = ref.orderByChild("email").equalTo(etUserEmail!!.text.toString())
-                    query.addValueEventListener(object: ValueEventListener {
+                    query.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (snapshot.exists())
                                 Toast.makeText(it.context, "Email đã được sử dụng", Toast.LENGTH_SHORT).show()

@@ -49,7 +49,7 @@ class SignupActivity : AppCompatActivity() {
                     val url = "https://vfilm-83cf4-default-rtdb.asia-southeast1.firebasedatabase.app/"
                     val ref = FirebaseDatabase.getInstance(url).getReference("user")
                     val query = ref.orderByChild("email").equalTo(ETEmail!!.text.toString())
-                    query.addValueEventListener(object: ValueEventListener {
+                    query.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (snapshot.exists())
                                 Toast.makeText(this@SignupActivity, "Email đã được sử dụng", Toast.LENGTH_SHORT).show()
